@@ -5,10 +5,9 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
+  width: 100%;
   padding: 16px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  height: 56px;
   background-color: var(--gray-1);
 `;
 
@@ -18,7 +17,7 @@ export const Header = () => {
     setAppearence((prev) => (prev === "light" ? "dark" : "light"));
   };
   return (
-    <Container justify="between">
+    <Container justify="between" align="center">
       <div className="logo">MONOASOBI</div>
       <Tooltip content="Change Theme">
         <IconButton onClick={changeHandler} variant="ghost">

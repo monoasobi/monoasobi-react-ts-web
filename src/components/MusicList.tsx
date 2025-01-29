@@ -26,6 +26,9 @@ const ItemContainer = styled(Button)<{ $isCurrent: boolean }>`
   margin: 0;
   background-color: ${({ $isCurrent }) =>
     $isCurrent ? `var(--accent-a3)` : `var(--accent-a0)`};
+  &:not(:disabled) {
+    cursor: pointer;
+  }
 `;
 
 interface ItemProps {
@@ -40,6 +43,7 @@ const Item = ({ item }: ItemProps) => {
       $isCurrent={novelId === String(item.id)}
       variant="ghost"
       onClick={() => navigate(`/${item.id}`)}
+      disabled={!item.translated}
     >
       <Flex gap="2" align="end">
         <Text size="4" weight="medium">
