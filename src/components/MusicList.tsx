@@ -1,7 +1,7 @@
 import { Music } from "@appTypes/music";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { musics } from "@utils/music";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -37,28 +37,40 @@ interface ItemProps {
 }
 
 const Item = ({ item }: ItemProps) => {
-  const navigate = useNavigate();
+  const {
+    isPublished,
+    id,
+    translated,
+    korTitle,
+    novelTitle,
+    novelWriter,
+    title,
+    enTitle,
+  } = item;
   const { novelId } = useParams();
   return (
     <ItemContainer
-      variant={novelId === String(item.id) ? "surface" : "outline"}
-      onClick={() => navigate(`/${item.id}`)}
-      disabled={!item.translated}
+      variant={novelId === String(id) ? "solid" : "soft"}
+      color={isPublished ? "gray" : "red"}
+      disabled={!translated && !isPublished}
+      asChild
     >
-      <Flex direction="column" gap="1">
-        <Text size="6" weight="bold" align="left">
-          {item.korTitle}
-        </Text>
-
-        {item.novelTitle && (
-          <Text size="2" weight="bold" align="left">
-            {item.novelWriter} &lt;{item.novelTitle}&gt;
+      <Link to={`/${id}`}>
+        <Flex direction="column" gap="1">
+          <Text size="6" weight="bold" align="left">
+            {korTitle}
           </Text>
-        )}
-        <Text size="1" align="left">
-          {item.title} / {item.enTitle}
-        </Text>
-      </Flex>
+
+          {novelTitle && (
+            <Text size="2" weight="bold" align="left">
+              {novelWriter} &lt;{novelTitle}&gt;
+            </Text>
+          )}
+          <Text size="1" align="left">
+            {title} / {enTitle}
+          </Text>
+        </Flex>
+      </Link>
     </ItemContainer>
   );
 };
