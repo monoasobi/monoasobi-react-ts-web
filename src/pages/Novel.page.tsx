@@ -1,5 +1,5 @@
 import { Flex, Heading, Text } from "@radix-ui/themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import remarkBreaks from "remark-breaks";
@@ -49,13 +49,16 @@ const Quote = styled.blockquote`
 export const Novel = () => {
   const { novelId } = useParams();
   const [markdown, setMarkdown] = useState("");
+  const novelRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     fetch(`./novel/${novelId}.md`)
       .then((response) => response.text())
       .then((text) => setMarkdown(text));
+
+    novelRef.current?.scrollTo(0, 0);
   }, [novelId]);
   return (
-    <Container justify="center">
+    <Container ref={novelRef} justify="center">
       <NovelContainer>
         <ReactMarkdown
           remarkPlugins={[remarkBreaks]}
