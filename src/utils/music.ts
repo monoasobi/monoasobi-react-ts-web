@@ -2,7 +2,7 @@ import { Music } from "@appTypes/music";
 
 export const musics: Music[] = [
   {
-    id: 0,
+    id: 1,
     originalNovelUrl: "https://monogatary.com/story/33826",
     korTitle: "밤을 달리다",
     enTitle: "Racing into the Night",
@@ -14,7 +14,7 @@ export const musics: Music[] = [
     translator: "DCinside 서꼬",
   },
   {
-    id: 1,
+    id: 2,
     originalNovelUrl: "https://monogatary.com/story/38869",
     korTitle: "저 꿈을 덧그리며",
     enTitle: "Tracing That Dream",
@@ -26,7 +26,7 @@ export const musics: Music[] = [
     isPublished: true,
   },
   {
-    id: 2,
+    id: 3,
     originalNovelUrl: "https://ebookstore.sony.jp/title/10498769/",
     korTitle: "봄망초",
     enTitle: "Halzion",
@@ -38,7 +38,7 @@ export const musics: Music[] = [
     translator: "@setoka26",
   },
   {
-    id: 3,
+    id: 4,
     originalNovelUrl: "https://monogatary.com/story/48324",
     korTitle: "아마도",
     enTitle: "Maybe",
@@ -50,7 +50,7 @@ export const musics: Music[] = [
     translator: "@setoka26",
   },
   {
-    id: 4,
+    id: 5,
     originalNovelUrl: "",
     korTitle: "군청",
     enTitle: "Ultramarine",
@@ -62,7 +62,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 5,
+    id: 6,
     originalNovelUrl: "https://monogatary.com/story/109216",
     korTitle: "하루카",
     enTitle: "Haruka",
@@ -72,18 +72,6 @@ export const musics: Music[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: false,
-  },
-  {
-    id: 6,
-    originalNovelUrl: "https://monogatary.com/story/50040",
-    korTitle: "앙코르",
-    enTitle: "Encore",
-    title: "アンコール",
-    novelTitle: "세상의 끝과 작별의 노래",
-    novelWriter: "미나카미 카나미",
-    translated: true,
-    translator: "@prism_translate",
-    isPublished: true,
   },
   {
     id: 7,
@@ -135,6 +123,18 @@ export const musics: Music[] = [
   },
   {
     id: 11,
+    originalNovelUrl: "https://monogatary.com/story/50040",
+    korTitle: "앙코르",
+    enTitle: "Encore",
+    title: "アンコール",
+    novelTitle: "세상의 끝과 작별의 노래",
+    novelWriter: "미나카미 카나미",
+    translated: true,
+    translator: "@prism_translate",
+    isPublished: true,
+  },
+  {
+    id: 12,
     originalNovelUrl: "https://www.tfm.co.jp/post/lettersong/pdf/letter.pdf",
     korTitle: "러브레터",
     enTitle: "Love Letter",
@@ -146,7 +146,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 12,
+    id: 13,
     originalNovelUrl: "https://monogatary.com/story/78167",
     korTitle: "다이쇼 로망",
     enTitle: "Taisho Roman",
@@ -158,7 +158,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 13,
+    id: 14,
     originalNovelUrl: "https://www.nhk.or.jp/irotoridori/song/",
     korTitle: "제비",
     enTitle: "Swallow",
@@ -167,18 +167,6 @@ export const musics: Music[] = [
     novelWriter: "오토즈키 나나",
     translated: true,
     translator: "DCinside Ys",
-    isPublished: false,
-  },
-  {
-    id: 14,
-    originalNovelUrl:
-      "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
-    korTitle: "만약에 생명을 그릴 수 있다면",
-    enTitle: "If I Could Draw Life",
-    title: "もしも命が描けたら",
-    novelTitle: "만약에 생명을 그릴 수 있다면",
-    novelWriter: "스즈키 오사무",
-    translated: false,
     isPublished: false,
   },
   {
@@ -205,6 +193,18 @@ export const musics: Music[] = [
   },
   {
     id: 17,
+    originalNovelUrl:
+      "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
+    korTitle: "만약에 생명을 그릴 수 있다면",
+    enTitle: "If I Could Draw Life",
+    title: "もしも命が描けたら",
+    novelTitle: "만약에 생명을 그릴 수 있다면",
+    novelWriter: "스즈키 오사무",
+    translated: false,
+    isPublished: false,
+  },
+  {
+    id: 18,
     originalNovelUrl: "https://g-witch.net/music/novel/",
     korTitle: "축복",
     enTitle: "The Blessing",
@@ -216,7 +216,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 18,
+    id: 19,
     originalNovelUrl: "",
     korTitle: "바다가 이끄는대로",
     enTitle: "As the Sea Leads",
@@ -227,7 +227,7 @@ export const musics: Music[] = [
     isPublished: true,
   },
   {
-    id: 19,
+    id: 20,
     originalNovelUrl: "https://www.usj.co.jp/web/ja/jp/news/2022/1012",
     korTitle: "어드벤처",
     enTitle: "Adventure",
@@ -239,7 +239,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 20,
+    id: 21,
     originalNovelUrl: "",
     korTitle: "세븐틴",
     enTitle: "Seventeen",
@@ -250,7 +250,7 @@ export const musics: Music[] = [
     isPublished: true,
   },
   {
-    id: 21,
+    id: 22,
     originalNovelUrl: "https://youngjump.jp/oshinoko/novel_45510/novel_01.html",
     korTitle: "아이돌",
     enTitle: "Idol",
@@ -262,7 +262,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 22,
+    id: 23,
     originalNovelUrl: "https://frieren-anime.jp/special/novel/",
     korTitle: "용사",
     enTitle: "Brave",
@@ -274,9 +274,9 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 23,
+    id: 24,
     originalNovelUrl: "https://novel-kimiame.pokemon.co.jp/",
-    korTitle: "찌릿찌릿",
+    korTitle: "Biri-Biri",
     enTitle: "Biri-Biri",
     title: "Biri-Biri",
     novelTitle: "너와 비를 피하며",
@@ -286,7 +286,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 24,
+    id: 25,
     originalNovelUrl: "https://www.nhk.or.jp/18fes/shinon1000/movie/song/",
     korTitle: "HEART BEAT",
     enTitle: "HEART BEAT",
@@ -297,7 +297,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 25,
+    id: 26,
     originalNovelUrl:
       "https://www.monogatari-series.com/oms/special/novel/nadeko_past",
     korTitle: "UNDEAD",
@@ -310,7 +310,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 26,
+    id: 27,
     originalNovelUrl: "",
     korTitle: "무대에 서서",
     enTitle: "Standing on Stage",
@@ -321,7 +321,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 27,
+    id: 28,
     originalNovelUrl: "https://fureru-movie.com/special/novel/",
     korTitle: "모노톤",
     enTitle: "Monotone",
@@ -332,7 +332,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 28,
+    id: 29,
     originalNovelUrl: "https://monogatary.com/story/454872",
     korTitle: "New Me",
     enTitle: "New Me",

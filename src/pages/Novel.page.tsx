@@ -1,4 +1,5 @@
 import { Flex, Heading, Text } from "@radix-ui/themes";
+import { musics } from "@utils/music";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
@@ -15,8 +16,12 @@ const Container = styled(Flex)`
 
 const NovelContainer = styled.div`
   width: 100%;
+  min-height: 100%;
   max-width: 720px;
   padding: 16px;
+  .markdown {
+    padding-bottom: 24px;
+  }
 `;
 
 const P = styled(Text)`
@@ -36,10 +41,14 @@ const Quote = styled.blockquote`
   transform: rotate(-0.03deg);
   background-color: var(--accent-a3);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
+  margin: 0 0.75rem 1rem 0.75rem;
+
   & > p {
+    text-indent: 0;
     font-family: "Pretendard JP Variable";
+    margin-bottom: 0.5rem;
   }
   & > p:last-child {
     margin-bottom: 0;
@@ -48,8 +57,12 @@ const Quote = styled.blockquote`
 
 export const Novel = () => {
   const { novelId } = useParams();
+  const music = musics[Number(novelId) - 1];
+  const isNotFound = !music;
+  if (isNotFound) return null;
   const [markdown, setMarkdown] = useState("");
   const novelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     fetch(`./novel/${novelId}.md`)
       .then((response) => response.text())
@@ -57,16 +70,20 @@ export const Novel = () => {
 
     novelRef.current?.scrollTo(0, 0);
   }, [novelId]);
+
+  // if (music.isPublished) return <>구매해라 애송이</>;
+  if (!music.translated) return <>번역해라 애송이</>;
   return (
     <Container ref={novelRef} justify="center">
       <NovelContainer>
         <ReactMarkdown
+          className="markdown"
           remarkPlugins={[remarkBreaks]}
           components={{
             h1(props) {
               const { children } = props;
               return (
-                <Heading as="h1" size="7" my="4">
+                <Heading as="h1" size="7" my="6">
                   {children}
                 </Heading>
               );
@@ -74,7 +91,7 @@ export const Novel = () => {
             h2(props) {
               const { children } = props;
               return (
-                <Heading as="h2" my="3" size="6" align="center">
+                <Heading as="h2" my="6" size="6" align="center">
                   {children}
                 </Heading>
               );
@@ -82,7 +99,7 @@ export const Novel = () => {
             h3(props) {
               const { children } = props;
               return (
-                <Heading as="h3" my="2" size="4" align="center">
+                <Heading as="h3" my="2" size="6" align="center">
                   {children}
                 </Heading>
               );
