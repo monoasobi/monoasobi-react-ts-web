@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
+  padding: 16px;
   min-width: 320px;
   height: calc(100dvh - 56px);
   overflow: auto;
@@ -20,12 +21,12 @@ export const MusicList = () => {
   );
 };
 
-const ItemContainer = styled(Button)<{ $isCurrent: boolean }>`
+const ItemContainer = styled(Button)`
   flex-direction: column;
   align-items: flex-start;
-  margin: 0;
-  background-color: ${({ $isCurrent }) =>
-    $isCurrent ? `var(--accent-a3)` : `var(--accent-a0)`};
+  height: auto;
+  padding: 16px;
+
   &:not(:disabled) {
     cursor: pointer;
   }
@@ -40,24 +41,24 @@ const Item = ({ item }: ItemProps) => {
   const { novelId } = useParams();
   return (
     <ItemContainer
-      $isCurrent={novelId === String(item.id)}
-      variant="ghost"
+      variant={novelId === String(item.id) ? "surface" : "outline"}
       onClick={() => navigate(`/${item.id}`)}
       disabled={!item.translated}
     >
-      <Flex gap="2" align="end">
-        <Text size="6" weight="bold">
+      <Flex direction="column" gap="1">
+        <Text size="6" weight="bold" align="left">
           {item.korTitle}
         </Text>
-      </Flex>
-      {item.novelTitle && (
-        <Text size="2" weight="bold">
-          {item.novelWriter} &lt;{item.novelTitle}&gt;
+
+        {item.novelTitle && (
+          <Text size="2" weight="bold" align="left">
+            {item.novelWriter} &lt;{item.novelTitle}&gt;
+          </Text>
+        )}
+        <Text size="1" align="left">
+          {item.title} / {item.enTitle}
         </Text>
-      )}
-      <Text size="1">
-        {item.title} / {item.enTitle}
-      </Text>
+      </Flex>
     </ItemContainer>
   );
 };
