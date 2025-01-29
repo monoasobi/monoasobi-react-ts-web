@@ -1,15 +1,22 @@
-import { Heading, Text } from "@radix-ui/themes";
+import { Flex, Heading, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import remarkBreaks from "remark-breaks";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled(Flex)`
+  width: 100%;
   height: calc(100dvh - 56px);
   overflow: auto;
+  line-height: 160%;
   padding: 24px;
-  /* line-height: 160%; */
+`;
+
+const NovelContainer = styled.div`
+  width: 100%;
+  max-width: 720px;
+  padding: 16px;
 `;
 
 const P = styled(Text)`
@@ -25,6 +32,20 @@ const P = styled(Text)`
   }
 `;
 
+const Quote = styled.blockquote`
+  transform: rotate(-0.03deg);
+  background-color: var(--accent-a3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  & > p {
+    font-family: "Pretendard JP Variable";
+  }
+  & > p:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 export const Novel = () => {
   const { novelId } = useParams();
   const [markdown, setMarkdown] = useState("");
@@ -34,42 +55,48 @@ export const Novel = () => {
       .then((text) => setMarkdown(text));
   }, [novelId]);
   return (
-    <Container>
-      <ReactMarkdown
-        remarkPlugins={[remarkBreaks]}
-        components={{
-          h1(props) {
-            const { children } = props;
-            return (
-              <Heading as="h1" size="7" my="4">
-                {children}
-              </Heading>
-            );
-          },
-          h2(props) {
-            const { children } = props;
-            return (
-              <Heading as="h2" my="3" size="6" align="center">
-                {children}
-              </Heading>
-            );
-          },
-          h3(props) {
-            const { children } = props;
-            return (
-              <Heading as="h3" my="2" size="4" align="center">
-                {children}
-              </Heading>
-            );
-          },
-          p(props) {
-            const { children } = props;
-            return <P as="p">{children}</P>;
-          },
-        }}
-      >
-        {markdown}
-      </ReactMarkdown>
+    <Container justify="center">
+      <NovelContainer>
+        <ReactMarkdown
+          remarkPlugins={[remarkBreaks]}
+          components={{
+            h1(props) {
+              const { children } = props;
+              return (
+                <Heading as="h1" size="7" my="4">
+                  {children}
+                </Heading>
+              );
+            },
+            h2(props) {
+              const { children } = props;
+              return (
+                <Heading as="h2" my="3" size="6" align="center">
+                  {children}
+                </Heading>
+              );
+            },
+            h3(props) {
+              const { children } = props;
+              return (
+                <Heading as="h3" my="2" size="4" align="center">
+                  {children}
+                </Heading>
+              );
+            },
+            p(props) {
+              const { children } = props;
+              return <P as="p">{children}</P>;
+            },
+            blockquote(props) {
+              const { children } = props;
+              return <Quote>{children}</Quote>;
+            },
+          }}
+        >
+          {markdown}
+        </ReactMarkdown>
+      </NovelContainer>
     </Container>
   );
 };
