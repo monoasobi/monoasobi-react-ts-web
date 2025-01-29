@@ -46,18 +46,18 @@ const Item = ({ item }: ItemProps) => {
       disabled={!item.translated}
     >
       <Flex gap="2" align="end">
-        <Text size="4" weight="medium">
+        <Text size="6" weight="bold">
           {item.korTitle}
         </Text>
       </Flex>
-      <Text size="1">
-        {item.title} / {item.enTitle}
-      </Text>
       {item.novelTitle && (
-        <Text size="1">
+        <Text size="2" weight="bold">
           {item.novelWriter} &lt;{item.novelTitle}&gt;
         </Text>
       )}
+      <Text size="1">
+        {item.title} / {item.enTitle}
+      </Text>
     </ItemContainer>
   );
 };
