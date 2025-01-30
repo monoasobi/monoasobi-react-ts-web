@@ -12,6 +12,7 @@ export const musics: Music[] = [
     translated: true,
     isPublished: true,
     translator: "DCinside 서꼬",
+    bookId: 1,
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const musics: Music[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
+    bookId: 1,
   },
   {
     id: 3,
@@ -47,6 +49,7 @@ export const musics: Music[] = [
     novelWriter: "시나노",
     translated: true,
     isPublished: true,
+    bookId: 1,
     translator: "@setoka26",
   },
   {
@@ -132,6 +135,7 @@ export const musics: Music[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
+    bookId: 1,
   },
   {
     id: 12,
@@ -179,6 +183,7 @@ export const musics: Music[] = [
     novelWriter: "시마모토 리우",
     translated: false,
     isPublished: true,
+    bookId: 2,
   },
   {
     id: 16,
@@ -190,6 +195,7 @@ export const musics: Music[] = [
     novelWriter: "모리 에토",
     translated: false,
     isPublished: true,
+    bookId: 2,
   },
   {
     id: 17,
@@ -225,6 +231,7 @@ export const musics: Music[] = [
     novelWriter: "츠지무라 미즈키",
     translated: false,
     isPublished: true,
+    bookId: 2,
   },
   {
     id: 20,
@@ -248,6 +255,7 @@ export const musics: Music[] = [
     novelWriter: "미야베 미유키",
     translated: false,
     isPublished: true,
+    bookId: 2,
   },
   {
     id: 22,

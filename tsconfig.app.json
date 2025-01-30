@@ -31,10 +31,10 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@appTypes/*": ["src/types/*"],
-      "@utils/*": ["src/utils/*"],
-      "@images/*": ["src/images/*"]
+      "@utils/*": ["src/utils/*"]
     },
     "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

@@ -9,7 +9,10 @@ export interface MusicBase {
   isPublished: boolean;
   originalNovelUrl?: string;
 }
+type PublishedStatus =
+  | { isPublished: true; bookId: number }
+  | { isPublished: false };
 
 export type Music =
-  | (MusicBase & { translated: true; translator: string })
-  | (MusicBase & { translated: false });
+  | (MusicBase & { translated: true; translator: string } & PublishedStatus)
+  | (MusicBase & { translated: false } & PublishedStatus);
