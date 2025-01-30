@@ -15,7 +15,7 @@ const Container = styled(Flex)`
   background-color: var(--gray-1);
   overflow: auto;
   animation: slide 0.2s ease-in-out;
-  box-shadow: 6px 0px 4px -2px var(--black-a4);
+  box-shadow: 6px 12px 12px -2px var(--black-a1);
 
   .admin {
     opacity: 0;
