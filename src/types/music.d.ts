@@ -1,4 +1,4 @@
-export interface MusicBase {
+export interface Music {
   id: number;
   korTitle: string;
   enTitle: string;
@@ -8,11 +8,7 @@ export interface MusicBase {
   translated: boolean;
   isPublished: boolean;
   originalNovelUrl?: string;
+  bookId?: number;
+  translator?: string;
+  translatorUrl?: string;
 }
-type PublishedStatus =
-  | { isPublished: true; bookId: number }
-  | { isPublished: false };
-
-export type Music =
-  | (MusicBase & { translated: true; translator: string } & PublishedStatus)
-  | (MusicBase & { translated: false } & PublishedStatus);

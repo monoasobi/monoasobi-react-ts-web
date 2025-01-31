@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Container = styled(Flex)`
   width: 100%;
   padding: 24px;
-  height: calc(100dvh - 56px);
+  height: calc(100dvh - 116px);
   overflow: auto;
 
   .card {

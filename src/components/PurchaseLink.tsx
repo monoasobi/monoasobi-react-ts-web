@@ -7,7 +7,7 @@ import styled from "styled-components";
 const Container = styled(Flex)`
   width: 100%;
   padding: 24px;
-  height: calc(100dvh - 56px);
+  height: calc(100dvh - 116px);
   overflow: auto;
 
   .card {
@@ -52,7 +52,7 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
               <Separator size="4" />
               <Flex direction="column" gap="2">
                 {book.novelIds.map((id) => (
-                  <Text align="center" size="2" color="gray">{`${
+                  <Text align="center" size="2" color="gray" key={id}>{`${
                     musics[id - 1].korTitle
                   } <${musics[id - 1].novelTitle}>`}</Text>
                 ))}

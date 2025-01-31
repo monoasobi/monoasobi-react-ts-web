@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
-  padding: 0 16px;
+  padding: 10px 16px;
   height: 56px;
   background-color: var(--gray-1);
 

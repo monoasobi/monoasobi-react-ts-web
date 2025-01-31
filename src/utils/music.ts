@@ -4,6 +4,8 @@ export const musics: Music[] = [
   {
     id: 1,
     originalNovelUrl: "https://monogatary.com/story/33826",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=149",
     korTitle: "밤을 달리다",
     enTitle: "Into The Night",
     title: "夜に駆ける",
@@ -17,6 +19,8 @@ export const musics: Music[] = [
   {
     id: 2,
     originalNovelUrl: "https://monogatary.com/story/38869",
+    translatorUrl:
+      "https://docs.google.com/document/d/1IKvhkcnF9y0_pfbHeWODMXykPdiC5RCK2kVQnbC6N0A",
     korTitle: "저 꿈을 덧그리며",
     enTitle: "Tracing A Dream",
     title: "あの夢をなぞって",
@@ -30,6 +34,8 @@ export const musics: Music[] = [
   {
     id: 3,
     originalNovelUrl: "https://ebookstore.sony.jp/title/10498769/",
+    translatorUrl:
+      "https://docs.google.com/document/d/1wTcyxG4f_FdNpUZ4GaQyaZlMQsjziSRYL2iTXMnqV_w",
     korTitle: "봄망초",
     enTitle: "Halzion",
     title: "ハルジオン",
@@ -42,6 +48,8 @@ export const musics: Music[] = [
   {
     id: 4,
     originalNovelUrl: "https://monogatary.com/story/48324",
+    translatorUrl:
+      "https://drive.google.com/file/d/1kWzDm-nnMe99ME1P5mW3S7sfH3TBwh9L",
     korTitle: "아마도",
     enTitle: "Haven't",
     title: "たぶん",
@@ -55,6 +63,8 @@ export const musics: Music[] = [
   {
     id: 5,
     originalNovelUrl: "",
+    translatorUrl:
+      "https://docs.google.com/document/d/1qIYfR04GKpQTVczINFWTpMlYIEmpMGPdhFAx76jJ7Wg",
     korTitle: "군청",
     enTitle: "Blue",
     title: "群青",
@@ -67,6 +77,8 @@ export const musics: Music[] = [
   {
     id: 6,
     originalNovelUrl: "https://monogatary.com/story/109216",
+    translatorUrl:
+      "https://docs.google.com/document/d/1EcCVHKus9jyGSohMlvz8Ut0T4CMduEJVpn1LztpGV0A",
     korTitle: "하루카",
     enTitle: "Haruka",
     title: "ハルカ",
@@ -79,6 +91,8 @@ export const musics: Music[] = [
   {
     id: 7,
     originalNovelUrl: "https://bst-anime.com/sp/",
+    translatorUrl:
+      "https://docs.google.com/document/d/1DM-J937ewv6Y8L-ffHouyqXNR-g8gRPD4JZKeY98P1k",
     korTitle: "괴물",
     enTitle: "Monster",
     title: "怪物",
@@ -91,6 +105,8 @@ export const musics: Music[] = [
   {
     id: 8,
     originalNovelUrl: "https://bst-anime.com/sp/",
+    translatorUrl:
+      "https://docs.google.com/document/d/13I-4OQb65fhvUAsZwpR3rtx-htiscQgmhYBDrxICOP8",
     korTitle: "상냥한 혜성",
     enTitle: "Comet",
     title: "優しい彗星",
@@ -103,6 +119,8 @@ export const musics: Music[] = [
   {
     id: 9,
     originalNovelUrl: "https://monogatary.com/story/146439",
+    translatorUrl:
+      "https://docs.google.com/document/d/1Lr4wmdOLCf03IzxC9TKU_4T-h8mnbj1pX0xa0drRKcc",
     korTitle: "조금만 더",
     enTitle: "Just a Little Step",
     title: "もう少しだけ",
@@ -115,6 +133,8 @@ export const musics: Music[] = [
   {
     id: 10,
     originalNovelUrl: "https://ahamo.com/special/yoasobi/novel/",
+    translatorUrl:
+      "https://docs.google.com/document/d/1c1z6si7rx6-b36MB2D43AGtOvykpGZLgiRy19hDc9gQ",
     korTitle: "삼원색",
     enTitle: "RGB",
     title: "三原色",
@@ -127,6 +147,8 @@ export const musics: Music[] = [
   {
     id: 11,
     originalNovelUrl: "https://monogatary.com/story/50040",
+    translatorUrl:
+      "https://docs.google.com/document/d/1wOqh924rxUhzSB1ATrypQiLaAlyZ8hPBj6pCHdSjp_g",
     korTitle: "앙코르",
     enTitle: "Encore",
     title: "アンコール",
@@ -140,6 +162,8 @@ export const musics: Music[] = [
   {
     id: 12,
     originalNovelUrl: "https://www.tfm.co.jp/post/lettersong/pdf/letter.pdf",
+    translatorUrl:
+      "https://docs.google.com/document/d/10oi-24wB9rInZtCU1jiVSaNO_TKYhrdCR8AEQxC-DP0",
     korTitle: "러브레터",
     enTitle: "Love Letter",
     title: "ラブレター",
@@ -152,6 +176,8 @@ export const musics: Music[] = [
   {
     id: 13,
     originalNovelUrl: "https://monogatary.com/story/78167",
+    translatorUrl:
+      "https://docs.google.com/document/d/1qFoMRXDXhYedU4RdlV_46aVySfdmWMRA1pMMgt0j0K4",
     korTitle: "다이쇼 로망",
     enTitle: "Romance",
     title: "大正浪漫",
@@ -164,6 +190,8 @@ export const musics: Music[] = [
   {
     id: 14,
     originalNovelUrl: "https://www.nhk.or.jp/irotoridori/song/",
+    translatorUrl:
+      "https://docs.google.com/document/d/10m_q7HX0r1m_7VHcz4ZpK_d0qPBfQnSEOeN8oyA6xMs",
     korTitle: "제비",
     enTitle: "The Swallow",
     title: "ツバメ",
@@ -176,6 +204,7 @@ export const musics: Music[] = [
   {
     id: 15,
     originalNovelUrl: "",
+    translatorUrl: "",
     korTitle: "미스터",
     enTitle: "Mister",
     title: "ミスター",
@@ -188,6 +217,7 @@ export const musics: Music[] = [
   {
     id: 16,
     originalNovelUrl: "",
+    translatorUrl: "",
     korTitle: "좋아해",
     enTitle: "Loving You",
     title: "好きだ",
@@ -201,6 +231,8 @@ export const musics: Music[] = [
     id: 17,
     originalNovelUrl:
       "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
+    translatorUrl: "",
+
     korTitle: "만약에 생명을 그릴 수 있다면",
     enTitle: "If I Could Draw Life",
     title: "もしも命が描けたら",
@@ -212,6 +244,8 @@ export const musics: Music[] = [
   {
     id: 18,
     originalNovelUrl: "https://g-witch.net/music/novel/",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3263",
     korTitle: "축복",
     enTitle: "The Blessing",
     title: "祝福",
@@ -224,6 +258,7 @@ export const musics: Music[] = [
   {
     id: 19,
     originalNovelUrl: "",
+    translatorUrl: "",
     korTitle: "바다가 이끄는대로",
     enTitle: "manimani",
     title: "海のまにまに",
@@ -236,6 +271,8 @@ export const musics: Music[] = [
   {
     id: 20,
     originalNovelUrl: "https://www.usj.co.jp/web/ja/jp/news/2022/1012",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3594",
     korTitle: "어드벤처",
     enTitle: "Adventure",
     title: "アドベンチャー",
@@ -248,6 +285,7 @@ export const musics: Music[] = [
   {
     id: 21,
     originalNovelUrl: "",
+    translatorUrl: "",
     korTitle: "세븐틴",
     enTitle: "Seventeen",
     title: "セブンティーン",
@@ -260,6 +298,8 @@ export const musics: Music[] = [
   {
     id: 22,
     originalNovelUrl: "https://youngjump.jp/oshinoko/novel_45510/novel_01.html",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=16699",
     korTitle: "아이돌",
     enTitle: "Idol",
     title: "アイドル",
@@ -272,6 +312,8 @@ export const musics: Music[] = [
   {
     id: 23,
     originalNovelUrl: "https://frieren-anime.jp/special/novel/",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=frieren&no=3450",
     korTitle: "용사",
     enTitle: "Brave",
     title: "勇者",
@@ -284,6 +326,7 @@ export const musics: Music[] = [
   {
     id: 24,
     originalNovelUrl: "https://novel-kimiame.pokemon.co.jp/",
+    translatorUrl: "https://sites.google.com/view/kor-kimiame",
     korTitle: "Biri-Biri",
     enTitle: "Biri-Biri",
     title: "Biri-Biri",
@@ -296,6 +339,7 @@ export const musics: Music[] = [
   {
     id: 25,
     originalNovelUrl: "https://www.nhk.or.jp/18fes/shinon1000/movie/song/",
+    translatorUrl: "",
     korTitle: "HEART BEAT",
     enTitle: "HEART BEAT",
     title: "HEART BEAT",
@@ -308,6 +352,7 @@ export const musics: Music[] = [
     id: 26,
     originalNovelUrl:
       "https://www.monogatari-series.com/oms/special/novel/nadeko_past",
+    translatorUrl: "https://maiden-translate.tistory.com/124",
     korTitle: "UNDEAD",
     enTitle: "UNDEAD",
     title: "UNDEAD",
@@ -320,6 +365,7 @@ export const musics: Music[] = [
   {
     id: 27,
     originalNovelUrl: "",
+    translatorUrl: "",
     korTitle: "무대에 서서",
     enTitle: "On The Stage",
     title: "舞台に立って",
@@ -331,6 +377,7 @@ export const musics: Music[] = [
   {
     id: 28,
     originalNovelUrl: "https://fureru-movie.com/special/novel/",
+    translatorUrl: "",
     korTitle: "모노톤",
     enTitle: "Monotone",
     title: "モノトーン",
@@ -342,6 +389,7 @@ export const musics: Music[] = [
   {
     id: 29,
     originalNovelUrl: "https://monogatary.com/story/454872",
+    translatorUrl: "",
     korTitle: "New Me",
     enTitle: "New Me",
     title: "New Me",

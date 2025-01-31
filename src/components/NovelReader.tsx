@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
-  height: calc(100dvh - 56px);
+  height: calc(100dvh - 116px);
   overflow: auto;
   line-height: 160%;
   padding: 24px;
