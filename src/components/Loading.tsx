@@ -5,7 +5,6 @@ import styled from "styled-components";
 const Container = styled(Flex)`
   width: 100%;
   min-height: 100%;
-  max-width: 720px;
   padding: 16px;
 `;
 
