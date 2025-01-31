@@ -1,11 +1,11 @@
 import { Music } from "@appTypes/music";
+import { adminAtom } from "@atoms/admin.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
-import { WrenchIcon } from "@heroicons/react/24/outline";
-import { Button, Flex, IconButton, Text } from "@radix-ui/themes";
+import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
 import { musics } from "@utils/music";
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -16,15 +16,6 @@ const Container = styled(Flex)`
   overflow: auto;
   animation: slide 0.2s ease-in-out;
   box-shadow: 6px 12px 12px -2px var(--black-a1);
-
-  .admin {
-    opacity: 0;
-    align-self: flex-end;
-    transition: opacity 0.7s ease-in-out;
-    &:hover {
-      opacity: 1;
-    }
-  }
 
   @media (max-width: 1024px) {
     position: fixed;
@@ -45,7 +36,7 @@ const Container = styled(Flex)`
   }
 `;
 
-export const MusicList = () => {
+export const Sidebar = () => {
   const setIsSidebar = useSetRecoilState(sidebarAtom);
 
   const sideRef = useRef<HTMLDivElement>(null);
@@ -78,9 +69,6 @@ export const MusicList = () => {
       {musics.map((music) => (
         <Item item={music} key={music.id} />
       ))}
-      <IconButton className="admin" variant="outline" color="gray">
-        <WrenchIcon width={16} />
-      </IconButton>
     </Container>
   );
 };
@@ -113,34 +101,37 @@ const Item = ({ item }: ItemProps) => {
   } = item;
   const { novelId } = useParams();
   const setIsSidebar = useSetRecoilState(sidebarAtom);
+  const isAdmin = useRecoilValue(adminAtom);
 
   const closeHandler = () => {
     const width = window.innerWidth;
     if (width < 1024) setIsSidebar(false);
   };
   return (
-    <ItemContainer
-      variant={novelId === String(id) ? "solid" : "soft"}
-      color={isPublished ? "gray" : "red"}
-      disabled={!translated && !isPublished}
-      asChild
-    >
-      <Link to={`/${id}`} onClick={closeHandler}>
-        <Flex direction="column" gap="1">
-          <Text size="5" weight="bold" align="left">
-            {korTitle}
-          </Text>
-
-          {novelTitle && (
-            <Text size="2" weight="bold" align="left">
-              {novelWriter} &lt;{novelTitle}&gt;
+    <Dialog.Root>
+      <ItemContainer
+        variant={novelId === String(id) ? "solid" : "soft"}
+        color={isAdmin ? "red" : isPublished ? "gray" : "red"}
+        disabled={!translated}
+        asChild
+      >
+        <Link to={`/${id}`} onClick={closeHandler}>
+          <Flex direction="column" gap="1">
+            <Text size="5" weight="bold" align="left">
+              {korTitle}
             </Text>
-          )}
-          <Text size="1" align="left">
-            {title} / {enTitle}
-          </Text>
-        </Flex>
-      </Link>
-    </ItemContainer>
+
+            {novelTitle && (
+              <Text size="2" weight="bold" align="left">
+                {novelWriter} &lt;{novelTitle}&gt;
+              </Text>
+            )}
+            <Text size="1" align="left">
+              {title} / {enTitle}
+            </Text>
+          </Flex>
+        </Link>
+      </ItemContainer>
+    </Dialog.Root>
   );
 };

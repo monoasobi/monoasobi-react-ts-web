@@ -3,7 +3,8 @@ import { appearanceAtom } from "@atoms/appearance.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { Flex, IconButton, Tooltip } from "@radix-ui/themes";
+import { Button, Flex, IconButton, Tooltip } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 import styled from "styled-components";
@@ -33,7 +34,11 @@ export const Header = () => {
       <IconButton onClick={sidebarHAndler} variant="ghost">
         <Bars3Icon width={24} />
       </IconButton>
-      <img src={logo} alt="logo" className="logo" />
+      <Link to="/">
+        <Button asChild variant="ghost">
+          <img src={logo} alt="logo" className="logo" />
+        </Button>
+      </Link>
       <Tooltip content="Change Theme">
         <IconButton onClick={darkmodeHandler} variant="ghost">
           {appearance === "light" ? (

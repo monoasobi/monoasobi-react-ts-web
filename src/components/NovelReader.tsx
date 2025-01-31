@@ -1,5 +1,8 @@
 import { Music } from "@appTypes/music";
+import { Error } from "@components/Error";
+import { Loading } from "@components/Loading";
 import { Flex, Heading, Text } from "@radix-ui/themes";
+import { supabase } from "@utils/supabase";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
@@ -59,17 +62,33 @@ interface NovelProps {
 }
 
 export const NovelReader = ({ music }: NovelProps) => {
-  const [markdown, setMarkdown] = useState("");
+  const [markdown, setMarkdown] = useState<string | undefined>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const novelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch(`./novel/${music.id}.md`)
-      .then((response) => response.text())
-      .then((text) => setMarkdown(text));
-
+    const fetchNovel = async (novelId: number) => {
+      try {
+        setIsLoading(true);
+        setIsError(false);
+        const { data } = await supabase.storage
+          .from("novels")
+          .download(`${novelId}.md`);
+        setMarkdown(await data?.text());
+      } catch (err) {
+        console.error(err);
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchNovel(music.id);
     novelRef.current?.scrollTo(0, 0);
   }, [music]);
 
+  if (isLoading) return <Loading />;
+  if (isError) return <Error />;
   return (
     <Container ref={novelRef} justify="center">
       <NovelContainer>
