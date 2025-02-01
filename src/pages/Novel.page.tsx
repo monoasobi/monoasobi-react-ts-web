@@ -3,7 +3,7 @@ import { NovelReader } from "@components/NovelReader";
 import { PurchaseLink } from "@components/PurchaseLink";
 // import { PurchaseLink } from "@components/PurchaseLink";
 import { Translate } from "@components/Translate";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
   Button,
   DataList,
@@ -60,7 +60,7 @@ export const Novel = () => {
           </Flex>
           <Popover.Trigger>
             <IconButton size="1" variant="soft">
-              <ChevronDownIcon width="16" height="16" />
+              <EllipsisHorizontalIcon width="16" height="16" />
             </IconButton>
           </Popover.Trigger>
           <Popover.Content maxWidth="320px">
