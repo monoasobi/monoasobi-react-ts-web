@@ -110,10 +110,9 @@ const Item = ({ item }: ItemProps) => {
   return (
     <Dialog.Root>
       <ItemContainer
-        variant={novelId === String(id) ? "solid" : "soft"}
-        color={
-          !translated ? "gray" : isAdmin ? "red" : isPublished ? "gray" : "red"
-        }
+        variant={novelId === String(id) ? "solid" : "outline"}
+        color={isAdmin ? "red" : isPublished ? "gray" : "red"}
+        disabled={isAdmin ? !translated : !translated || isPublished}
         asChild
       >
         <Link to={`/${id}`} onClick={closeHandler}>
