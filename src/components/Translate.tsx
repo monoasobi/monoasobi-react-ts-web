@@ -6,9 +6,9 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
-  padding: 24px;
+  padding: 92px 24px 24px;
   max-width: 1024px;
-  height: calc(100dvh - 116px);
+  height: calc(100dvh - 72px);
   overflow: auto;
 
   .card {
@@ -37,8 +37,8 @@ export const Translate = ({ music }: TranslateProps) => {
           <Flex direction="column" gap="4" className="desc">
             <Text size="2">
               번역본 기여하기 :{" "}
-              <a href="mailto:envi.9.offcial@gmail.com?subject=모노아소비 번역본 기여 문의">
-                envi.9.offcial@gmail.com
+              <a href="mailto:envi.9.official@gmail.com?subject=모노아소비 번역본 기여 문의">
+                envi.9.official@gmail.com
               </a>
             </Text>
             {music.originalNovelUrl && (

@@ -137,8 +137,8 @@ export const Home = () => {
             </Text>
             <Text size="2" align="center">
               번역 투고 및 기타 문의 :{" "}
-              <a href="mailto:envi.9.offcial@gmail.com?subject=모노아소비 문의">
-                envi.9.offcial@gmail.com
+              <a href="mailto:envi.9.official@gmail.com?subject=모노아소비 문의">
+                envi.9.official@gmail.com
               </a>
             </Text>
           </Flex>

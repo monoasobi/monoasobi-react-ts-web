@@ -9,11 +9,12 @@ import styled from "styled-components";
 const Container = styled(Flex)`
   width: 100%;
   max-width: 1024px;
-  padding: 24px;
-  height: calc(100dvh - 116px);
+  padding: 92px 24px 24px;
+  height: calc(100dvh - 72px);
   overflow: auto;
 
   .card {
+    padding: 24px;
     overflow: visible;
   }
   .imgs {
@@ -21,10 +22,6 @@ const Container = styled(Flex)`
     > img {
       max-width: 30%;
     }
-  }
-
-  .desc {
-    width: 90%;
   }
 `;
 
@@ -128,8 +125,8 @@ export const OnTheStage = () => {
             </Card>
             <Text size="2" align="center">
               번역본 기여하기 :{" "}
-              <a href="mailto:envi.9.offcial@gmail.com?subject=모노아소비 번역본 기여 문의">
-                envi.9.offcial@gmail.com
+              <a href="mailto:envi.9.official@gmail.com?subject=모노아소비 번역본 기여 문의">
+                envi.9.official@gmail.com
               </a>
             </Text>
           </Flex>

@@ -7,11 +7,12 @@ import styled from "styled-components";
 const Container = styled(Flex)`
   width: 100%;
   max-width: 1024px;
-  padding: 24px;
-  height: calc(100dvh - 116px);
+  padding: 92px 24px 24px;
+  height: calc(100dvh - 72px);
   overflow: auto;
 
   .card {
+    padding: 24px;
     overflow: visible;
   }
 
@@ -38,7 +39,9 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
         </Text>
         <Flex direction="column" justify="center" align="center" my="4" gap="3">
           <Flex
-            gap="4"
+            gap="6"
+            width="100%"
+            justify="center"
             align={{ md: "end", initial: "center" }}
             direction={{ initial: "column", md: "row" }}
           >

@@ -10,10 +10,10 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
-  height: calc(100dvh - 116px);
+  height: calc(100dvh - 72px);
   overflow: auto;
   line-height: 160%;
-  padding: 24px;
+  padding: 92px 24px 24px;
 `;
 
 const NovelContainer = styled.div`
@@ -45,7 +45,6 @@ const Quote = styled.blockquote`
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  margin: 0 0.75rem 1rem 0.75rem;
 
   & > p {
     text-indent: 0;

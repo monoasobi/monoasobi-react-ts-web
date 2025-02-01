@@ -3,7 +3,7 @@ import { adminAtom } from "@atoms/admin.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
 import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
 import { musics } from "@utils/music";
-import { useEffect, useRef } from "react";
+import { MouseEventHandler, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -15,7 +15,7 @@ const Container = styled(Flex)`
   background-color: var(--gray-1);
   overflow: auto;
   animation: slide 0.2s ease-in-out;
-  box-shadow: 6px 12px 12px -2px var(--black-a1);
+  box-shadow: 4px 8px 6px -2px var(--black-a1);
 
   @media (max-width: 1024px) {
     position: fixed;
@@ -51,6 +51,10 @@ export const Sidebar = () => {
         setIsSidebar(false);
       }
     };
+
+    const scrollTop = sessionStorage.getItem("sidebar");
+
+    if (scrollTop) sideRef.current?.scrollTo({ top: Number(scrollTop) - 100 });
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -103,9 +107,11 @@ const Item = ({ item }: ItemProps) => {
   const setIsSidebar = useSetRecoilState(sidebarAtom);
   const isAdmin = useRecoilValue(adminAtom);
 
-  const closeHandler = () => {
+  const closeHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    console.log(e.currentTarget.offsetTop);
     const width = window.innerWidth;
     if (width < 1024) setIsSidebar(false);
+    sessionStorage.setItem("sidebar", e.currentTarget.offsetTop.toString());
   };
   return (
     <Dialog.Root>
