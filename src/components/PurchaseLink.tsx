@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
+  max-width: 1024px;
   padding: 24px;
   height: calc(100dvh - 116px);
   overflow: auto;
@@ -27,6 +28,7 @@ interface PurchaseLinkProps {
 
 export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
   const book = books[bookId - 1];
+
   return (
     <Container direction="column">
       <Card className="card">

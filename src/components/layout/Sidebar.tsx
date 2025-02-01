@@ -111,7 +111,9 @@ const Item = ({ item }: ItemProps) => {
     <Dialog.Root>
       <ItemContainer
         variant={novelId === String(id) ? "solid" : "soft"}
-        color={isAdmin ? "red" : isPublished || !translated ? "gray" : "red"}
+        color={
+          !translated ? "gray" : isAdmin ? "red" : isPublished ? "gray" : "red"
+        }
         asChild
       >
         <Link to={`/${id}`} onClick={closeHandler}>

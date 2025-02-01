@@ -11,4 +11,5 @@ export interface Music {
   bookId?: number;
   translator?: string;
   translatorUrl?: string;
+  CustomComponent?: () => JSX.Element;
 }

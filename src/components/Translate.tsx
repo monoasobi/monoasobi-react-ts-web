@@ -1,10 +1,13 @@
+import { Music } from "@appTypes/music";
 import yoasobi from "@assets/yoasobi.jpg";
-import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
   padding: 24px;
+  max-width: 1024px;
   height: calc(100dvh - 116px);
   overflow: auto;
 
@@ -18,7 +21,11 @@ const Container = styled(Flex)`
   }
 `;
 
-export const Translate = () => {
+interface TranslateProps {
+  music: Music;
+}
+
+export const Translate = ({ music }: TranslateProps) => {
   return (
     <Container direction="column">
       <Card className="card">
@@ -34,6 +41,13 @@ export const Translate = () => {
                 envi.9.offcial@gmail.com
               </a>
             </Text>
+            {music.originalNovelUrl && (
+              <Button size="1" asChild variant="outline">
+                <Link to={music.originalNovelUrl} target="_blank">
+                  원문 보러가기
+                </Link>
+              </Button>
+            )}
           </Flex>
         </Flex>
       </Card>

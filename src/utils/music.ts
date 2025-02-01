@@ -1,4 +1,6 @@
 import { Music } from "@appTypes/music";
+import { HeartBeat } from "@components/custom/HeartBeat";
+import { OnTheStage } from "@components/custom/OnTheStage";
 
 export const musics: Music[] = [
   {
@@ -343,10 +345,11 @@ export const musics: Music[] = [
     korTitle: "HEART BEAT",
     enTitle: "HEART BEAT",
     title: "HEART BEAT",
-    novelTitle: "",
-    novelWriter: "",
+    novelTitle: "1000명의 심장 소리",
+    novelWriter: "2023 NHK 18祭",
     translated: false,
     isPublished: false,
+    CustomComponent: HeartBeat,
   },
   {
     id: 26,
@@ -373,6 +376,7 @@ export const musics: Music[] = [
     novelWriter: "",
     translated: false,
     isPublished: false,
+    CustomComponent: OnTheStage,
   },
   {
     id: 28,

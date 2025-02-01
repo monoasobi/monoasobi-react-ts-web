@@ -17,10 +17,11 @@ import { Link, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled(Flex)`
   width: 100%;
 
   .novelHeader {
+    width: 100%;
     background-color: var(--gray-1);
     box-shadow: 0px 8px 12px -2px var(--black-a1);
   }
@@ -29,12 +30,23 @@ const Container = styled.div`
 export const Novel = () => {
   const { novelId } = useParams();
   const music = musics[Number(novelId) - 1];
+  const {
+    novelTitle,
+    novelWriter,
+    translated,
+    isPublished,
+    originalNovelUrl,
+    bookId,
+    translator,
+    translatorUrl,
+    CustomComponent,
+  } = music;
   const isAdmin = useRecoilValue(adminAtom);
   if (!music) return null;
 
   return (
     <Popover.Root>
-      <Container>
+      <Container direction="column" align="center">
         <Flex
           className="novelHeader"
           direction="row"
@@ -43,35 +55,35 @@ export const Novel = () => {
           py="2"
         >
           <Flex direction="column">
-            <Heading size="1">{music.novelWriter}</Heading>
-            <Heading size="2">&lt;{music.novelTitle}&gt;</Heading>
+            <Heading size="1">{novelWriter}</Heading>
+            {novelTitle && <Heading size="2">&lt;{novelTitle}&gt;</Heading>}
           </Flex>
           <Popover.Trigger>
-            <IconButton variant="soft">
+            <IconButton size="1" variant="soft">
               <ChevronDownIcon width="16" height="16" />
             </IconButton>
           </Popover.Trigger>
           <Popover.Content maxWidth="320px">
             <Flex direction="column" gap="3">
               <DataList.Root>
-                {music.translator && !music.isPublished && (
+                {translator && !isPublished && (
                   <DataList.Item align="center">
-                    <DataList.Label minWidth="60px">역자</DataList.Label>
+                    <DataList.Label minWidth="32px">역자</DataList.Label>
                     <DataList.Value>
-                      <Button asChild>
-                        <Link to={music.translatorUrl!} target="_blank">
-                          {music.translator}
+                      <Button variant="outline" size="1" asChild>
+                        <Link to={translatorUrl!} target="_blank">
+                          {translator}
                         </Link>
                       </Button>
                     </DataList.Value>
                   </DataList.Item>
                 )}
-                {music.originalNovelUrl && (
+                {originalNovelUrl && (
                   <DataList.Item align="center">
-                    <DataList.Label minWidth="60px">원문</DataList.Label>
+                    <DataList.Label minWidth="32px">원문</DataList.Label>
                     <DataList.Value>
-                      <Button asChild>
-                        <Link to={music.originalNovelUrl} target="_blank">
+                      <Button variant="outline" size="1" asChild>
+                        <Link to={originalNovelUrl} target="_blank">
                           보러가기
                         </Link>
                       </Button>
@@ -82,10 +94,12 @@ export const Novel = () => {
             </Flex>
           </Popover.Content>
         </Flex>
-        {music.isPublished && !isAdmin ? (
-          <PurchaseLink bookId={music.bookId!} />
-        ) : !music.translated ? (
-          <Translate />
+        {isPublished && !isAdmin ? (
+          <PurchaseLink bookId={bookId!} />
+        ) : CustomComponent ? (
+          <CustomComponent />
+        ) : !translated ? (
+          <Translate music={music} />
         ) : (
           <NovelReader music={music} />
         )}
