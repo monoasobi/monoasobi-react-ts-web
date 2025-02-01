@@ -31,6 +31,7 @@ const Container = styled(Flex)`
 
   .yoasobi {
     width: 90%;
+    max-width: 960px;
   }
 
   .logo {
