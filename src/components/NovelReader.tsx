@@ -51,6 +51,7 @@ const Quote = styled.blockquote`
     text-indent: 0;
     font-family: "Pretendard JP Variable";
     margin-bottom: 0.5rem;
+    margin-left: 0;
   }
   & > p:last-child {
     margin-bottom: 0;
