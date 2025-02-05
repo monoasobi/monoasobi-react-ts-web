@@ -374,7 +374,7 @@ export const musics: Music[] = [
     title: "舞台に立って",
     novelTitle: "",
     novelWriter: "",
-    translated: false,
+    translated: true,
     isPublished: false,
     CustomComponent: OnTheStage,
   },
