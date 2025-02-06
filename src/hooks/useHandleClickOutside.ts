@@ -6,9 +6,16 @@ export const useHandleClickOutside = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
+      setTimeout(() => {
+        if (
+          ref.current &&
+          !ref.current.contains(event.target as Node) &&
+          isOpen
+        ) {
+          event.stopPropagation();
+          setIsOpen(false);
+        }
+      }, 0);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
