@@ -15,7 +15,8 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { musics } from "@utils/music";
-import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
@@ -50,7 +51,14 @@ const NovelHeader = styled(Card)`
 
 export const Novel = () => {
   const { novelId } = useParams();
-  const music = musics[Number(novelId) - 1];
+  const navigate = useNavigate();
+  const music = musics.find((music) => music.id === Number(novelId));
+
+  useEffect(() => {
+    if (!music) navigate("/404");
+  }, [music]);
+
+  if (!music) return;
   const {
     novelTitle,
     novelWriter,
@@ -65,7 +73,6 @@ export const Novel = () => {
     title,
   } = music;
   const isAdmin = useRecoilValue(adminAtom);
-  if (!music) return null;
 
   return (
     <Popover.Root>

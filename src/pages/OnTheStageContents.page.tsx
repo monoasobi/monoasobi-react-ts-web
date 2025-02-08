@@ -13,7 +13,8 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { onTheStageContents } from "@utils/onTheStage";
-import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -47,7 +48,17 @@ const Header = styled(Card)`
 
 export const OnTheStageContents = () => {
   const { id } = useParams();
-  const content = onTheStageContents[Number(id) - 1];
+  const navigate = useNavigate();
+  const content = onTheStageContents.find(
+    (content) => content.id === Number(id)
+  );
+
+  useEffect(() => {
+    if (!content) navigate("/404");
+  }, [content]);
+
+  if (!content) return;
+
   const {
     contentId,
     contentTitle,
@@ -59,7 +70,6 @@ export const OnTheStageContents = () => {
     title,
     type,
   } = content;
-  if (!content) return null;
 
   return (
     <Popover.Root>
