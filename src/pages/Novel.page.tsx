@@ -121,7 +121,7 @@ export const Novel = () => {
         ) : !translated ? (
           <Translate music={music} />
         ) : (
-          <NovelReader music={music} />
+          <NovelReader id={music.id} />
         )}
       </Container>
     </Popover.Root>

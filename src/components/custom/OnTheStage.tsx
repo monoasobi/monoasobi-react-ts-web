@@ -51,15 +51,10 @@ export const OnTheStage = () => {
                   </Text>
                   <Flex gap="2" flexGrow="1" flexBasis="1">
                     <Button size="1" asChild variant="outline">
-                      <Link to="/comics/1">코믹스 (번역본)</Link>
+                      <Link to="/onthestage/1">코믹스</Link>
                     </Button>
                     <Button size="1" asChild variant="outline">
-                      <Link
-                        to="https://www.yoasobi-music.jp/novels/hanaretafutari/"
-                        target="_blank"
-                      >
-                        소설 (원문)
-                      </Link>
+                      <Link to="/onthestage/2">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>
@@ -70,15 +65,10 @@ export const OnTheStage = () => {
                   </Text>
                   <Flex gap="2" flexGrow="1" flexBasis="1">
                     <Button size="1" asChild variant="outline">
-                      <Link to="/comics/2">코믹스 (번역본)</Link>
+                      <Link to="/onthestage/3">코믹스</Link>
                     </Button>
                     <Button size="1" asChild variant="outline">
-                      <Link
-                        to="https://www.yoasobi-music.jp/novels/parallel-lane/"
-                        target="_blank"
-                      >
-                        소설 (원문)
-                      </Link>
+                      <Link to="/onthestage/4">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>
@@ -89,26 +79,15 @@ export const OnTheStage = () => {
                   </Text>
                   <Flex gap="2" flexGrow="1" flexBasis="1">
                     <Button size="1" asChild variant="outline">
-                      <Link to="/comics/3">코믹스 (번역본)</Link>
+                      <Link to="/onthestage/5">코믹스</Link>
                     </Button>
                     <Button size="1" asChild variant="outline">
-                      <Link
-                        to="https://www.yoasobi-music.jp/novels/owaranai-deuce/"
-                        target="_blank"
-                      >
-                        소설 (원문)
-                      </Link>
+                      <Link to="/onthestage/6">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>
               </Flex>
             </Card>
-            <Text size="2" align="center">
-              번역본 기여하기 :{" "}
-              <a href="mailto:envi.9.official@gmail.com?subject=모노아소비 번역본 기여 문의">
-                envi.9.official@gmail.com
-              </a>
-            </Text>
           </Flex>
         </Flex>
       </Card>

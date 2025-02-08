@@ -1,4 +1,5 @@
 import { ComicReader } from "@components/ComicReader";
+import { NovelReader } from "@components/NovelReader";
 
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
@@ -11,7 +12,7 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { comics } from "@utils/comic";
+import { onTheStageContents } from "@utils/onTheStage";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -26,7 +27,7 @@ const Container = styled(Flex)`
   }
 `;
 
-const ComicHeader = styled(Card)`
+const Header = styled(Card)`
   position: absolute;
   top: 0;
   display: flex;
@@ -44,30 +45,32 @@ const ComicHeader = styled(Card)`
   }
 `;
 
-export const Comic = () => {
-  const { comicId } = useParams();
-  const comic = comics[Number(comicId) - 1];
+export const OnTheStageContents = () => {
+  const { id } = useParams();
+  const content = onTheStageContents[Number(id) - 1];
   const {
-    comicTitle,
-    comicWriter,
+    contentId,
+    contentTitle,
+    contentWriter,
     korTitle,
     originalUrl,
     translator,
     translatorUrl,
     title,
-  } = comic;
-  if (!comic) return null;
+    type,
+  } = content;
+  if (!content) return null;
 
   return (
     <Popover.Root>
       <Container direction="column" align="center">
-        <ComicHeader variant="surface">
+        <Header variant="surface">
           <Flex direction="column" align="center">
             <Text size="2" weight="bold" color="red">
               {korTitle} {korTitle !== title && title}
             </Text>
-            <Heading size="2">{comicWriter}</Heading>
-            {comicTitle && <Heading size="2">&lt;{comicTitle}&gt;</Heading>}
+            <Heading size="2">{contentWriter}</Heading>
+            <Heading size="2">&lt;{contentTitle}&gt;</Heading>
           </Flex>
           <Popover.Trigger className="headerButton">
             <IconButton size="1" variant="soft">
@@ -79,7 +82,7 @@ export const Comic = () => {
               <DataList.Root>
                 {translator && (
                   <DataList.Item align="center">
-                    <DataList.Label minWidth="32px">역식자</DataList.Label>
+                    <DataList.Label minWidth="32px">역자</DataList.Label>
                     <DataList.Value>
                       <Button variant="outline" size="1" asChild>
                         <Link to={translatorUrl!} target="_blank">
@@ -104,9 +107,12 @@ export const Comic = () => {
               </DataList.Root>
             </Flex>
           </Popover.Content>
-        </ComicHeader>
-
-        <ComicReader comic={comic} />
+        </Header>
+        {type === "novel" ? (
+          <NovelReader id={contentId} />
+        ) : (
+          <ComicReader id={contentId} length={content.length} />
+        )}
       </Container>
     </Popover.Root>
   );

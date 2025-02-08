@@ -1,4 +1,3 @@
-import { Comic } from "@appTypes/comic";
 import { Flex } from "@radix-ui/themes";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -25,13 +24,14 @@ const ComicContainer = styled(Flex)`
 `;
 
 interface ComicProps {
-  comic: Comic;
+  id: number;
+  length: number;
 }
 
 const url =
   "https://btzvusbfitsmxtslhnkb.supabase.co/storage/v1/object/public/comics";
 
-export const ComicReader = ({ comic }: ComicProps) => {
+export const ComicReader = ({ id, length }: ComicProps) => {
   const comicRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,12 +41,8 @@ export const ComicReader = ({ comic }: ComicProps) => {
   return (
     <Container ref={comicRef} justify="center" pb="6">
       <ComicContainer direction="column" gap="3">
-        {new Array(comic.length).fill("").map((_, idx) => (
-          <img
-            key={idx}
-            src={`${url}/${comic.id}/${idx}.jpg`}
-            alt={idx.toString()}
-          />
+        {new Array(length).fill("").map((_, idx) => (
+          <img key={idx} src={`${url}/${id}/${idx}.jpg`} alt={idx.toString()} />
         ))}
       </ComicContainer>
     </Container>

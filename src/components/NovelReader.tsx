@@ -1,4 +1,3 @@
-import { Music } from "@appTypes/music";
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
 import { Flex, Heading, Text } from "@radix-ui/themes";
@@ -79,22 +78,22 @@ const LI = styled.li`
 `;
 
 interface NovelProps {
-  music: Music;
+  id: number | string;
 }
 
-export const NovelReader = ({ music }: NovelProps) => {
+export const NovelReader = ({ id }: NovelProps) => {
   const [markdown, setMarkdown] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const novelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fetchNovel = async (novelId: number) => {
+    const fetchNovel = async (novelId: number | string) => {
       try {
         setIsLoading(true);
         setIsError(false);
         if (import.meta.env.MODE) {
-          const res = await fetch(`./novel/${music.id}.md`);
+          const res = await fetch(`${location.origin}/novel/${id}.md`);
           const data = await res.text();
           setMarkdown(data);
         } else {
@@ -110,9 +109,9 @@ export const NovelReader = ({ music }: NovelProps) => {
         setIsLoading(false);
       }
     };
-    fetchNovel(music.id);
+    fetchNovel(id);
     novelRef.current?.scrollTo(0, 0);
-  }, [music]);
+  }, [id]);
 
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
@@ -144,7 +143,7 @@ export const NovelReader = ({ music }: NovelProps) => {
               </Heading>
             ),
             p: ({ children }) => <P as="p">{children}</P>,
-            blockquote: (props) => <Quote {...props} />,
+            blockquote: ({ children }) => <Quote>{children}</Quote>,
             hr: (props) => <HR {...props} />,
             ul: (props) => <UL {...props} />,
             li: (props) => {
