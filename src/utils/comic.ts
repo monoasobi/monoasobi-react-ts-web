@@ -5,7 +5,7 @@ export const comics: Comic[] = [
     id: 1,
     title: "舞台に立って",
     korTitle: "무대에 서서",
-    comicTitle: "헤어진 두 사람",
+    comicTitle: "떨어진 두 사람",
     comicWriter: "타이잔5",
     translator: "DCinside Sink",
     translatorUrl:

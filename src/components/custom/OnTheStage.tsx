@@ -47,7 +47,7 @@ export const OnTheStage = () => {
               <Flex gap="3" direction="column" width="100%" align="center">
                 <Flex direction="column" gap="2" align="center">
                   <Text size="3" weight="medium">
-                    헤어진 두 사람
+                    떨어진 두 사람
                   </Text>
                   <Flex gap="2" flexGrow="1" flexBasis="1">
                     <Button size="1" asChild variant="outline">
