@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const Container = styled(Flex)`
   width: 100%;
-  padding: 92px 24px 24px;
+  padding: 60px 24px 24px;
   height: calc(100dvh - 72px);
   overflow: auto;
 
@@ -21,7 +21,7 @@ const Container = styled(Flex)`
   }
 
   @media screen and (max-width: 480px) {
-    padding: 92px 12px 12px;
+    padding: 48px 12px 12px;
   }
 `;
 
