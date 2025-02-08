@@ -117,7 +117,9 @@ const Item = ({ item }: ItemProps) => {
     <Dialog.Root>
       <ItemContainer
         variant={novelId === String(id) ? "solid" : "outline"}
-        color={isAdmin ? "red" : isPublished ? "gray" : "red"}
+        color={
+          isPublished ? "teal" : isAdmin ? (translated ? "red" : "teal") : "red"
+        }
         disabled={isAdmin ? !translated : !translated || isPublished}
         asChild
       >
