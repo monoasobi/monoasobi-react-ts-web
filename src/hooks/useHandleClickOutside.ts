@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export const useHandleClickOutside = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -8,8 +8,8 @@ export const useHandleClickOutside = () => {
     const handleClickOutside = (event: MouseEvent) => {
       setTimeout(() => {
         if (
-          ref.current &&
-          !ref.current.contains(event.target as Node) &&
+          dropdownRef.current &&
+          !dropdownRef.current.contains(event.target as Node) &&
           isOpen
         ) {
           event.stopPropagation();
@@ -18,9 +18,9 @@ export const useHandleClickOutside = () => {
       }, 0);
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, setIsOpen]);
 
