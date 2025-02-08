@@ -1,7 +1,6 @@
 import { adminAtom } from "@atoms/admin.atom";
-import { NovelReader } from "@components/NovelReader";
+import { Loading } from "@components/Loading";
 import { PurchaseLink } from "@components/PurchaseLink";
-
 import { Translate } from "@components/Translate";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
@@ -15,10 +14,16 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { musics } from "@utils/music";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+
+const Reader = lazy(() =>
+  import("@components/NovelReader").then(({ NovelReader }) => ({
+    default: NovelReader,
+  }))
+);
 
 const Container = styled(Flex)`
   width: 100%;
@@ -128,7 +133,9 @@ export const Novel = () => {
         ) : !translated ? (
           <Translate music={music} />
         ) : (
-          <NovelReader id={music.id} />
+          <Suspense fallback={<Loading />}>
+            <Reader id={music.id} />
+          </Suspense>
         )}
       </Container>
     </Popover.Root>

@@ -1,6 +1,4 @@
-import { ComicReader } from "@components/ComicReader";
-import { NovelReader } from "@components/NovelReader";
-
+import { Loading } from "@components/Loading";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
   Button,
@@ -13,9 +11,21 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { onTheStageContents } from "@utils/onTheStage";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+
+const NovelReader = lazy(() =>
+  import("@components/NovelReader").then(({ NovelReader }) => ({
+    default: NovelReader,
+  }))
+);
+
+const ComicReader = lazy(() =>
+  import("@components/ComicReader").then(({ ComicReader }) => ({
+    default: ComicReader,
+  }))
+);
 
 const Container = styled(Flex)`
   width: 100%;
@@ -118,11 +128,13 @@ export const OnTheStageContents = () => {
             </Flex>
           </Popover.Content>
         </Header>
-        {type === "novel" ? (
-          <NovelReader id={contentId} />
-        ) : (
-          <ComicReader id={contentId} length={content.length} />
-        )}
+        <Suspense fallback={<Loading />}>
+          {type === "novel" ? (
+            <NovelReader id={contentId} />
+          ) : (
+            <ComicReader id={contentId} length={content.length} />
+          )}
+        </Suspense>
       </Container>
     </Popover.Root>
   );
