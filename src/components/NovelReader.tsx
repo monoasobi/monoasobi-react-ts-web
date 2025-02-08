@@ -72,10 +72,16 @@ export const NovelReader = ({ music }: NovelProps) => {
       try {
         setIsLoading(true);
         setIsError(false);
-        const { data } = await supabase.storage
-          .from("novels")
-          .download(`${novelId}.md`);
-        setMarkdown(await data?.text());
+        if (import.meta.env.MODE) {
+          const res = await fetch(`./novel/${music.id}.md`);
+          const data = await res.text();
+          setMarkdown(data);
+        } else {
+          const { data } = await supabase.storage
+            .from("novels")
+            .download(`${novelId}.md`);
+          setMarkdown(await data?.text());
+        }
       } catch (err) {
         console.error(err);
         setIsError(true);
