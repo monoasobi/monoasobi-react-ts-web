@@ -233,14 +233,14 @@ export const musics: Music[] = [
     id: 17,
     originalNovelUrl:
       "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
-    translatorUrl: "",
-
+    translatorUrl: "https://m.blog.naver.com/xooxiuxu/223159388707",
     korTitle: "만약에 생명을 그릴 수 있다면",
     enTitle: "If I Could Draw Life",
     title: "もしも命が描けたら",
     novelTitle: "만약에 생명을 그릴 수 있다면",
     novelWriter: "스즈키 오사무",
-    translated: false,
+    translated: true,
+    translator: "xooxiuxu",
     isPublished: false,
   },
   {

@@ -14,13 +14,16 @@ const Container = styled(Flex)`
   overflow: auto;
   line-height: 160%;
   padding: 92px 24px 24px;
+  @media screen and (max-width: 480px) {
+    padding: 92px 12px 12px;
+  }
 `;
 
 const NovelContainer = styled.div`
   width: 100%;
   min-height: 100%;
   max-width: 720px;
-  padding: 16px;
+  padding: 1rem;
   .markdown {
     padding-bottom: 24px;
   }
@@ -28,11 +31,12 @@ const NovelContainer = styled.div`
 
 const P = styled(Text)`
   font-family: "KoPub Batang";
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   word-break: keep-all;
   transform: rotate(-0.03deg);
   &:has(br) {
     margin-left: 1rem;
+    line-height: 1.75rem;
   }
   &:not(:has(br)) {
     text-indent: 1rem;
@@ -40,7 +44,6 @@ const P = styled(Text)`
 `;
 
 const Quote = styled.blockquote`
-  transform: rotate(-0.03deg);
   background-color: var(--accent-a3);
   border-radius: 8px;
   padding: 1.5rem;
@@ -48,6 +51,7 @@ const Quote = styled.blockquote`
 
   & > p {
     text-indent: 0;
+    transform: rotate(-0.03deg);
     font-family: "Pretendard JP Variable";
     margin-bottom: 0.5rem;
     margin-left: 0;
@@ -55,6 +59,23 @@ const Quote = styled.blockquote`
   & > p:last-child {
     margin-bottom: 0;
   }
+`;
+
+const HR = styled.hr`
+  width: 50%;
+  min-width: 80px;
+  margin: 1.5rem auto;
+`;
+
+const UL = styled.ul`
+  margin-bottom: 1rem;
+`;
+
+const LI = styled.li`
+  font-family: "KoPub Batang";
+  transform: rotate(-0.03deg);
+  margin-left: 1rem;
+  margin-bottom: 0.25rem;
 `;
 
 interface NovelProps {
@@ -102,38 +123,50 @@ export const NovelReader = ({ music }: NovelProps) => {
           className="markdown"
           remarkPlugins={[remarkBreaks]}
           components={{
-            h1(props) {
+            h1: ({ children }) => (
+              <Heading as="h1" size="7" my="6">
+                {children}
+              </Heading>
+            ),
+            h2: ({ children }) => (
+              <Heading as="h2" my="6" size="6" align="center">
+                {children}
+              </Heading>
+            ),
+            h3: ({ children }) => (
+              <Heading as="h3" my="2" size="6" align="center">
+                {children}
+              </Heading>
+            ),
+            h4: ({ children }) => (
+              <Heading as="h3" my="4" size="4" align="center">
+                {children}
+              </Heading>
+            ),
+            p: ({ children }) => <P as="p">{children}</P>,
+            blockquote: (props) => <Quote {...props} />,
+            hr: (props) => <HR {...props} />,
+            ul: (props) => <UL {...props} />,
+            li: (props) => {
               const { children } = props;
+              const text = children?.toString();
+              const match = text!.match(/^(.+?)\s*(「.*」)$/);
+              if (!match) return <LI {...props} />;
+              const [, speaker, dialogue] = match;
               return (
-                <Heading as="h1" size="7" my="6">
-                  {children}
-                </Heading>
+                <LI>
+                  <Text color="red" weight="bold" mr="2">
+                    {speaker}
+                  </Text>
+                  <Text>{dialogue}</Text>
+                </LI>
               );
             },
-            h2(props) {
-              const { children } = props;
-              return (
-                <Heading as="h2" my="6" size="6" align="center">
-                  {children}
-                </Heading>
-              );
-            },
-            h3(props) {
-              const { children } = props;
-              return (
-                <Heading as="h3" my="2" size="6" align="center">
-                  {children}
-                </Heading>
-              );
-            },
-            p(props) {
-              const { children } = props;
-              return <P as="p">{children}</P>;
-            },
-            blockquote(props) {
-              const { children } = props;
-              return <Quote>{children}</Quote>;
-            },
+            strong: ({ children }) => (
+              <Text color="red" weight="bold">
+                {children}
+              </Text>
+            ),
           }}
         >
           {markdown}
