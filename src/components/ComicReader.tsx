@@ -8,6 +8,9 @@ const Container = styled(Flex)`
   overflow: auto;
   line-height: 160%;
   padding: 92px 24px 92px;
+  @media screen and (max-width: 480px) {
+    padding: 92px 12px 12px;
+  }
 `;
 
 const ComicContainer = styled(Flex)`
@@ -15,11 +18,16 @@ const ComicContainer = styled(Flex)`
   min-height: 100%;
   max-width: 720px;
   padding: 16px;
+
   > img {
     width: 100%;
     &:last-child {
       margin-bottom: 24px;
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0px;
   }
 `;
 

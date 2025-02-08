@@ -31,7 +31,6 @@ const NovelContainer = styled.div`
 const P = styled(Text)`
   font-family: "KoPub Batang";
   margin-bottom: 1rem;
-  word-break: keep-all;
   transform: rotate(-0.03deg);
   &:has(br) {
     margin-left: 1rem;
