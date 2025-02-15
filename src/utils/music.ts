@@ -387,7 +387,8 @@ export const musics: Music[] = [
     title: "モノトーン",
     novelTitle: "후레루。 의, 전야。",
     novelWriter: "오카다 마리",
-    translated: false,
+    translated: true,
+    translator: "DCinside env.i",
     isPublished: false,
   },
   {
