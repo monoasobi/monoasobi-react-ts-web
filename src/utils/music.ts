@@ -381,7 +381,8 @@ export const musics: Music[] = [
   {
     id: 28,
     originalNovelUrl: "https://fureru-movie.com/special/novel/",
-    translatorUrl: "",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=76835",
     korTitle: "모노톤",
     enTitle: "Monotone",
     title: "モノトーン",
