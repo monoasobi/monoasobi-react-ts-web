@@ -395,13 +395,15 @@ export const musics: Music[] = [
   {
     id: 29,
     originalNovelUrl: "https://monogatary.com/story/454872",
-    translatorUrl: "",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78302&page=1",
     korTitle: "New Me",
     enTitle: "New Me",
     title: "New Me",
     novelTitle: "백산도로 불꽃 사건",
     novelWriter: "아리테 마도",
-    translated: false,
+    translated: true,
+    translator: "DCinside env.i",
     isPublished: false,
   },
 ];
