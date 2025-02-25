@@ -396,7 +396,7 @@ export const musics: Music[] = [
     id: 29,
     originalNovelUrl: "https://monogatary.com/story/454872",
     translatorUrl:
-      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78302&page=1",
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78307",
     korTitle: "New Me",
     enTitle: "New Me",
     title: "New Me",
