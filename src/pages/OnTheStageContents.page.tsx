@@ -10,9 +10,9 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { onTheStageContents } from "@utils/onTheStage";
 import { lazy, Suspense, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { onTheStageContents } from "src/lib/onTheStage";
 import styled from "styled-components";
 
 const NovelReader = lazy(() =>
@@ -65,7 +65,7 @@ export const OnTheStageContents = () => {
 
   useEffect(() => {
     if (!content) navigate("/404");
-  }, [content]);
+  }, [content, navigate]);
 
   if (!content) return;
 
