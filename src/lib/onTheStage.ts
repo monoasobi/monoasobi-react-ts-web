@@ -39,7 +39,7 @@ export const onTheStageContents: OnTheStage[] = [
     length: 58,
   },
   {
-    id: 4,
+    id: 2,
     type: "novel",
     contentId: "27-2",
     title: "舞台に立って",
