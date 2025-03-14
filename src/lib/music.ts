@@ -4,7 +4,7 @@ import { OnTheStage } from "@components/custom/OnTheStage";
 
 export const musics: Music[] = [
   {
-    id: 1,
+    id: 0,
     originalNovelUrl: "https://monogatary.com/story/33826",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=149",
@@ -16,10 +16,10 @@ export const musics: Music[] = [
     translated: true,
     isPublished: true,
     translator: "DCinside 서꼬",
-    bookId: 1,
+    bookId: 0,
   },
   {
-    id: 2,
+    id: 1,
     originalNovelUrl: "https://monogatary.com/story/38869",
     translatorUrl:
       "https://docs.google.com/document/d/1IKvhkcnF9y0_pfbHeWODMXykPdiC5RCK2kVQnbC6N0A",
@@ -31,10 +31,10 @@ export const musics: Music[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
   },
   {
-    id: 3,
+    id: 2,
     originalNovelUrl: "https://ebookstore.sony.jp/title/10498769/",
     translatorUrl:
       "https://docs.google.com/document/d/1wTcyxG4f_FdNpUZ4GaQyaZlMQsjziSRYL2iTXMnqV_w",
@@ -48,7 +48,7 @@ export const musics: Music[] = [
     translator: "@setoka26",
   },
   {
-    id: 4,
+    id: 3,
     originalNovelUrl: "https://monogatary.com/story/48324",
     translatorUrl:
       "https://drive.google.com/file/d/1kWzDm-nnMe99ME1P5mW3S7sfH3TBwh9L",
@@ -59,11 +59,11 @@ export const musics: Music[] = [
     novelWriter: "시나노",
     translated: true,
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
     translator: "@setoka26",
   },
   {
-    id: 5,
+    id: 4,
     originalNovelUrl: "",
     translatorUrl:
       "https://docs.google.com/document/d/1qIYfR04GKpQTVczINFWTpMlYIEmpMGPdhFAx76jJ7Wg",
@@ -77,7 +77,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 6,
+    id: 5,
     originalNovelUrl: "https://monogatary.com/story/109216",
     translatorUrl:
       "https://docs.google.com/document/d/1EcCVHKus9jyGSohMlvz8Ut0T4CMduEJVpn1LztpGV0A",
@@ -91,7 +91,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 7,
+    id: 6,
     originalNovelUrl: "https://bst-anime.com/sp/",
     translatorUrl:
       "https://docs.google.com/document/d/1DM-J937ewv6Y8L-ffHouyqXNR-g8gRPD4JZKeY98P1k",
@@ -105,7 +105,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 8,
+    id: 7,
     originalNovelUrl: "https://bst-anime.com/sp/",
     translatorUrl:
       "https://docs.google.com/document/d/13I-4OQb65fhvUAsZwpR3rtx-htiscQgmhYBDrxICOP8",
@@ -119,7 +119,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 9,
+    id: 8,
     originalNovelUrl: "https://monogatary.com/story/146439",
     translatorUrl:
       "https://docs.google.com/document/d/1Lr4wmdOLCf03IzxC9TKU_4T-h8mnbj1pX0xa0drRKcc",
@@ -133,7 +133,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 10,
+    id: 9,
     originalNovelUrl: "https://ahamo.com/special/yoasobi/novel/",
     translatorUrl:
       "https://docs.google.com/document/d/1c1z6si7rx6-b36MB2D43AGtOvykpGZLgiRy19hDc9gQ",
@@ -147,7 +147,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 11,
+    id: 10,
     originalNovelUrl: "https://monogatary.com/story/50040",
     translatorUrl:
       "https://docs.google.com/document/d/1wOqh924rxUhzSB1ATrypQiLaAlyZ8hPBj6pCHdSjp_g",
@@ -159,10 +159,10 @@ export const musics: Music[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
   },
   {
-    id: 12,
+    id: 11,
     originalNovelUrl: "https://www.tfm.co.jp/post/lettersong/pdf/letter.pdf",
     translatorUrl:
       "https://docs.google.com/document/d/10oi-24wB9rInZtCU1jiVSaNO_TKYhrdCR8AEQxC-DP0",
@@ -176,7 +176,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 13,
+    id: 12,
     originalNovelUrl: "https://monogatary.com/story/78167",
     translatorUrl:
       "https://docs.google.com/document/d/1qFoMRXDXhYedU4RdlV_46aVySfdmWMRA1pMMgt0j0K4",
@@ -190,7 +190,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 14,
+    id: 13,
     originalNovelUrl: "https://www.nhk.or.jp/irotoridori/song/",
     translatorUrl:
       "https://docs.google.com/document/d/10m_q7HX0r1m_7VHcz4ZpK_d0qPBfQnSEOeN8oyA6xMs",
@@ -204,7 +204,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 15,
+    id: 14,
     originalNovelUrl: "",
     translatorUrl: "",
     korTitle: "미스터",
@@ -214,10 +214,10 @@ export const musics: Music[] = [
     novelWriter: "시마모토 리우",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
-    id: 16,
+    id: 15,
     originalNovelUrl: "",
     translatorUrl: "",
     korTitle: "좋아해",
@@ -227,10 +227,10 @@ export const musics: Music[] = [
     novelWriter: "모리 에토",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
-    id: 17,
+    id: 16,
     originalNovelUrl:
       "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
     translatorUrl: "https://m.blog.naver.com/xooxiuxu/223159388707",
@@ -244,7 +244,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 18,
+    id: 17,
     originalNovelUrl: "https://g-witch.net/music/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3263",
@@ -258,7 +258,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 19,
+    id: 18,
     originalNovelUrl: "",
     translatorUrl: "",
     korTitle: "바다가 이끄는대로",
@@ -268,10 +268,10 @@ export const musics: Music[] = [
     novelWriter: "츠지무라 미즈키",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
-    id: 20,
+    id: 19,
     originalNovelUrl: "https://www.usj.co.jp/web/ja/jp/news/2022/1012",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3594",
@@ -285,7 +285,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 21,
+    id: 20,
     originalNovelUrl: "",
     translatorUrl: "",
     korTitle: "세븐틴",
@@ -295,10 +295,10 @@ export const musics: Music[] = [
     novelWriter: "미야베 미유키",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
-    id: 22,
+    id: 21,
     originalNovelUrl: "https://youngjump.jp/oshinoko/novel_45510/novel_01.html",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=16699",
@@ -312,7 +312,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 23,
+    id: 22,
     originalNovelUrl: "https://frieren-anime.jp/special/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=frieren&no=3450",
@@ -326,7 +326,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 24,
+    id: 23,
     originalNovelUrl: "https://novel-kimiame.pokemon.co.jp/",
     translatorUrl: "https://sites.google.com/view/kor-kimiame",
     korTitle: "Biri-Biri",
@@ -339,7 +339,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 25,
+    id: 24,
     originalNovelUrl: "https://www.nhk.or.jp/18fes/shinon1000/movie/song/",
     translatorUrl: "",
     korTitle: "HEART BEAT",
@@ -352,7 +352,7 @@ export const musics: Music[] = [
     CustomComponent: HeartBeat,
   },
   {
-    id: 26,
+    id: 25,
     originalNovelUrl:
       "https://www.monogatari-series.com/oms/special/novel/nadeko_past",
     translatorUrl: "https://maiden-translate.tistory.com/124",
@@ -366,7 +366,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 27,
+    id: 26,
     originalNovelUrl: "",
     translatorUrl: "",
     korTitle: "무대에 서서",
@@ -379,7 +379,7 @@ export const musics: Music[] = [
     CustomComponent: OnTheStage,
   },
   {
-    id: 28,
+    id: 27,
     originalNovelUrl: "https://fureru-movie.com/special/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=76835",
@@ -393,7 +393,7 @@ export const musics: Music[] = [
     isPublished: false,
   },
   {
-    id: 29,
+    id: 28,
     originalNovelUrl: "https://monogatary.com/story/454872",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78307",

@@ -28,7 +28,7 @@ interface PurchaseLinkProps {
 }
 
 export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
-  const book = books[bookId - 1];
+  const book = books[bookId];
 
   return (
     <Container direction="column">
@@ -56,10 +56,13 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
               </Heading>
               <Separator size="4" />
               <Flex direction="column" gap="2">
-                {book.novelIds.map((id) => (
-                  <Text align="center" size="2" color="gray" key={id}>{`${
-                    musics[id - 1].korTitle
-                  } <${musics[id - 1].novelTitle}>`}</Text>
+                {book.novelIds.map((id: number) => (
+                  <Text
+                    align="center"
+                    size="2"
+                    color="gray"
+                    key={id}
+                  >{`${musics[id].korTitle} <${musics[id].novelTitle}>`}</Text>
                 ))}
                 <Text align="center" size="2" color="red" weight="medium">
                   총 {book.novelIds.length}편 수록

@@ -1,6 +1,6 @@
 export const books: Book[] = [
   {
-    id: 1,
+    id: 0,
     name: "밤을 달리다",
     novelIds: [1, 2, 4, 11],
     purchaseLinks: {
@@ -13,7 +13,7 @@ export const books: Book[] = [
     },
   },
   {
-    id: 2,
+    id: 1,
     name: "처음으로",
     novelIds: [15, 16, 19, 21],
     purchaseLinks: {
