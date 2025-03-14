@@ -1,6 +1,6 @@
+import { books } from "@lib/book";
+import { musics } from "@lib/music";
 import { Button, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
-import { books } from "@utils/book";
-import { musics } from "@utils/music";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
