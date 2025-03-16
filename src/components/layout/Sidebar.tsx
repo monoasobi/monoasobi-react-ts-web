@@ -1,8 +1,9 @@
 import { Music } from "@appTypes/music";
 import { adminAtom } from "@atoms/admin.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
+import { musics } from "@lib/music";
+import { novels } from "@lib/novel";
 import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
-import { musics } from "@utils/music";
 import { MouseEventHandler, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -60,7 +61,7 @@ export const Sidebar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [setIsSidebar]);
 
   return (
     <Container
@@ -93,20 +94,19 @@ interface ItemProps {
 }
 
 const Item = ({ item }: ItemProps) => {
-  const {
-    isPublished,
-    id,
-    translated,
-    korTitle,
-    novelTitle,
-    novelWriter,
-    title,
-    enTitle,
-  } = item;
+  const { id, korTitle, title, enTitle } = item;
   const { novelId } = useParams();
   const setIsSidebar = useSetRecoilState(sidebarAtom);
   const isAdmin = useRecoilValue(adminAtom);
 
+  const novel = novels.find((novel) => novel.musicId === id);
+  if (!novel) return null;
+  const {
+    isPublished,
+    translated,
+    title: novelTitle,
+    writer: novelWriter,
+  } = novel;
   const closeHandler: MouseEventHandler<HTMLAnchorElement> = (e) => {
     console.log(e.currentTarget.offsetTop);
     const width = window.innerWidth;

@@ -1,5 +1,6 @@
 import { books } from "@lib/book";
 import { musics } from "@lib/music";
+import { novels } from "@libs/novel"; // ! 의도된 오타 (빌드 성공 방지용)
 import { Button, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -62,7 +63,7 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
                     size="2"
                     color="gray"
                     key={id}
-                  >{`${musics[id].korTitle} <${musics[id].novelTitle}>`}</Text>
+                  >{`${musics[id].korTitle} <${novels[id].title}>`}</Text>
                 ))}
                 <Text align="center" size="2" color="red" weight="medium">
                   총 {book.novelIds.length}편 수록

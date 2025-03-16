@@ -3,6 +3,8 @@ import { Loading } from "@components/Loading";
 import { PurchaseLink } from "@components/PurchaseLink";
 import { Translate } from "@components/Translate";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { musics } from "@lib/music";
+import { novels } from "@lib/novel";
 import {
   Button,
   Card,
@@ -13,7 +15,6 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { musics } from "@utils/music";
 import { lazy, Suspense, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -58,26 +59,17 @@ export const Novel = () => {
   const { novelId } = useParams();
   const navigate = useNavigate();
   const music = musics.find((music) => music.id === Number(novelId));
-
+  const novel = novels.find((novel) => novel.id === Number(novelId));
   useEffect(() => {
-    if (!music) navigate("/404");
-  }, [music]);
+    if (!music || !novel) navigate("/404");
+  }, [music, navigate, novel]);
 
-  if (!music) return;
-  const {
-    novelTitle,
-    novelWriter,
-    translated,
-    isPublished,
-    originalNovelUrl,
-    bookId,
-    translator,
-    translatorUrl,
-    CustomComponent,
-    korTitle,
-    title,
-  } = music;
   const isAdmin = useRecoilValue(adminAtom);
+  if (!music || !novel) return;
+
+  const { CustomComponent, korTitle, title } = music;
+
+  if (CustomComponent) return <CustomComponent />;
 
   return (
     <Popover.Root>
@@ -87,8 +79,8 @@ export const Novel = () => {
             <Text size="2" weight="bold" color="red">
               {korTitle} {korTitle !== title && title}
             </Text>
-            <Heading size="2">{novelWriter}</Heading>
-            {novelTitle && <Heading size="2">&lt;{novelTitle}&gt;</Heading>}
+            <Heading size="2">{novel.writer}</Heading>
+            {novel.title && <Heading size="2">&lt;{novel.title}&gt;</Heading>}
           </Flex>
           <Popover.Trigger className="headerButton">
             <IconButton size="1" variant="soft">
@@ -98,24 +90,24 @@ export const Novel = () => {
           <Popover.Content maxWidth="320px">
             <Flex direction="column" gap="3">
               <DataList.Root>
-                {translator && !isPublished && (
+                {novel.translated && !novel.isPublished && (
                   <DataList.Item align="center">
                     <DataList.Label minWidth="32px">역자</DataList.Label>
                     <DataList.Value>
                       <Button variant="outline" size="1" asChild>
-                        <Link to={translatorUrl!} target="_blank">
-                          {translator}
+                        <Link to={novel.translatorUrl!} target="_blank">
+                          {novel.translator}
                         </Link>
                       </Button>
                     </DataList.Value>
                   </DataList.Item>
                 )}
-                {originalNovelUrl && (
+                {novel.originNovelUrl && (
                   <DataList.Item align="center">
                     <DataList.Label minWidth="32px">원문</DataList.Label>
                     <DataList.Value>
                       <Button variant="outline" size="1" asChild>
-                        <Link to={originalNovelUrl} target="_blank">
+                        <Link to={novel.originNovelUrl} target="_blank">
                           보러가기
                         </Link>
                       </Button>
@@ -126,15 +118,13 @@ export const Novel = () => {
             </Flex>
           </Popover.Content>
         </NovelHeader>
-        {isPublished && !isAdmin ? (
-          <PurchaseLink bookId={bookId!} />
-        ) : CustomComponent ? (
-          <CustomComponent />
-        ) : !translated ? (
+        {novel.isPublished && !isAdmin ? (
+          <PurchaseLink bookId={novel.bookId} />
+        ) : !novel.translated ? (
           <Translate music={music} />
         ) : (
           <Suspense fallback={<Loading />}>
-            <Reader id={music.id} />
+            <Reader id={novel.id} />
           </Suspense>
         )}
       </Container>
