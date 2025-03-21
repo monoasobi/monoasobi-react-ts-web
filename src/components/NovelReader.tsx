@@ -97,7 +97,7 @@ export const NovelReader = ({ id }: NovelProps) => {
           setMarkdown(data);
         } else {
           const { data } = await supabase.storage
-            .from("novels")
+            .from("novels/250321")
             .download(`${novelId}.md`);
           setMarkdown(await data?.text());
         }

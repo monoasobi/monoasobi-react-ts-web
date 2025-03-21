@@ -66,10 +66,10 @@ export const OnTheStage = () => {
                   </Heading>
                   <Flex direction="column" gap="2" width="100%">
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/1">코믹스</Link>
+                      <Link to="/comic/1">코믹스</Link>
                     </Button>
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/2">소설</Link>
+                      <Link to="/novel/26">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>
@@ -93,10 +93,10 @@ export const OnTheStage = () => {
                   </Heading>
                   <Flex direction="column" gap="2" width="100%">
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/3">코믹스</Link>
+                      <Link to="/comic/2">코믹스</Link>
                     </Button>
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/4">소설</Link>
+                      <Link to="/novel/27">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>
@@ -120,10 +120,10 @@ export const OnTheStage = () => {
                   </Heading>
                   <Flex direction="column" gap="2" width="100%">
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/5">코믹스</Link>
+                      <Link to="/comic/3">코믹스</Link>
                     </Button>
                     <Button size="3" asChild variant="outline">
-                      <Link to="/onthestage/6">소설</Link>
+                      <Link to="/novel/28">소설</Link>
                     </Button>
                   </Flex>
                 </Flex>

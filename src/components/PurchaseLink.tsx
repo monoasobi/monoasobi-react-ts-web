@@ -1,6 +1,8 @@
+import book0 from "@assets/book_0.jpg";
+import book1 from "@assets/book_1.jpg";
 import { books } from "@lib/book";
 import { musics } from "@lib/music";
-import { novels } from "@libs/novel"; // ! 의도된 오타 (빌드 성공 방지용)
+import { novels } from "@lib/novel";
 import { Button, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -31,6 +33,8 @@ interface PurchaseLinkProps {
 export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
   const book = books[bookId];
 
+  const bookImage = [book0, book1];
+
   return (
     <Container direction="column">
       <Card className="card">
@@ -48,7 +52,7 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
           >
             <img
               className="bookImg"
-              src={`./images/${bookId}.jpg`}
+              src={bookImage[bookId]}
               alt={`${book.name}`}
             />
             <Flex direction="column" gap="4">

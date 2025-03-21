@@ -94,8 +94,8 @@ interface ItemProps {
 }
 
 const Item = ({ item }: ItemProps) => {
-  const { id, korTitle, title, enTitle } = item;
-  const { novelId } = useParams();
+  const { id, korTitle, title, enTitle, path } = item;
+  const param = useParams();
   const setIsSidebar = useSetRecoilState(sidebarAtom);
   const isAdmin = useRecoilValue(adminAtom);
 
@@ -113,23 +113,31 @@ const Item = ({ item }: ItemProps) => {
     if (width < 1024) setIsSidebar(false);
     sessionStorage.setItem("sidebar", e.currentTarget.offsetTop.toString());
   };
+
+  const to = path ? `/${path}` : `/novel/${novel.id}`;
+
   return (
     <Dialog.Root>
       <ItemContainer
-        variant={novelId === String(id) ? "solid" : "outline"}
+        variant={
+          param.id === String(novel.id) ||
+          (path && location.pathname.includes(path))
+            ? "solid"
+            : "outline"
+        }
         color={
           isPublished ? "teal" : isAdmin ? (translated ? "red" : "teal") : "red"
         }
-        disabled={isAdmin ? !translated : !translated || isPublished}
+        disabled={isAdmin ? !translated : (!translated || isPublished) && !path}
         asChild
       >
-        <Link to={`/${id}`} onClick={closeHandler}>
+        <Link to={to} onClick={closeHandler}>
           <Flex direction="column" gap="1">
             <Text size="5" weight="bold" align="left">
               {korTitle}
             </Text>
 
-            {novelTitle && (
+            {novelTitle && !path && (
               <Text size="2" weight="bold" align="left">
                 {novelWriter} &lt;{novelTitle}&gt;
               </Text>

@@ -93,6 +93,7 @@ export const Home = () => {
         alert("비밀번호가 틀렸습니다.");
       }
     } catch (error) {
+      console.log(error);
       setIsAdmin(false);
       alert("관리자 인증 오류입니다.");
     } finally {

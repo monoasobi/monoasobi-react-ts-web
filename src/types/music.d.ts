@@ -3,5 +3,5 @@ export interface Music {
   korTitle: string;
   enTitle: string;
   title: string;
-  CustomComponent?: () => JSX.Element;
+  path?: string;
 }

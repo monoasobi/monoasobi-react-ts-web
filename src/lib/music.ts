@@ -1,6 +1,4 @@
 import { Music } from "@appTypes/music";
-import { HeartBeat } from "@components/custom/HeartBeat";
-import { OnTheStage } from "@components/custom/OnTheStage";
 
 export const musics: Music[] = [
   {
@@ -152,7 +150,7 @@ export const musics: Music[] = [
     korTitle: "HEART BEAT",
     enTitle: "HEART BEAT",
     title: "HEART BEAT",
-    CustomComponent: HeartBeat,
+    path: "heartbeat",
   },
   {
     id: 25,
@@ -165,7 +163,7 @@ export const musics: Music[] = [
     korTitle: "무대에 서서",
     enTitle: "On The Stage",
     title: "舞台に立って",
-    CustomComponent: OnTheStage,
+    path: "onthestage",
   },
   {
     id: 27,
@@ -178,5 +176,12 @@ export const musics: Music[] = [
     korTitle: "New Me",
     enTitle: "New Me",
     title: "New Me",
+  },
+  {
+    id: 29,
+    korTitle: "PLAYERS",
+    enTitle: "PLAYERS",
+    title: "PLAYERS",
+    path: "players",
   },
 ];

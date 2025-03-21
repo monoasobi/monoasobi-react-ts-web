@@ -3,8 +3,8 @@ import { Novel } from "@appTypes/novel";
 export const novels: Novel[] = [
   {
     id: 0,
-    musicId: 1,
-    originNovelUrl: "https://monogatary.com/story/33826",
+    musicId: 0,
+    originUrl: "https://monogatary.com/story/33826",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=149",
     title: "타나토스의 유혹",
@@ -12,12 +12,12 @@ export const novels: Novel[] = [
     translated: true,
     translator: "DCinside 서꼬",
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
   },
   {
     id: 1,
-    musicId: 2,
-    originNovelUrl: "https://monogatary.com/story/38869",
+    musicId: 1,
+    originUrl: "https://monogatary.com/story/38869",
     translatorUrl:
       "https://docs.google.com/document/d/1IKvhkcnF9y0_pfbHeWODMXykPdiC5RCK2kVQnbC6N0A",
     title: "꿈의 물방울과 별의 꽃",
@@ -25,12 +25,12 @@ export const novels: Novel[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
   },
   {
     id: 2,
-    musicId: 3,
-    originNovelUrl: "https://ebookstore.sony.jp/",
+    musicId: 2,
+    originUrl: "https://ebookstore.sony.jp/",
     translatorUrl:
       "https://docs.google.com/document/d/1wTcyxG4f_FdNpUZ4GaQyaZlMQsjziSRYL2iTXMnqV_w",
     title: "그래도 해피엔딩",
@@ -41,21 +41,21 @@ export const novels: Novel[] = [
   },
   {
     id: 3,
-    musicId: 4,
-    originNovelUrl: "https://monogatary.com/story/48324",
+    musicId: 3,
+    originUrl: "https://monogatary.com/story/48324",
     translatorUrl:
       "https://drive.google.com/file/d/1kWzDm-nnMe99ME1P5mW3S7sfH3TBwh9L",
     title: "아마도",
     writer: "시나노",
     translated: true,
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
     translator: "@setoka26",
   },
   {
     id: 4,
-    musicId: 5,
-    originNovelUrl: "",
+    musicId: 4,
+    originUrl: "",
     translatorUrl:
       "https://docs.google.com/document/d/1qIYfR04GKpQTVczINFWTpMlYIEmpMGPdhFAx76jJ7Wg",
     title: "푸름을 우리편으로",
@@ -66,8 +66,8 @@ export const novels: Novel[] = [
   },
   {
     id: 5,
-    musicId: 6,
-    originNovelUrl: "https://monogatary.com/story/109216",
+    musicId: 5,
+    originUrl: "https://monogatary.com/story/109216",
     translatorUrl:
       "https://docs.google.com/document/d/1EcCVHKus9jyGSohMlvz8Ut0T4CMduEJVpn1LztpGV0A",
     title: "달왕자",
@@ -78,8 +78,8 @@ export const novels: Novel[] = [
   },
   {
     id: 6,
-    musicId: 7,
-    originNovelUrl: "https://bst-anime.com/sp/",
+    musicId: 6,
+    originUrl: "https://bst-anime.com/sp/",
     translatorUrl:
       "https://docs.google.com/document/d/1DM-J937ewv6Y8L-ffHouyqXNR-g8gRPD4JZKeY98P1k",
     title: "자신의 가슴속에 자신의 귀를 대고서",
@@ -90,8 +90,8 @@ export const novels: Novel[] = [
   },
   {
     id: 7,
-    musicId: 8,
-    originNovelUrl: "https://bst-anime.com/sp/",
+    musicId: 7,
+    originUrl: "https://bst-anime.com/sp/",
     translatorUrl:
       "https://docs.google.com/document/d/13I-4OQb65fhvUAsZwpR3rtx-htiscQgmhYBDrxICOP8",
     title: "사자자리 유성우인 채로",
@@ -102,8 +102,8 @@ export const novels: Novel[] = [
   },
   {
     id: 8,
-    musicId: 9,
-    originNovelUrl: "https://monogatary.com/story/146439",
+    musicId: 8,
+    originUrl: "https://monogatary.com/story/146439",
     translatorUrl:
       "https://docs.google.com/document/d/1Lr4wmdOLCf03IzxC9TKU_4T-h8mnbj1pX0xa0drRKcc",
     title: "돌아간다",
@@ -114,8 +114,8 @@ export const novels: Novel[] = [
   },
   {
     id: 9,
-    musicId: 10,
-    originNovelUrl: "https://ahamo.com/special/yoasobi/novel/",
+    musicId: 9,
+    originUrl: "https://ahamo.com/special/yoasobi/novel/",
     translatorUrl:
       "https://docs.google.com/document/d/1c1z6si7rx6-b36MB2D43AGtOvykpGZLgiRy19hDc9gQ",
     title: "RGB",
@@ -126,8 +126,8 @@ export const novels: Novel[] = [
   },
   {
     id: 10,
-    musicId: 11,
-    originNovelUrl: "https://monogatary.com/story/50040",
+    musicId: 10,
+    originUrl: "https://monogatary.com/story/50040",
     translatorUrl:
       "https://docs.google.com/document/d/1wOqh924rxUhzSB1ATrypQiLaAlyZ8hPBj6pCHdSjp_g",
     title: "세상의 끝과 작별의 노래",
@@ -135,12 +135,12 @@ export const novels: Novel[] = [
     translated: true,
     translator: "@prism_translate",
     isPublished: true,
-    bookId: 1,
+    bookId: 0,
   },
   {
     id: 11,
-    musicId: 12,
-    originNovelUrl: "https://www.tfm.co.jp/post/lettersong/pdf/letter.pdf",
+    musicId: 11,
+    originUrl: "https://www.tfm.co.jp/post/lettersong/pdf/letter.pdf",
     translatorUrl:
       "https://docs.google.com/document/d/10oi-24wB9rInZtCU1jiVSaNO_TKYhrdCR8AEQxC-DP0",
     title: "음악에게",
@@ -151,8 +151,8 @@ export const novels: Novel[] = [
   },
   {
     id: 12,
-    musicId: 13,
-    originNovelUrl: "https://monogatary.com/story/78167",
+    musicId: 12,
+    originUrl: "https://monogatary.com/story/78167",
     translatorUrl:
       "https://docs.google.com/document/d/1qFoMRXDXhYedU4RdlV_46aVySfdmWMRA1pMMgt0j0K4",
     title: "다이쇼 로맨스",
@@ -163,8 +163,8 @@ export const novels: Novel[] = [
   },
   {
     id: 13,
-    musicId: 14,
-    originNovelUrl: "https://www.nhk.or.jp/irotoridori/song/",
+    musicId: 13,
+    originUrl: "https://www.nhk.or.jp/irotoridori/song/",
     translatorUrl:
       "https://docs.google.com/document/d/10m_q7HX0r1m_7VHcz4ZpK_d0qPBfQnSEOeN8oyA6xMs",
     title: "작은 제비의 커다란 꿈",
@@ -175,29 +175,28 @@ export const novels: Novel[] = [
   },
   {
     id: 14,
-    musicId: 15,
-    originNovelUrl: "",
+    musicId: 14,
+    originUrl: "",
     title: "나만의 소유자",
     writer: "시마모토 리우",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
     id: 15,
-    musicId: 16,
-    originNovelUrl: "",
+    musicId: 15,
+    originUrl: "",
     title: "빛의 씨앗",
     writer: "모리 에토",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
     id: 16,
-    musicId: 17,
-    originNovelUrl:
-      "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
+    musicId: 16,
+    originUrl: "https://www.yoasobi-music.jp/novels/moshimoinochigaegaketara/",
     translatorUrl: "https://m.blog.naver.com/xooxiuxu/223159388707",
     title: "만약에 생명을 그릴 수 있다면",
     writer: "스즈키 오사무",
@@ -207,8 +206,8 @@ export const novels: Novel[] = [
   },
   {
     id: 17,
-    musicId: 18,
-    originNovelUrl: "https://g-witch.net/music/novel/",
+    musicId: 17,
+    originUrl: "https://g-witch.net/music/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3263",
     title: "요람의 별",
@@ -219,18 +218,18 @@ export const novels: Novel[] = [
   },
   {
     id: 18,
-    musicId: 19,
-    originNovelUrl: "",
+    musicId: 18,
+    originUrl: "",
     title: "유령",
     writer: "츠지무라 미즈키",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
     id: 19,
-    musicId: 20,
-    originNovelUrl: "https://www.usj.co.jp/web/ja/jp/news/2022/1012",
+    musicId: 19,
+    originUrl: "https://www.usj.co.jp/web/ja/jp/news/2022/1012",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=3594",
     title: "렌즈 너머의 반짝임을",
@@ -241,18 +240,18 @@ export const novels: Novel[] = [
   },
   {
     id: 20,
-    musicId: 21,
-    originNovelUrl: "",
+    musicId: 20,
+    originUrl: "",
     title: "색이 다른 트럼프",
     writer: "미야베 미유키",
     translated: false,
     isPublished: true,
-    bookId: 2,
+    bookId: 1,
   },
   {
     id: 21,
-    musicId: 22,
-    originNovelUrl: "https://youngjump.jp/oshinoko/novel_45510/novel_01.html",
+    musicId: 21,
+    originUrl: "https://youngjump.jp/oshinoko/novel_45510/novel_01.html",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=16699",
     title: "45510",
@@ -263,8 +262,8 @@ export const novels: Novel[] = [
   },
   {
     id: 22,
-    musicId: 23,
-    originNovelUrl: "https://frieren-anime.jp/special/novel/",
+    musicId: 22,
+    originUrl: "https://frieren-anime.jp/special/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=frieren&no=3450",
     title: "주송",
@@ -275,8 +274,8 @@ export const novels: Novel[] = [
   },
   {
     id: 23,
-    musicId: 24,
-    originNovelUrl: "https://novel-kimiame.pokemon.co.jp/",
+    musicId: 23,
+    originUrl: "https://novel-kimiame.pokemon.co.jp/",
     translatorUrl: "https://sites.google.com/view/kor-kimiame",
     title: "너와 비를 피하며",
     writer: "다케다 아야노",
@@ -286,8 +285,8 @@ export const novels: Novel[] = [
   },
   {
     id: 24,
-    musicId: 25,
-    originNovelUrl: "https://www.nhk.or.jp/18fes/shinon1000/movie/song/",
+    musicId: 24,
+    originUrl: "https://www.nhk.or.jp/18fes/shinon1000/movie/song/",
     title: "1000명의 심장 소리",
     writer: "2023 NHK 18祭",
     translated: false,
@@ -295,8 +294,8 @@ export const novels: Novel[] = [
   },
   {
     id: 25,
-    musicId: 26,
-    originNovelUrl:
+    musicId: 25,
+    originUrl:
       "https://www.monogatari-series.com/oms/special/novel/nadeko_past",
     translatorUrl: "https://maiden-translate.tistory.com/124",
     title: "나데코 페스트, 시노부 퓨처",
@@ -307,41 +306,41 @@ export const novels: Novel[] = [
   },
   {
     id: 26,
-    musicId: 27,
+    musicId: 26,
     title: "떨어진 두 사람",
     writer: "에사카 준",
     translated: true,
     translator: "xooxiuxu",
     translatorUrl: "https://m.blog.naver.com/xooxiuxu/223551799984",
-    originNovelUrl: "https://www.yoasobi-music.jp/novels/hanaretafutari/",
+    originUrl: "https://www.yoasobi-music.jp/novels/hanaretafutari/",
     isPublished: false,
   },
   {
     id: 27,
-    musicId: 27,
+    musicId: 26,
     title: "Parallel Lane",
     writer: "에사카 준",
     translated: true,
     translator: "xooxiuxu",
     translatorUrl: "https://m.blog.naver.com/xooxiuxu/223551800253",
-    originNovelUrl: "https://www.yoasobi-music.jp/novels/parallel-lane/",
+    originUrl: "https://www.yoasobi-music.jp/novels/parallel-lane/",
     isPublished: false,
   },
   {
     id: 28,
-    musicId: 27,
+    musicId: 26,
     title: "끝나지 않는 듀스",
     writer: "에사카 준",
     translated: true,
     translator: "xooxiuxu",
     translatorUrl: "https://m.blog.naver.com/xooxiuxu/223551800729",
-    originNovelUrl: "https://www.yoasobi-music.jp/novels/owaranai-deuce/",
+    originUrl: "https://www.yoasobi-music.jp/novels/owaranai-deuce/",
     isPublished: false,
   },
   {
     id: 29,
-    musicId: 28,
-    originNovelUrl: "https://fureru-movie.com/special/novel/",
+    musicId: 27,
+    originUrl: "https://fureru-movie.com/special/novel/",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=76835",
     title: "후레루의 전야",
@@ -352,14 +351,23 @@ export const novels: Novel[] = [
   },
   {
     id: 30,
-    musicId: 29,
-    originNovelUrl: "https://monogatary.com/story/454872",
+    musicId: 28,
+    originUrl: "https://monogatary.com/story/454872",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78307",
     title: "백산도로 불꽃 사건",
     writer: "아리테 마도",
     translated: true,
     translator: "DCinside env.i",
+    isPublished: false,
+  },
+  {
+    id: 31,
+    musicId: 29,
+    originUrl: "https://www.yoasobi-music.jp/projectmemorycard/",
+    title: "#MemoryOfPlay",
+    writer: "Project: MEMORY CARD",
+    translated: false,
     isPublished: false,
   },
 ];

@@ -1,5 +1,8 @@
 import { Layout } from "@components/layout/Layout";
+import { HeartBeat } from "@pages/HeartBeat.page";
 import { NotFound } from "@pages/NotFound.page";
+import { OnTheStage } from "@pages/OnTheStage.page";
+import { Players } from "@pages/Players.page";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -13,9 +16,9 @@ const Novel = lazy(() =>
     default: Novel,
   }))
 );
-const OnTheStageContents = lazy(() =>
-  import("@pages/OnTheStageContents.page").then(({ OnTheStageContents }) => ({
-    default: OnTheStageContents,
+const Comic = lazy(() =>
+  import("@pages/Comic.page").then(({ Comic: Comic }) => ({
+    default: Comic,
   }))
 );
 
@@ -25,8 +28,11 @@ export const appRouter = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/onthestage/:id", element: <OnTheStageContents /> },
-      { path: ":novelId", element: <Novel /> },
+      { path: "/comic/:id", element: <Comic /> },
+      { path: "/novel/:id", element: <Novel /> },
+      { path: "/onthestage", element: <OnTheStage /> },
+      { path: "/heartbeat", element: <HeartBeat /> },
+      { path: "/players", element: <Players /> },
       { path: "/404", element: <NotFound /> },
       { path: "/*", element: <NotFound /> },
     ],

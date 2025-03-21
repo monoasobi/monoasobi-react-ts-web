@@ -3,8 +3,7 @@ type NovelBase = {
   musicId: number;
   title: string;
   writer: string;
-  originNovelUrl: string;
-  customComponent?: () => JSX.Element;
+  originUrl: string;
 };
 
 type TranslatedInfo = {

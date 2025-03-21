@@ -1,4 +1,4 @@
-import { Loading } from "@components/Loading";
+import { Music } from "@appTypes/music";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
   Button,
@@ -10,22 +10,9 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { lazy, Suspense, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { onTheStageContents } from "src/lib/onTheStage";
+import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const NovelReader = lazy(() =>
-  import("@components/NovelReader").then(({ NovelReader }) => ({
-    default: NovelReader,
-  }))
-);
-
-const ComicReader = lazy(() =>
-  import("@components/ComicReader").then(({ ComicReader }) => ({
-    default: ComicReader,
-  }))
-);
 
 const Container = styled(Flex)`
   width: 100%;
@@ -56,30 +43,24 @@ const Header = styled(Card)`
   }
 `;
 
-export const OnTheStageContents = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const content = onTheStageContents.find(
-    (content) => content.id === Number(id)
-  );
+interface ContentsContainerProps {
+  children: ReactNode;
+  music: Music;
+  content?: {
+    title: string;
+    writer: string;
+    originUrl: string;
+    translator?: string;
+    translatorUrl?: string;
+  };
+}
 
-  useEffect(() => {
-    if (!content) navigate("/404");
-  }, [content, navigate]);
-
-  if (!content) return;
-
-  const {
-    contentId,
-    contentTitle,
-    contentWriter,
-    korTitle,
-    originalUrl,
-    translator,
-    translatorUrl,
-    title,
-    type,
-  } = content;
+export const ContentsContainer = ({
+  children,
+  music,
+  content,
+}: ContentsContainerProps) => {
+  const { title, korTitle } = music;
 
   return (
     <Popover.Root>
@@ -89,8 +70,10 @@ export const OnTheStageContents = () => {
             <Text size="2" weight="bold" color="red">
               {korTitle} {korTitle !== title && title}
             </Text>
-            <Heading size="2">{contentWriter}</Heading>
-            <Heading size="2">&lt;{contentTitle}&gt;</Heading>
+            <Heading size="2">{content?.writer}</Heading>
+            {content?.title && (
+              <Heading size="2">&lt;{content.title}&gt;</Heading>
+            )}
           </Flex>
           <Popover.Trigger className="headerButton">
             <IconButton size="1" variant="soft">
@@ -100,24 +83,24 @@ export const OnTheStageContents = () => {
           <Popover.Content maxWidth="320px">
             <Flex direction="column" gap="3">
               <DataList.Root>
-                {translator && (
+                {content?.translator && content?.translatorUrl && (
                   <DataList.Item align="center">
                     <DataList.Label minWidth="32px">역자</DataList.Label>
                     <DataList.Value>
                       <Button variant="outline" size="1" asChild>
-                        <Link to={translatorUrl!} target="_blank">
-                          {translator}
+                        <Link to={content.translatorUrl} target="_blank">
+                          {content.translator}
                         </Link>
                       </Button>
                     </DataList.Value>
                   </DataList.Item>
                 )}
-                {originalUrl && (
+                {content?.originUrl && (
                   <DataList.Item align="center">
                     <DataList.Label minWidth="32px">원문</DataList.Label>
                     <DataList.Value>
                       <Button variant="outline" size="1" asChild>
-                        <Link to={originalUrl} target="_blank">
+                        <Link to={content.originUrl} target="_blank">
                           보러가기
                         </Link>
                       </Button>
@@ -128,13 +111,7 @@ export const OnTheStageContents = () => {
             </Flex>
           </Popover.Content>
         </Header>
-        <Suspense fallback={<Loading />}>
-          {type === "novel" ? (
-            <NovelReader id={contentId} />
-          ) : (
-            <ComicReader id={contentId} length={content.length} />
-          )}
-        </Suspense>
+        {children}
       </Container>
     </Popover.Root>
   );

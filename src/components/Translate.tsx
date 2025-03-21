@@ -1,5 +1,6 @@
 import { Music } from "@appTypes/music";
 import yoasobi from "@assets/yoasobi.jpg";
+import { novels } from "@lib/novel";
 import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -26,6 +27,7 @@ interface TranslateProps {
 }
 
 export const Translate = ({ music }: TranslateProps) => {
+  const novel = novels.find((novel) => novel.musicId === music.id);
   return (
     <Container direction="column">
       <Card className="card">
@@ -41,9 +43,9 @@ export const Translate = ({ music }: TranslateProps) => {
                 envi.9.official@gmail.com
               </a>
             </Text>
-            {music.originalNovelUrl && (
+            {novel?.originUrl && (
               <Button size="1" asChild variant="outline">
-                <Link to={music.originalNovelUrl} target="_blank">
+                <Link to={novel?.originUrl} target="_blank">
                   원문 보러가기
                 </Link>
               </Button>
