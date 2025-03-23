@@ -143,7 +143,7 @@ const Item = ({ item }: ItemProps) => {
               </Text>
             )}
             <Text size="1" align="left">
-              {title} / {enTitle}
+              {title === enTitle ? title : `${title} / ${enTitle}`}
             </Text>
           </Flex>
         </Link>
