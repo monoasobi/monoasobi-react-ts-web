@@ -1,4 +1,4 @@
-import logo from "@assets/logo.svg";
+import logowith from "@assets/logowith.png";
 import yoasobi from "@assets/yoasobi.jpg";
 import { adminAtom } from "@atoms/admin.atom";
 import { Loading } from "@components/Loading";
@@ -8,7 +8,6 @@ import {
   Card,
   Dialog,
   Flex,
-  Heading,
   IconButton,
   Text,
   TextField,
@@ -110,10 +109,7 @@ export const Home = () => {
         <Flex direction="column" align="center" gap="4">
           <img className="yoasobi" src={yoasobi} alt="yoasobi" />
           <Flex direction="column" align="center" gap="2">
-            <Heading size="6" color="red">
-              𝘕𝘰𝘷𝘦𝘭 𝘪𝘯𝘵𝘰 𝘔𝘶𝘴𝘪𝘤,
-            </Heading>
-            <img src={logo} alt="logo" className="logo" />
+            <img src={logowith} alt="logo" className="logo" />
           </Flex>
 
           <Flex direction="column" gap="4" className="desc">
