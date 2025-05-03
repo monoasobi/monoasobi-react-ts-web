@@ -141,7 +141,7 @@ export const NovelReader = ({ id }: NovelProps) => {
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
   return (
-    <Container as="div" justify="center" ref={novelRef} onScroll={handleScroll}>
+    <Container justify="center" ref={novelRef} onScroll={handleScroll}>
       <NovelContainer>
         <ReactMarkdown
           className="markdown"
