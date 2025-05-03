@@ -92,6 +92,7 @@ export const NovelReader = ({ id }: NovelProps) => {
         setIsLoading(true);
         setIsError(false);
         if (import.meta.env.MODE) {
+          // FIXME: 환경변수에 따른 분기처리 필요 (development) - supabase 복구 또는 firebase 마이그레이션 후
           const res = await fetch(`${location.origin}/novel/${id}.md`);
           const data = await res.text();
           setMarkdown(data);
