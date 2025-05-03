@@ -79,7 +79,7 @@ export const Home = () => {
   const adminHandler = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${import.meta.env.VITE_EF_URL}/admin`, {
+      const response = await fetch(`${import.meta.env.VITE_WORKER_URL}/auth`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pw }),
@@ -118,14 +118,9 @@ export const Home = () => {
               그 번역본을 한곳에 모아 제공하는 사이트입니다.
             </Text>
             <Text size="2">
-              요아소비의 음악은 감상을 넘어, 원작이 되는 소설을 함께 읽으면
-              음악이 담고 있는 이야기와 감정을 더욱 깊이 이해할 수 있습니다.
-              (경험담임)
-            </Text>
-            <Text size="2">
-              모노아소비는 더 많은 사람들이 이 원작 소설을 즐길 수 있도록 돕고,
-              요아소비의 음악을 더욱 깊이 음미하고 사랑하게 되기를 바라는
-              마음으로 운영됩니다.
+              모노아소비는 더 많은 사람들이 원작 소설을 즐길 수 있도록 돕고,
+              요아소비의 음악을 더욱 깊이 사랑하게 되기를 바라는 마음으로
+              운영됩니다.
             </Text>
             <Text size="2">
               사이트에 게시된 모든 원작 소설과 번역본의 저작권은 각각의 작가와

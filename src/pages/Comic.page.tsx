@@ -26,7 +26,7 @@ export const Comic = () => {
   return (
     <ContentsContainer music={music} content={comic}>
       <Suspense fallback={<Loading />}>
-        <ComicReader id={comic.id} length={comic.length} />
+        <ComicReader id={comic.id} />
       </Suspense>
     </ContentsContainer>
   );

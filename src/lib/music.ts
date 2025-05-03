@@ -184,4 +184,10 @@ export const musics: Music[] = [
     title: "PLAYERS",
     path: "players",
   },
+  {
+    id: 30,
+    korTitle: "Watch me!",
+    enTitle: "Watch me!",
+    title: "Watch me!",
+  },
 ];

@@ -1,9 +1,10 @@
+import { adminAtom } from "@atoms/admin.atom";
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
 import { Flex, Heading, Text } from "@radix-ui/themes";
-import { supabase } from "@utils/supabase";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { useRecoilValue } from "recoil";
 import remarkBreaks from "remark-breaks";
 import styled from "styled-components";
 
@@ -85,22 +86,26 @@ export const NovelReader = ({ id }: NovelProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const novelRef = useRef<HTMLDivElement>(null);
-
+  const admin = useRecoilValue(adminAtom);
   useEffect(() => {
     const fetchNovel = async (novelId: number | string) => {
       try {
         setIsLoading(true);
         setIsError(false);
-        if (import.meta.env.MODE) {
-          // FIXME: 환경변수에 따른 분기처리 필요 (development) - supabase 복구 또는 firebase 마이그레이션 후
+        if (import.meta.env.MODE === "development") {
           const res = await fetch(`${location.origin}/novel/${id}.md`);
           const data = await res.text();
           setMarkdown(data);
         } else {
-          const { data } = await supabase.storage
-            .from("novels/250321")
-            .download(`${novelId}.md`);
-          setMarkdown(await data?.text());
+          const res = await fetch(
+            `${import.meta.env.VITE_WORKER_URL}/novel/${novelId}`,
+            {
+              headers: {
+                authorization: admin ? "monoasobi" : "yoasobi",
+              },
+            }
+          );
+          setMarkdown(await res.text());
         }
       } catch (err) {
         console.error(err);
@@ -110,13 +115,33 @@ export const NovelReader = ({ id }: NovelProps) => {
       }
     };
     fetchNovel(id);
-    novelRef.current?.scrollTo(0, 0);
-  }, [id]);
+  }, [id, admin]);
+
+  useEffect(() => {
+    if (!markdown) return;
+    const novelElement = novelRef.current;
+    if (novelElement) {
+      const scrollTop = localStorage.getItem(`novel-${id}`);
+      if (scrollTop) novelElement.scrollTo(0, parseInt(scrollTop, 10) || 0);
+    }
+  }, [markdown, id]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const scrollTop = el.scrollTop;
+    const scrollKey = `novel-${id}`;
+
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
+      localStorage.removeItem(scrollKey); // 끝까지 읽었을 때 삭제
+    } else {
+      localStorage.setItem(scrollKey, scrollTop.toString()); // 중간 저장
+    }
+  };
 
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
   return (
-    <Container ref={novelRef} justify="center">
+    <Container as="div" justify="center" ref={novelRef} onScroll={handleScroll}>
       <NovelContainer>
         <ReactMarkdown
           className="markdown"
