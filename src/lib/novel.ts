@@ -373,10 +373,13 @@ export const novels: Novel[] = [
   {
     id: 32,
     musicId: 30,
-    originUrl: "",
-    title: "",
-    writer: "",
-    translated: false,
+    originUrl: "https://www.shonenjump.com/j/witch_novel/",
+    title: "마음이 또르르",
+    writer: "시노하라 켄타",
+    translated: true,
+    translator: "DCinside 가사넣기 & env.i",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=81000&search_head=40&page=1",
     isPublished: false,
   },
 ];
