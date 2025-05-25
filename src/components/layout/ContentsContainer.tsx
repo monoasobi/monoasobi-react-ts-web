@@ -1,4 +1,5 @@
 import { Music } from "@appTypes/music";
+import { MusicalNoteIcon } from "@heroicons/react/16/solid";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import {
   Button,
@@ -10,9 +11,10 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { MusicAside } from "./MusicAside";
 
 const Container = styled(Flex)`
   width: 100%;
@@ -61,6 +63,7 @@ export const ContentsContainer = ({
   content,
 }: ContentsContainerProps) => {
   const { title, korTitle } = music;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <Popover.Root>
@@ -75,11 +78,20 @@ export const ContentsContainer = ({
               <Heading size="2">&lt;{content.title}&gt;</Heading>
             )}
           </Flex>
-          <Popover.Trigger className="headerButton">
-            <IconButton size="1" variant="soft">
-              <EllipsisHorizontalIcon width="16" height="16" />
+          <Flex gap="2" className="headerButton">
+            <IconButton
+              size="1"
+              variant="soft"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <MusicalNoteIcon width="16" height="16" />
             </IconButton>
-          </Popover.Trigger>
+            <Popover.Trigger>
+              <IconButton size="1" variant="soft">
+                <EllipsisHorizontalIcon width="16" height="16" />
+              </IconButton>
+            </Popover.Trigger>
+          </Flex>
           <Popover.Content maxWidth="320px">
             <Flex direction="column" gap="3">
               <DataList.Root>
@@ -113,6 +125,11 @@ export const ContentsContainer = ({
         </Header>
         {children}
       </Container>
+      <MusicAside
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        music={music}
+      />
     </Popover.Root>
   );
 };
