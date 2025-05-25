@@ -126,9 +126,19 @@ const Item = ({ item }: ItemProps) => {
             : "outline"
         }
         color={
-          isPublished ? "teal" : isAdmin ? (translated ? "red" : "teal") : "red"
+          isPublished
+            ? "teal"
+            : isAdmin
+            ? path
+              ? "red"
+              : translated
+              ? "red"
+              : "teal"
+            : "red"
         }
-        disabled={isAdmin ? !translated : (!translated || isPublished) && !path}
+        disabled={
+          isAdmin ? !translated && !path : (!translated || isPublished) && !path
+        }
         asChild
       >
         <Link to={to} onClick={closeHandler}>
