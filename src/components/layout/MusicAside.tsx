@@ -1,7 +1,12 @@
 import { Music } from "@appTypes/music";
 import { YouTubeEmbed } from "@components/common/YouTubeEmbed";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Button, Card, Flex, Heading } from "@radix-ui/themes";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -36,6 +41,23 @@ const Container = styled(Flex)`
   }
 `;
 
+const VideoContainer = styled.div<{ $isCollapsed: boolean }>`
+  height: ${({ $isCollapsed }) => ($isCollapsed ? "0" : "auto")};
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+`;
+
+const CardHeader = styled(Flex)`
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-3);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--gray-3);
+  }
+`;
+
 interface MusicAsideProps {
   isOpen: boolean;
   onClose: () => void;
@@ -43,7 +65,13 @@ interface MusicAsideProps {
 }
 
 export const MusicAside = ({ isOpen, onClose, music }: MusicAsideProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   if (!isOpen) return null;
+
+  const handleOpenNewWindow = () => {
+    window.open(`https://www.youtube.com/watch?v=${music.youtubeId}`, "_blank");
+  };
 
   return (
     <Container direction="column" gap="3">
@@ -60,10 +88,28 @@ export const MusicAside = ({ isOpen, onClose, music }: MusicAsideProps) => {
       </Flex>
       <Card>
         <Flex direction="column" gap="2">
-          <Heading size="4" align="center" color="red">
-            Music Video
-          </Heading>
-          <YouTubeEmbed videoId={music.youtubeId} />
+          <CardHeader
+            justify="between"
+            align="center"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
+            <Heading size="4" color="red">
+              Music Video
+            </Heading>
+            {isCollapsed ? (
+              <ChevronDownIcon width="20" height="20" />
+            ) : (
+              <ChevronUpIcon width="20" height="20" />
+            )}
+          </CardHeader>
+          <VideoContainer $isCollapsed={isCollapsed}>
+            <Flex direction="column" gap="2">
+              <YouTubeEmbed videoId={music.youtubeId} />
+              <Button size="2" variant="soft" onClick={handleOpenNewWindow}>
+                새창으로 보기
+              </Button>
+            </Flex>
+          </VideoContainer>
         </Flex>
       </Card>
     </Container>
