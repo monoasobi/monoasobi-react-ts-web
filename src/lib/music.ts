@@ -97,7 +97,7 @@ export const musics: Music[] = [
     korTitle: "제비",
     enTitle: "The Swallow",
     title: "ツバメ",
-    youtubeId: "MquT2X5NEY8",
+    youtubeId: "qDL3zhB8-MM",
   },
   {
     id: 14,
@@ -182,7 +182,7 @@ export const musics: Music[] = [
     korTitle: "UNDEAD",
     enTitle: "UNDEAD",
     title: "UNDEAD",
-    youtubeId: "jAAZDIGWcio",
+    youtubeId: "Jj1_mfUzjOs",
   },
   {
     id: 26,
