@@ -62,12 +62,16 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
               <Separator size="4" />
               <Flex direction="column" gap="2">
                 {book.novelIds.map((id: number) => (
-                  <Text
-                    align="center"
-                    size="2"
-                    color="gray"
-                    key={id}
-                  >{`${musics[id].korTitle} <${novels[id].title}>`}</Text>
+                  <Flex direction="column" gap="1" key={id}>
+                    <Text align="center" size="1" color="gray">
+                      {`♪ ${musics[novels[id].musicId].korTitle}`}
+                    </Text>
+                    <Text
+                      align="center"
+                      size="2"
+                      color="gray"
+                    >{`${novels[id].writer} <${novels[id].title}>`}</Text>
+                  </Flex>
                 ))}
                 <Text align="center" size="2" color="red" weight="medium">
                   총 {book.novelIds.length}편 수록

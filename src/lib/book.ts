@@ -2,7 +2,7 @@ export const books: Book[] = [
   {
     id: 0,
     name: "밤을 달리다",
-    novelIds: [1, 2, 4, 11],
+    novelIds: [0, 1, 3, 10],
     purchaseLinks: {
       kyoboURL: "https://product.kyobobook.co.kr/detail/S000203074885",
       yes24URL: "https://www.yes24.com/Product/Goods/120164165",
@@ -15,7 +15,7 @@ export const books: Book[] = [
   {
     id: 1,
     name: "처음으로",
-    novelIds: [15, 16, 19, 21],
+    novelIds: [14, 15, 18, 20],
     purchaseLinks: {
       kyoboURL: "https://product.kyobobook.co.kr/detail/S000214846019",
       yes24URL: "https://www.yes24.com/Product/Goods/139708103",
