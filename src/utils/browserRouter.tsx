@@ -2,6 +2,7 @@ import { Layout } from "@components/layout/Layout";
 import { HeartBeat } from "@pages/HeartBeat.page";
 import { NotFound } from "@pages/NotFound.page";
 import { OnTheStage } from "@pages/OnTheStage.page";
+import { Order202507 } from "@pages/Order202507.page";
 import { Players } from "@pages/Players.page";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
@@ -33,6 +34,7 @@ export const appRouter = createBrowserRouter([
       { path: "/onthestage", element: <OnTheStage /> },
       { path: "/heartbeat", element: <HeartBeat /> },
       { path: "/players", element: <Players /> },
+      { path: "/order202507", element: <Order202507 /> },
       { path: "/404", element: <NotFound /> },
       { path: "/*", element: <NotFound /> },
     ],
