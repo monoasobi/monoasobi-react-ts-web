@@ -92,21 +92,34 @@ export const NovelReader = ({ id }: NovelProps) => {
       try {
         setIsLoading(true);
         setIsError(false);
+
+        // 개발 모드에서 먼저 시도
         if (import.meta.env.MODE === "development") {
-          const res = await fetch(`${location.origin}/novel/${id}.md`);
-          const data = await res.text();
-          setMarkdown(data);
-        } else {
-          const res = await fetch(
-            `${import.meta.env.VITE_WORKER_URL}/novel/${novelId}`,
-            {
-              headers: {
-                authorization: admin ? "monoasobi" : "yoasobi",
-              },
-            }
-          );
-          setMarkdown(await res.text());
+          try {
+            const res = await fetch(`${location.origin}/novel/${id}.md`);
+            if (!res.ok) throw Error();
+            const data = await res.text();
+            setMarkdown(data);
+            return; // 성공하면 여기서 종료
+          } catch (devError) {
+            console.warn(
+              "Development mode fetch failed, falling back to production:",
+              devError
+            );
+            // 개발 모드 실패 시 아래 프로덕션 로직으로 fallback
+          }
         }
+
+        // 프로덕션 로직 (또는 개발 모드 fallback)
+        const res = await fetch(
+          `${import.meta.env.VITE_WORKER_URL}/novel/${novelId}`,
+          {
+            headers: {
+              authorization: admin ? "monoasobi" : "yoasobi",
+            },
+          }
+        );
+        setMarkdown(await res.text());
       } catch (err) {
         console.error(err);
         setIsError(true);
