@@ -97,7 +97,9 @@ export const NovelReader = ({ id }: NovelProps) => {
         if (import.meta.env.MODE === "development") {
           try {
             const res = await fetch(`${location.origin}/novel/${id}.md`);
-            if (!res.ok) throw Error();
+            const contentType = res.headers.get("content-type");
+            if (!res.ok || !contentType?.includes("text/markdown"))
+              throw Error();
             const data = await res.text();
             setMarkdown(data);
             return; // 성공하면 여기서 종료
