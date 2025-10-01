@@ -388,7 +388,10 @@ export const novels: Novel[] = [
     originUrl: "https://manga.fod.fujitv.co.jp/campaign/theaterstory2025",
     title: "극장 이야기",
     writer: "미타니 코키",
-    translated: false,
+    translated: true,
+    translator: "DCinside env.i",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=82667",
     isPublished: false,
   },
 ];
