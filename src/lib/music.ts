@@ -221,4 +221,11 @@ export const musics: Music[] = [
     title: "Watch me!",
     youtubeId: "evtoG-4dLM4",
   },
+  {
+    id: 31,
+    korTitle: "극상",
+    enTitle: "The Show",
+    title: "劇上",
+    youtubeId: "",
+  },
 ];

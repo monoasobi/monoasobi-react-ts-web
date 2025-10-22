@@ -382,4 +382,16 @@ export const novels: Novel[] = [
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=81000&search_head=40&page=1",
     isPublished: false,
   },
+  {
+    id: 33,
+    musicId: 31,
+    originUrl: "https://manga.fod.fujitv.co.jp/campaign/theaterstory2025",
+    title: "극장 이야기",
+    writer: "미타니 코키",
+    translated: true,
+    translator: "DCinside env.i",
+    translatorUrl:
+      "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=82667",
+    isPublished: false,
+  },
 ];
