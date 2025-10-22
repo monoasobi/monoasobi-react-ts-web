@@ -2,6 +2,7 @@ import { appearanceAtom } from "@atoms/appearance.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
 import { Theme } from "@radix-ui/themes";
 import { appRouter } from "@utils/browserRouter";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -21,6 +22,7 @@ export const App = () => {
       radius="small"
     >
       <RouterProvider router={appRouter} />
+      <Analytics />
     </Theme>
   );
 };
