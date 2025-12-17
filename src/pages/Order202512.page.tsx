@@ -23,7 +23,7 @@ const Container = styled(Flex)`
   }
 `;
 
-type HoodieType = "특양면" | "기모";
+type HoodieType = "특양면" | "기모 오버핏" | "기모 일반핏" | "USA";
 
 interface PricedHoodieItem {
   type: HoodieType;
