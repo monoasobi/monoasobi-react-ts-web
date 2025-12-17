@@ -104,6 +104,15 @@ export const Order202512 = () => {
     }
   };
 
+  const moveToTracking = () => {
+    if (result && typeof result === "object" && "tracking" in result) {
+      window.open(
+        `https://www.lotteglogis.com/home/reservation/tracking/linkView?InvNo=${result.tracking}`,
+        "_blank"
+      );
+    }
+  };
+
   return (
     <Container direction="column">
       <Card className="card">
@@ -168,6 +177,14 @@ export const Order202512 = () => {
                               disabled={isCopied}
                             >
                               {isCopied ? "복사 완료" : "복사"}
+                            </Button>
+                            <Button
+                              size="1"
+                              variant="outline"
+                              onClick={moveToTracking}
+                              disabled={isCopied}
+                            >
+                              배송조회
                             </Button>
                           </Flex>
                         </DataList.Value>
