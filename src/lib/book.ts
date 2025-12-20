@@ -25,4 +25,16 @@ export const books: Book[] = [
         "https://series.naver.com/ebook/detail.series?productNo=12042106",
     },
   },
+  {
+    id: 2,
+    name: "New me",
+    novelIds: [30],
+    purchaseLinks: {
+      kyoboURL: "https://product.kyobobook.co.kr/detail/S000218790464",
+      yes24URL: "https://www.yes24.com/product/goods/168774373",
+      aladinURL: "https://www.aladin.co.kr/shop/wproduct.aspx?ISBN=K142034988",
+      ridiURL: "",
+      naverURL: "",
+    },
+  },
 ];

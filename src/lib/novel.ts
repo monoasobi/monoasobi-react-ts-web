@@ -355,11 +355,12 @@ export const novels: Novel[] = [
     originUrl: "https://monogatary.com/story/454872",
     translatorUrl:
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=78307",
-    title: "백산도로 불꽃 사건",
+    title: "시라야마도리 방화 사건",
     writer: "아리테 마도",
     translated: true,
     translator: "DCinside env.i",
-    isPublished: false,
+    isPublished: true,
+    bookId: 2,
   },
   {
     id: 31,

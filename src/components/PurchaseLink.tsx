@@ -1,5 +1,6 @@
 import book0 from "@assets/book_0.jpg";
 import book1 from "@assets/book_1.jpg";
+import book2 from "@assets/book_2.jpg";
 import { books } from "@lib/book";
 import { musics } from "@lib/music";
 import { novels } from "@lib/novel";
@@ -33,7 +34,7 @@ interface PurchaseLinkProps {
 export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
   const book = books[bookId];
 
-  const bookImage = [book0, book1];
+  const bookImage = [book0, book1, book2];
 
   return (
     <Container direction="column">
@@ -78,31 +79,41 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
                 </Text>
               </Flex>
               <Flex wrap="wrap" gap="2" justify="center">
-                <Button asChild>
-                  <Link to={book.purchaseLinks.kyoboURL} target="_blank">
-                    교보문고
-                  </Link>
-                </Button>
-                <Button asChild>
-                  <Link to={book.purchaseLinks.yes24URL} target="_blank">
-                    yes24
-                  </Link>
-                </Button>
-                <Button asChild>
-                  <Link to={book.purchaseLinks.aladinURL} target="_blank">
-                    알라딘
-                  </Link>
-                </Button>
-                <Button asChild>
-                  <Link to={book.purchaseLinks.ridiURL} target="_blank">
-                    리디북스
-                  </Link>
-                </Button>
-                <Button asChild>
-                  <Link to={book.purchaseLinks.naverURL} target="_blank">
-                    네이버 시리즈
-                  </Link>
-                </Button>
+                {book.purchaseLinks.kyoboURL && (
+                  <Button asChild>
+                    <Link to={book.purchaseLinks.kyoboURL} target="_blank">
+                      교보문고
+                    </Link>
+                  </Button>
+                )}
+                {book.purchaseLinks.yes24URL && (
+                  <Button asChild>
+                    <Link to={book.purchaseLinks.yes24URL} target="_blank">
+                      yes24
+                    </Link>
+                  </Button>
+                )}
+                {book.purchaseLinks.aladinURL && (
+                  <Button asChild>
+                    <Link to={book.purchaseLinks.aladinURL} target="_blank">
+                      알라딘
+                    </Link>
+                  </Button>
+                )}
+                {book.purchaseLinks.ridiURL && (
+                  <Button asChild>
+                    <Link to={book.purchaseLinks.ridiURL} target="_blank">
+                      리디북스
+                    </Link>
+                  </Button>
+                )}
+                {book.purchaseLinks.naverURL && (
+                  <Button asChild>
+                    <Link to={book.purchaseLinks.naverURL} target="_blank">
+                      네이버 시리즈
+                    </Link>
+                  </Button>
+                )}
               </Flex>
             </Flex>
           </Flex>
