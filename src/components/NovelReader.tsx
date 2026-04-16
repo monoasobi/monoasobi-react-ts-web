@@ -98,6 +98,7 @@ export const NovelReader = ({ id }: NovelProps) => {
           try {
             const res = await fetch(`${location.origin}/novel/${id}.md`);
             const contentType = res.headers.get("content-type");
+            console.log(contentType);
             if (!res.ok || !contentType?.includes("text/markdown"))
               throw Error();
             const data = await res.text();
@@ -106,7 +107,7 @@ export const NovelReader = ({ id }: NovelProps) => {
           } catch (devError) {
             console.warn(
               "Development mode fetch failed, falling back to production:",
-              devError
+              devError,
             );
             // 개발 모드 실패 시 아래 프로덕션 로직으로 fallback
           }
@@ -119,8 +120,9 @@ export const NovelReader = ({ id }: NovelProps) => {
             headers: {
               authorization: admin ? "monoasobi" : "yoasobi",
             },
-          }
+          },
         );
+        console.log(res);
         setMarkdown(await res.text());
       } catch (err) {
         console.error(err);

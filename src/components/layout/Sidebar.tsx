@@ -3,7 +3,7 @@ import { adminAtom } from "@atoms/admin.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
 import { musics } from "@lib/music";
 import { novels } from "@lib/novel";
-import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
+import { Button, Dialog, Flex, Separator, Text } from "@radix-ui/themes";
 import { MouseEventHandler, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -80,7 +80,7 @@ export const Sidebar = () => {
 
 const ItemContainer = styled(Button)`
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   height: auto;
   padding: 16px;
 
@@ -115,6 +115,15 @@ const Item = ({ item }: ItemProps) => {
   };
 
   const to = path ? `/${path}` : `/novel/${novel.id}`;
+  const color = isPublished
+    ? "teal"
+    : isAdmin
+      ? path
+        ? "red"
+        : translated
+          ? "red"
+          : "teal"
+      : "red";
 
   return (
     <Dialog.Root>
@@ -125,36 +134,27 @@ const Item = ({ item }: ItemProps) => {
             ? "solid"
             : "outline"
         }
-        color={
-          isPublished
-            ? "teal"
-            : isAdmin
-            ? path
-              ? "red"
-              : translated
-              ? "red"
-              : "teal"
-            : "red"
-        }
+        color={color}
         disabled={
           isAdmin ? !translated && !path : (!translated || isPublished) && !path
         }
         asChild
       >
         <Link to={to} onClick={closeHandler}>
-          <Flex direction="column" gap="1">
+          <Flex direction="column" align="stretch" gap="1">
             <Text size="5" weight="bold" align="left">
               {korTitle}
             </Text>
 
+            <Text size="1" align="left">
+              {title === enTitle ? title : `${title} / ${enTitle}`}
+            </Text>
+            {novelTitle && !path && <Separator size="4" color={color} />}
             {novelTitle && !path && (
               <Text size="2" weight="bold" align="left">
                 {novelWriter} &lt;{novelTitle}&gt;
               </Text>
             )}
-            <Text size="1" align="left">
-              {title === enTitle ? title : `${title} / ${enTitle}`}
-            </Text>
           </Flex>
         </Link>
       </ItemContainer>
