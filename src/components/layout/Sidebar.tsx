@@ -3,7 +3,8 @@ import { adminAtom } from "@atoms/admin.atom";
 import { sidebarAtom } from "@atoms/sidebar.atom";
 import { musics } from "@lib/music";
 import { novels } from "@lib/novel";
-import { Button, Dialog, Flex, Separator, Text } from "@radix-ui/themes";
+import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
+import { BaseButtonProps } from "@radix-ui/themes/src/components/base-button.js";
 import { MouseEventHandler, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -94,7 +95,7 @@ interface ItemProps {
 }
 
 const Item = ({ item }: ItemProps) => {
-  const { id, korTitle, title, enTitle, path } = item;
+  const { id, korTitle, title, enTitle, specialPath } = item;
   const param = useParams();
   const setIsSidebar = useSetRecoilState(sidebarAtom);
   const isAdmin = useRecoilValue(adminAtom);
@@ -114,44 +115,56 @@ const Item = ({ item }: ItemProps) => {
     sessionStorage.setItem("sidebar", e.currentTarget.offsetTop.toString());
   };
 
-  const to = path ? `/${path}` : `/novel/${novel.id}`;
-  const color = isPublished
-    ? "teal"
-    : isAdmin
-      ? path
+  const to = specialPath ? `/${specialPath}` : `/novel/${novel.id}`;
+  const adminColor: BaseButtonProps["color"] = specialPath
+    ? "red"
+    : translated
+      ? "red"
+      : "gray";
+  const commonColor: BaseButtonProps["color"] = specialPath
+    ? "red"
+    : isPublished
+      ? "teal"
+      : translated
         ? "red"
-        : translated
-          ? "red"
-          : "teal"
-      : "red";
+        : "gray";
+  const color: BaseButtonProps["color"] = isAdmin ? adminColor : commonColor;
 
   return (
     <Dialog.Root>
       <ItemContainer
         variant={
           param.id === String(novel.id) ||
-          (path && location.pathname.includes(path))
+          (specialPath && location.pathname.includes(specialPath))
             ? "solid"
             : "outline"
         }
         color={color}
-        disabled={
-          isAdmin ? !translated && !path : (!translated || isPublished) && !path
-        }
+        // disabled={
+        //   isAdmin ? !translated && !path : (!translated || isPublished) && !path
+        // }
         asChild
       >
         <Link to={to} onClick={closeHandler}>
-          <Flex direction="column" align="stretch" gap="1">
-            <Text size="5" weight="bold" align="left">
-              {korTitle}
-            </Text>
+          <Flex direction="column" align="stretch" gap="2">
+            <Flex direction="column" align="start">
+              <Text
+                size="5"
+                weight="bold"
+                align="left"
+                // style={{ lineHeight: "20px" }}
+              >
+                {title}
+              </Text>
 
-            <Text size="1" align="left">
-              {title === enTitle ? title : `${title} / ${enTitle}`}
-            </Text>
-            {novelTitle && !path && <Separator size="4" color={color} />}
-            {novelTitle && !path && (
               <Text size="2" weight="bold" align="left">
+                {`${korTitle} / ${enTitle}`}
+              </Text>
+            </Flex>
+
+            {/* {novelTitle && !specialPath && <Separator size="4" color={color} />} */}
+            {novelTitle && (
+              <Text size="1" align="left">
                 {novelWriter} &lt;{novelTitle}&gt;
               </Text>
             )}
