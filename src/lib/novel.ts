@@ -395,4 +395,22 @@ export const novels: Novel[] = [
       "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi&no=82667",
     isPublished: false,
   },
+  {
+    id: 34,
+    musicId: 32,
+    originUrl: "https://hanakimi-anime.com/special/novel/op/",
+    title: "Magical",
+    writer: "츠야마 후유",
+    translated: false,
+    isPublished: false,
+  },
+  {
+    id: 35,
+    musicId: 33,
+    originUrl: "https://hanakimi-anime.com/special/novel/ed/",
+    title: "My Dear......",
+    writer: "아오키 야스코",
+    translated: false,
+    isPublished: false,
+  },
 ];

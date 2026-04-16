@@ -3,6 +3,6 @@ export interface Music {
   korTitle: string;
   enTitle: string;
   title: string;
-  path?: string;
+  specialPath?: string;
   youtubeId: string;
 }
