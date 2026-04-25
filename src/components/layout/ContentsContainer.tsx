@@ -1,6 +1,10 @@
 import { Music } from "@appTypes/music";
+import { YouTubeLyricsPlayer } from "@components/common/YouTubeLyricsPlayer";
 import { MusicalNoteIcon } from "@heroicons/react/16/solid";
-import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import {
+  BookOpenIcon,
+  EllipsisHorizontalIcon,
+} from "@heroicons/react/24/outline";
 import {
   Button,
   Card,
@@ -14,7 +18,6 @@ import {
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { MusicAside } from "./MusicAside";
 
 const Container = styled(Flex)`
   width: 100%;
@@ -37,7 +40,7 @@ const Header = styled(Card)`
   justify-content: center;
   align-items: center;
   padding: 8px 8px;
-  z-index: 1;
+  z-index: 5;
 
   visibility: visible;
   &.notVisible {
@@ -63,7 +66,11 @@ export const ContentsContainer = ({
   content,
 }: ContentsContainerProps) => {
   const { title, korTitle } = music;
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [tab, setTab] = useState<"CONTENT" | "LYRICS">("CONTENT");
+
+  const handleTabChange = () => {
+    setTab(tab === "CONTENT" ? "LYRICS" : "CONTENT");
+  };
 
   return (
     <Popover.Root>
@@ -79,12 +86,12 @@ export const ContentsContainer = ({
             )}
           </Flex>
           <Flex gap="2" className="headerButton">
-            <IconButton
-              size="1"
-              variant="soft"
-              onClick={() => setIsSidebarOpen(true)}
-            >
-              <MusicalNoteIcon width="16" height="16" />
+            <IconButton size="1" variant="soft" onClick={handleTabChange}>
+              {tab === "CONTENT" ? (
+                <MusicalNoteIcon width="16" height="16" />
+              ) : (
+                <BookOpenIcon width="16" height="16" />
+              )}
             </IconButton>
             <Popover.Trigger>
               <IconButton size="1" variant="soft">
@@ -123,13 +130,13 @@ export const ContentsContainer = ({
             </Flex>
           </Popover.Content>
         </Header>
-        {children}
+        {tab === "CONTENT" ? children : <YouTubeLyricsPlayer music={music} />}
       </Container>
-      <MusicAside
+      {/* <MusicAside
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         music={music}
-      />
+      /> */}
     </Popover.Root>
   );
 };

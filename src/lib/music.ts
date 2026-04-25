@@ -6,7 +6,7 @@ export const musics: Music[] = [
     korTitle: "밤을 달리다",
     enTitle: "Into The Night",
     title: "夜に駆ける",
-    youtubeId: "x8VYWazR5mE",
+    youtubeId: "by4SYYWlhEs",
   },
   {
     id: 1,
@@ -62,7 +62,7 @@ export const musics: Music[] = [
     korTitle: "조금만 더",
     enTitle: "Just a Little Step",
     title: "もう少しだけ",
-    youtubeId: "VfATdDI3604",
+    youtubeId: "K1Tz2yNmamI",
   },
   {
     id: 9,
@@ -226,7 +226,7 @@ export const musics: Music[] = [
     korTitle: "극상",
     enTitle: "The Show",
     title: "劇上",
-    youtubeId: "",
+    youtubeId: "GuIkxXiVHps",
   },
   {
     id: 32,
