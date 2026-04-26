@@ -101,7 +101,7 @@ export const YouTubeLyricsPlayer = ({ music }: YouTubeLyricsPlayerProps) => {
     <Container direction="column" gap="3">
       <InnerContainer direction="column" gap="3">
         <Flex direction="column" gap="3">
-          <Flex align="start" justify="between" gap="3">
+          <Flex justify="between" gap="3" wrap="wrap">
             <Flex direction="row" align="end" gap="1" wrap="wrap">
               <Heading size="4">{music.title}</Heading>
               <Text size="2" color="gray">
@@ -116,57 +116,57 @@ export const YouTubeLyricsPlayer = ({ music }: YouTubeLyricsPlayerProps) => {
                     {syncLabel}
                   </Button>
                 </Popover.Trigger>
-                <Popover.Content width="260px">
-                  <Flex direction="column" gap="3">
-                    <Flex align="center" justify="between">
-                      <Text size="2" weight="bold">
-                        가사 sync
-                      </Text>
-                      <SyncValue size="2" color="gray">
-                        {lyricsOffset >= 0 ? "+" : ""}
-                        {lyricsOffset.toFixed(2)}s
-                      </SyncValue>
+                  <Popover.Content width="260px">
+                    <Flex direction="column" gap="3">
+                      <Flex align="center" justify="between">
+                        <Text size="2" weight="bold">
+                          SYNC
+                        </Text>
+                        <SyncValue size="2" color="gray">
+                          {lyricsOffset >= 0 ? "+" : ""}
+                          {lyricsOffset.toFixed(2)}s
+                        </SyncValue>
+                      </Flex>
+                      <Flex gap="1" wrap="wrap">
+                        {OFFSET_STEPS.map((step) => (
+                          <Button
+                            key={`minus-${step}`}
+                            type="button"
+                            size="1"
+                            variant="outline"
+                            color="gray"
+                            onClick={() => handleOffsetChange(-step)}
+                          >
+                            -{step}
+                          </Button>
+                        ))}
+                      </Flex>
+                      <Flex gap="1" wrap="wrap">
+                        {OFFSET_STEPS.map((step) => (
+                          <Button
+                            key={`plus-${step}`}
+                            type="button"
+                            size="1"
+                            variant="outline"
+                            color="gray"
+                            onClick={() => handleOffsetChange(step)}
+                          >
+                            +{step}
+                          </Button>
+                        ))}
+                      </Flex>
+                      <Button
+                        type="button"
+                        size="1"
+                        variant="soft"
+                        color="red"
+                        onClick={resetOffset}
+                      >
+                        reset
+                      </Button>
                     </Flex>
-                    <Flex gap="1" wrap="wrap">
-                      {OFFSET_STEPS.map((step) => (
-                        <Button
-                          key={`minus-${step}`}
-                          type="button"
-                          size="1"
-                          variant="outline"
-                          color="gray"
-                          onClick={() => handleOffsetChange(-step)}
-                        >
-                          -{step}
-                        </Button>
-                      ))}
-                    </Flex>
-                    <Flex gap="1" wrap="wrap">
-                      {OFFSET_STEPS.map((step) => (
-                        <Button
-                          key={`plus-${step}`}
-                          type="button"
-                          size="1"
-                          variant="outline"
-                          color="gray"
-                          onClick={() => handleOffsetChange(step)}
-                        >
-                          +{step}
-                        </Button>
-                      ))}
-                    </Flex>
-                    <Button
-                      type="button"
-                      size="1"
-                      variant="soft"
-                      color="red"
-                      onClick={resetOffset}
-                    >
-                      reset
-                    </Button>
-                  </Flex>
-                </Popover.Content>
-              </Popover.Root>
+                  </Popover.Content>
+                </Popover.Root>
             )}
           </Flex>
 

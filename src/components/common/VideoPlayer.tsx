@@ -15,7 +15,26 @@ import {
   type ChangeEvent,
 } from "react";
 import ReactPlayer from "react-player";
-import styled from "styled-components";
+import {
+  ControlBtn,
+  Controls,
+  IframeWrapper,
+  OverlayJp,
+  OverlayKr,
+  OverlayReading,
+  OverlayToggleBtn,
+  SeekInput,
+  TimeText,
+  VerticalVolumeInput,
+  VideoBlocker,
+  VideoFrame,
+  VideoGradientOverlay,
+  VideoLyricsOverlay,
+  VideoSection,
+  VideoTopControls,
+  VolumeTooltip,
+  VolumeWrapper,
+} from "./VideoPlayer.styles";
 
 const YOUTUBE_CONFIG = {
   color: "white" as const,
@@ -29,262 +48,6 @@ const formatTime = (seconds: number): string => {
   const s = Math.floor(seconds % 60);
   return `${m}:${s.toString().padStart(2, "0")}`;
 };
-
-const VideoSection = styled.div`
-  width: 100%;
-  border-radius: var(--radius-4);
-  overflow: hidden;
-  background-color: #000;
-  container-type: inline-size;
-`;
-
-const VideoFrame = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-`;
-
-const IframeWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  aspect-ratio: 1 / 1;
-  transform: translateY(-21.875%);
-`;
-
-const VideoBlocker = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  cursor: pointer;
-`;
-
-const VideoGradientOverlay = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  height: 42%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.08) 28%,
-    rgba(0, 0, 0, 0.38) 70%,
-    rgba(0, 0, 0, 0.72) 100%
-  );
-  pointer-events: none;
-`;
-
-const VideoLyricsOverlay = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  padding: 0 16px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  pointer-events: none;
-  text-align: center;
-`;
-
-const OverlayJp = styled.p`
-  font-size: clamp(12px, 1.8cqw, 14px);
-  font-style: italic;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.2;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-`;
-
-const OverlayReading = styled.p`
-  font-size: clamp(12px, 1.8cqw, 14px);
-  font-style: italic;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.2;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-`;
-
-const OverlayKr = styled.p`
-  font-size: clamp(16px, 3cqw, 22px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-`;
-
-const Controls = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 10px;
-  background-color: #111;
-`;
-
-const ControlBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border: none;
-  background: none;
-  color: #e0e0e0;
-  cursor: pointer;
-  border-radius: var(--radius-2);
-  transition: background-color 0.15s;
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.12);
-  }
-`;
-
-const TimeText = styled.span`
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.45);
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-  white-space: nowrap;
-  user-select: none;
-`;
-
-const SeekInput = styled.input`
-  appearance: none;
-  flex: 1;
-  height: 20px;
-  background-color: transparent;
-  background-size: 100% 4px;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 999px;
-  cursor: pointer;
-  outline: none;
-
-  &::-webkit-slider-runnable-track {
-    height: 4px;
-    border-radius: 999px;
-    background: transparent;
-  }
-
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--red-9);
-    margin-top: -4px;
-  }
-
-  &::-moz-range-track {
-    height: 4px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  &::-moz-range-progress {
-    height: 4px;
-    border-radius: 999px;
-    background: var(--red-9);
-  }
-
-  &::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border: none;
-    border-radius: 50%;
-    background: var(--red-9);
-  }
-`;
-
-const VolumeWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-`;
-
-const VolumeTooltip = styled.div<{ $show: boolean }>`
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 36px;
-  height: 100px;
-  padding: 10px 0;
-  background: rgba(18, 18, 18, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-3);
-  box-shadow: var(--shadow-5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: ${({ $show }) => ($show ? 1 : 0)};
-  pointer-events: ${({ $show }) => ($show ? "auto" : "none")};
-  transition: opacity 0.15s;
-  z-index: 10;
-`;
-
-const VerticalVolumeInput = styled.input`
-  appearance: none;
-  width: 76px;
-  height: 20px;
-  background-color: transparent;
-  background-size: 100% 4px;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 999px;
-  cursor: pointer;
-  outline: none;
-  touch-action: none;
-  transform: rotate(-90deg);
-
-  &::-webkit-slider-runnable-track {
-    height: 4px;
-    border-radius: 999px;
-    background: transparent;
-  }
-
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--red-9);
-    margin-top: -4px;
-  }
-
-  &::-moz-range-track {
-    height: 4px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  &::-moz-range-progress {
-    height: 4px;
-    border-radius: 999px;
-    background: var(--red-9);
-  }
-
-  &::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    border: none;
-    border-radius: 50%;
-    background: var(--red-9);
-  }
-`;
 
 export interface VideoPlayerHandle {
   seekAndPlay(time: number): void;
@@ -306,6 +69,8 @@ export const VideoPlayer = forwardRef<VideoPlayerHandle, VideoPlayerProps>(
     const [volume, setVolume] = useState(1);
     const [isMuted, setIsMuted] = useState(false);
     const [showVolumeTooltip, setShowVolumeTooltip] = useState(false);
+    const [showJp, setShowJp] = useState(true);
+    const [showReading, setShowReading] = useState(false);
 
     useEffect(() => {
       setCurrentTime(0);
@@ -412,10 +177,26 @@ export const VideoPlayer = forwardRef<VideoPlayerHandle, VideoPlayerProps>(
           </IframeWrapper>
           <VideoBlocker onClick={handleTogglePlay} />
           <VideoGradientOverlay />
+          <VideoTopControls>
+            <OverlayToggleBtn
+              type="button"
+              $active={showJp}
+              onClick={() => setShowJp((prev) => !prev)}
+            >
+              일어
+            </OverlayToggleBtn>
+            <OverlayToggleBtn
+              type="button"
+              $active={showReading}
+              onClick={() => setShowReading((prev) => !prev)}
+            >
+              발음
+            </OverlayToggleBtn>
+          </VideoTopControls>
           {activeLine && (
             <VideoLyricsOverlay>
-              {activeLine.jp && <OverlayJp>{activeLine.jp}</OverlayJp>}
-              {activeLine.jpReading && (
+              {showJp && activeLine.jp && <OverlayJp>{activeLine.jp}</OverlayJp>}
+              {showReading && activeLine.jpReading && (
                 <OverlayReading>{activeLine.jpReading}</OverlayReading>
               )}
               {activeLine.kr && <OverlayKr>{activeLine.kr}</OverlayKr>}
