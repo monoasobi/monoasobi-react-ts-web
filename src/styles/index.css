@@ -3,25 +3,9 @@
 @font-face {
   font-family: "KoPub Batang";
   font-style: normal;
-  font-weight: 300;
-  font-display: block;
-  src: url("/fonts/KoPubBatang-Light.woff") format("woff");
-}
-
-@font-face {
-  font-family: "KoPub Batang";
-  font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("/fonts/KoPubBatang-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-family: "KoPub Batang";
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  src: url("/fonts/KoPubBatang-Bold.woff") format("woff");
+  src: url("/fonts/KoPubBatang-Medium.woff2") format("woff2");
 }
 
 :root {
