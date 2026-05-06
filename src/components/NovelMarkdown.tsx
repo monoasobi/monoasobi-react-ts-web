@@ -5,9 +5,11 @@ import {
   NovelQuote,
   NovelUL,
 } from "@components/NovelMarkdown.styles";
+import { fontAtom } from "@atoms/font.atom";
 import { Heading, Text } from "@radix-ui/themes";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
+import { useRecoilValue } from "recoil";
 
 interface NovelMarkdownProps {
   children: string;
@@ -15,6 +17,8 @@ interface NovelMarkdownProps {
 }
 
 export const NovelMarkdown = ({ children, className }: NovelMarkdownProps) => {
+  const font = useRecoilValue(fontAtom);
+
   return (
     <ReactMarkdown
       className={className}
@@ -40,7 +44,7 @@ export const NovelMarkdown = ({ children, className }: NovelMarkdownProps) => {
             {children}
           </Heading>
         ),
-        p: ({ children }) => <NovelP as="p">{children}</NovelP>,
+        p: ({ children }) => <NovelP as="p" $font={font}>{children}</NovelP>,
         blockquote: ({ children }) => <NovelQuote>{children}</NovelQuote>,
         hr: (props) => <NovelHR {...props} />,
         ul: (props) => <NovelUL {...props} />,
@@ -48,10 +52,10 @@ export const NovelMarkdown = ({ children, className }: NovelMarkdownProps) => {
           const { children } = props;
           const text = children?.toString();
           const match = text!.match(/^(.+?)\s*(「.*」)$/);
-          if (!match) return <NovelLI {...props} />;
+          if (!match) return <NovelLI $font={font} {...props} />;
           const [, speaker, dialogue] = match;
           return (
-            <NovelLI>
+            <NovelLI $font={font}>
               <Text color="red" weight="bold" mr="2">
                 {speaker}
               </Text>

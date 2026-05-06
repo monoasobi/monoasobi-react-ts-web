@@ -1,8 +1,10 @@
 import { Text } from "@radix-ui/themes";
 import styled from "styled-components";
 
-export const NovelP = styled(Text)`
-  font-family: "KoPub Batang";
+export const NovelP = styled(Text)<{ $font?: "gothic" | "batang" }>`
+  font-family: ${({ $font }) =>
+    $font === "gothic" ? '"Pretendard JP Variable"' : '"KoPub Batang"'};
+  font-weight: ${({ $font }) => ($font === "gothic" ? "500" : "400")};
   margin-bottom: 1rem;
   transform: rotate(-0.03deg);
   &:has(br) {
@@ -42,8 +44,10 @@ export const NovelUL = styled.ul`
   margin-bottom: 1rem;
 `;
 
-export const NovelLI = styled.li`
-  font-family: "KoPub Batang";
+export const NovelLI = styled.li<{ $font?: "gothic" | "batang" }>`
+  font-family: ${({ $font }) =>
+    $font === "gothic" ? '"Pretendard JP Variable"' : '"KoPub Batang"'};
+  font-weight: ${({ $font }) => ($font === "gothic" ? "500" : "400")};
   transform: rotate(-0.03deg);
   margin-left: 1rem;
   margin-bottom: 0.25rem;
