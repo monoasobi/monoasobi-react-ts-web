@@ -22,6 +22,11 @@ const Comic = lazy(() =>
     default: Comic,
   })),
 );
+const Guide = lazy(() =>
+  import("@pages/Guide.page").then(({ Guide }) => ({
+    default: Guide,
+  })),
+);
 
 export const appRouter = createBrowserRouter([
   {
@@ -35,6 +40,7 @@ export const appRouter = createBrowserRouter([
       { path: "/heartbeat", element: <HeartBeat /> },
       { path: "/players", element: <Players /> },
       { path: "/admin", element: <Admin /> },
+      { path: "/guide", element: <Guide /> },
       { path: "/404", element: <NotFound /> },
       { path: "/*", element: <NotFound /> },
     ],
