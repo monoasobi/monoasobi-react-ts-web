@@ -401,7 +401,9 @@ export const novels: Novel[] = [
     originUrl: "https://hanakimi-anime.com/special/novel/op/",
     title: "Magical",
     writer: "츠야마 후유",
-    translated: false,
+    translated: true,
+    translator: "DCinside env.i",
+    translatorUrl: "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi",
     isPublished: false,
   },
   {
@@ -410,7 +412,9 @@ export const novels: Novel[] = [
     originUrl: "https://hanakimi-anime.com/special/novel/ed/",
     title: "My Dear......",
     writer: "아오키 야스코",
-    translated: false,
+    translated: true,
+    translator: "DCinside env.i",
+    translatorUrl: "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi",
     isPublished: false,
   },
 ];

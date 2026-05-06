@@ -1,11 +1,10 @@
 import { adminAtom } from "@atoms/admin.atom";
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
-import { Flex, Heading, Text } from "@radix-ui/themes";
+import { NovelMarkdown } from "@components/NovelMarkdown";
+import { Flex } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import { useRecoilValue } from "recoil";
-import remarkBreaks from "remark-breaks";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -27,54 +26,6 @@ const NovelContainer = styled.div`
   .markdown {
     padding-bottom: 24px;
   }
-`;
-
-const P = styled(Text)`
-  font-family: "KoPub Batang";
-  margin-bottom: 1rem;
-  transform: rotate(-0.03deg);
-  &:has(br) {
-    margin-left: 1rem;
-    line-height: 1.75rem;
-  }
-  &:not(:has(br)) {
-    text-indent: 1rem;
-  }
-`;
-
-const Quote = styled.blockquote`
-  background-color: var(--accent-a3);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-
-  & > p {
-    text-indent: 0;
-    transform: rotate(-0.03deg);
-    font-family: "Pretendard JP Variable";
-    margin-bottom: 0.5rem;
-    margin-left: 0;
-  }
-  & > p:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const HR = styled.hr`
-  width: 50%;
-  min-width: 80px;
-  margin: 1.5rem auto;
-`;
-
-const UL = styled.ul`
-  margin-bottom: 1rem;
-`;
-
-const LI = styled.li`
-  font-family: "KoPub Batang";
-  transform: rotate(-0.03deg);
-  margin-left: 1rem;
-  margin-bottom: 0.25rem;
 `;
 
 interface NovelProps {
@@ -160,58 +111,7 @@ export const NovelReader = ({ id }: NovelProps) => {
   return (
     <Container justify="center" ref={novelRef} onScroll={handleScroll}>
       <NovelContainer>
-        <ReactMarkdown
-          className="markdown"
-          remarkPlugins={[remarkBreaks]}
-          components={{
-            h1: ({ children }) => (
-              <Heading as="h1" size="7" my="6">
-                {children}
-              </Heading>
-            ),
-            h2: ({ children }) => (
-              <Heading as="h2" my="6" size="6" align="center">
-                {children}
-              </Heading>
-            ),
-            h3: ({ children }) => (
-              <Heading as="h3" my="2" size="6" align="center">
-                {children}
-              </Heading>
-            ),
-            h4: ({ children }) => (
-              <Heading as="h3" my="4" size="4" align="center">
-                {children}
-              </Heading>
-            ),
-            p: ({ children }) => <P as="p">{children}</P>,
-            blockquote: ({ children }) => <Quote>{children}</Quote>,
-            hr: (props) => <HR {...props} />,
-            ul: (props) => <UL {...props} />,
-            li: (props) => {
-              const { children } = props;
-              const text = children?.toString();
-              const match = text!.match(/^(.+?)\s*(「.*」)$/);
-              if (!match) return <LI {...props} />;
-              const [, speaker, dialogue] = match;
-              return (
-                <LI>
-                  <Text color="red" weight="bold" mr="2">
-                    {speaker}
-                  </Text>
-                  <Text>{dialogue}</Text>
-                </LI>
-              );
-            },
-            strong: ({ children }) => (
-              <Text color="red" weight="bold">
-                {children}
-              </Text>
-            ),
-          }}
-        >
-          {markdown}
-        </ReactMarkdown>
+        <NovelMarkdown className="markdown">{markdown ?? ""}</NovelMarkdown>
       </NovelContainer>
     </Container>
   );
