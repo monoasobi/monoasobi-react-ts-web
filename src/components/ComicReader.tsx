@@ -1,6 +1,7 @@
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
 import { Flex } from "@radix-ui/themes";
+import { getFileNum } from "@utils/file";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -50,9 +51,11 @@ export const ComicReader = ({ id }: ComicProps) => {
         setIsError(false);
 
         const res = await fetch(
-          `${import.meta.env.VITE_WORKER_URL}/comic/${comicId}`
+          `${import.meta.env.VITE_WORKER_URL}/comic/${comicId}`,
         );
-        setImageUrls(await res.json());
+        const data: string[] = await res.json();
+        const sorted = [...data].sort((a, b) => getFileNum(a) - getFileNum(b));
+        setImageUrls(sorted);
       } catch (err) {
         console.error(err);
         setIsError(true);
@@ -90,7 +93,12 @@ export const ComicReader = ({ id }: ComicProps) => {
     <Container ref={comicRef} justify="center" pb="6" onScroll={handleScroll}>
       <ComicContainer direction="column" gap="3">
         {imageUrls.map((url, idx) => (
-          <img key={idx} src={url} alt={idx.toString()} />
+          <img
+            key={idx}
+            src={url}
+            alt={idx.toString()}
+            loading={idx < 4 ? "eager" : "lazy"}
+          />
         ))}
       </ComicContainer>
     </Container>
