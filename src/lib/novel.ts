@@ -424,6 +424,9 @@ export const novels: Novel[] = [
       "https://overwatch.blizzard.com/ja-jp/media/comic/the-fall-of-a-sparrow/",
     title: "땅에 떨어진 참새",
     writer: "E. C. MYERS",
-    translated: false,
+    translated: true,
+    translator: "env.i",
+    translatorUrl: "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi",
+    isPublished: false,
   },
 ];
