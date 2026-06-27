@@ -422,11 +422,12 @@ export const novels: Novel[] = [
     musicId: 34,
     originUrl:
       "https://overwatch.blizzard.com/ja-jp/media/comic/the-fall-of-a-sparrow/",
-    title: "땅에 떨어진 참새",
+    title: "작은 새의 추락",
     writer: "E. C. MYERS",
     translated: true,
-    translator: "env.i",
-    translatorUrl: "https://gall.dcinside.com/mgallery/board/view/?id=yoasobi",
+    translator: "OVERWATCH",
+    translatorUrl:
+      "https://overwatch.blizzard.com/ko-kr/media/comic/the-fall-of-a-sparrow/",
     isPublished: false,
   },
 ];
