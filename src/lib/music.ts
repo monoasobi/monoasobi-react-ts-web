@@ -246,7 +246,7 @@ export const musics: Music[] = [
     id: 34,
     korTitle: "오리온",
     enTitle: "Orion",
-    title: "Orion",
-    youtubeId: "",
+    title: "オリオン",
+    youtubeId: "fCh0qfxElm8",
   },
 ];
