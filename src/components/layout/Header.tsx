@@ -12,6 +12,7 @@ import {
   SegmentedControl,
   Text,
 } from "@radix-ui/themes";
+import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
@@ -39,7 +40,8 @@ export const Header = () => {
   const [font, setFont] = useRecoilState(fontAtom);
   const setIsSidebar = useSetRecoilState(sidebarAtom);
 
-  const sidebarHAndler = () => {
+  const sidebarHAndler: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
     setIsSidebar((prev) => !prev);
   };
 

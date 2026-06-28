@@ -4,23 +4,31 @@ import {
   DataList,
   Flex,
   Heading,
+  ScrollArea,
   Text,
   TextField,
 } from "@radix-ui/themes";
 import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 56px);
-  overflow: auto;
-  line-height: 160%;
-  padding: 24px;
+
+  .rt-ScrollAreaViewport {
+    line-height: 160%;
+    padding: 24px;
+  }
 
   .card {
     padding: 16px;
     overflow: visible;
   }
+`;
+
+const PageFrame = styled(Flex)`
+  width: 100%;
+  min-height: 100%;
 `;
 
 type HoodieType = "특양면" | "기모 오버핏" | "기모 일반핏" | "USA";
@@ -114,8 +122,9 @@ export const Order202512 = () => {
   };
 
   return (
-    <Container direction="column">
-      <Card className="card">
+    <Container scrollbars="vertical">
+      <PageFrame direction="column">
+        <Card className="card">
         <Flex direction="column" align="center" gap="4">
           <Heading weight="bold" align="center">
             2025년 12월 후드티 공구
@@ -268,7 +277,8 @@ export const Order202512 = () => {
             </Text>
           )}
         </Flex>
-      </Card>
+        </Card>
+      </PageFrame>
     </Container>
   );
 };

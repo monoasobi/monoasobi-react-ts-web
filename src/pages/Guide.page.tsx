@@ -1,15 +1,25 @@
 import { NovelMarkdown } from "@components/NovelMarkdown";
-import { Card, Code, Flex, Heading, Text } from "@radix-ui/themes";
+import { Card, Code, Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 56px);
-  overflow: auto;
-  padding: 32px 24px 48px;
-  @media screen and (max-width: 480px) {
-    padding: 24px 12px 40px;
+
+  .rt-ScrollAreaViewport {
+    padding: 32px 24px 48px;
   }
+
+  @media (max-width: 480px) {
+    .rt-ScrollAreaViewport {
+      padding: 24px 12px 40px;
+    }
+  }
+`;
+
+const PageFrame = styled(Flex)`
+  width: 100%;
+  min-height: 100%;
 `;
 
 const Inner = styled(Flex)`
@@ -176,20 +186,23 @@ const GUIDE_ITEMS: GuideItemProps[] = [
 
 export const Guide = () => {
   return (
-    <Container justify="center">
-      <Inner direction="column" gap="5">
-        <Flex direction="column" gap="1">
-          <Heading as="h1" size="6">
-            NovelReader 작성 가이드
-          </Heading>
-          <Text size="2" color="gray">
-            소설 마크다운 파일에서 사용할 수 있는 문법과 실제 렌더링 결과입니다.
-          </Text>
-        </Flex>
-        {GUIDE_ITEMS.map((item) => (
-          <GuideItem key={item.title} {...item} />
-        ))}
-      </Inner>
+    <Container scrollbars="vertical">
+      <PageFrame justify="center">
+        <Inner direction="column" gap="5">
+          <Flex direction="column" gap="1">
+            <Heading as="h1" size="6">
+              NovelReader 작성 가이드
+            </Heading>
+            <Text size="2" color="gray">
+              소설 마크다운 파일에서 사용할 수 있는 문법과 실제 렌더링
+              결과입니다.
+            </Text>
+          </Flex>
+          {GUIDE_ITEMS.map((item) => (
+            <GuideItem key={item.title} {...item} />
+          ))}
+        </Inner>
+      </PageFrame>
     </Container>
   );
 };

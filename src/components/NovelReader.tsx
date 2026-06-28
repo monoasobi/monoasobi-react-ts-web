@@ -2,20 +2,30 @@ import { adminAtom } from "@atoms/admin.atom";
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
 import { NovelMarkdown } from "@components/NovelMarkdown";
-import { Flex } from "@radix-ui/themes";
+import { Flex, ScrollArea } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 72px);
-  overflow: auto;
-  line-height: 160%;
-  padding: 92px 24px 24px;
-  @media screen and (max-width: 480px) {
-    padding: 92px 12px 12px;
+
+  .rt-ScrollAreaViewport {
+    line-height: 160%;
+    padding: 64px 24px 24px;
   }
+
+  @media (max-width: 480px) {
+    .rt-ScrollAreaViewport {
+      padding: 64px 16px 24px;
+    }
+  }
+`;
+
+const ReaderFrame = styled(Flex)`
+  width: 100%;
+  min-height: 100%;
 `;
 
 const NovelContainer = styled.div`
@@ -109,10 +119,12 @@ export const NovelReader = ({ id }: NovelProps) => {
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
   return (
-    <Container justify="center" ref={novelRef} onScroll={handleScroll}>
-      <NovelContainer>
-        <NovelMarkdown className="markdown">{markdown ?? ""}</NovelMarkdown>
-      </NovelContainer>
+    <Container ref={novelRef} onScroll={handleScroll} scrollbars="vertical">
+      <ReaderFrame justify="center">
+        <NovelContainer>
+          <NovelMarkdown className="markdown">{markdown ?? ""}</NovelMarkdown>
+        </NovelContainer>
+      </ReaderFrame>
     </Container>
   );
 };

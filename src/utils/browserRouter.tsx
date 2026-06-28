@@ -7,11 +7,6 @@ import { Players } from "@pages/Players.page";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-const Home = lazy(() =>
-  import("@pages/Home.page").then(({ Home }) => ({
-    default: Home,
-  })),
-);
 const Novel = lazy(() =>
   import("@pages/Novel.page").then(({ Novel }) => ({
     default: Novel,
@@ -27,13 +22,18 @@ const Guide = lazy(() =>
     default: Guide,
   })),
 );
+const Overview = lazy(() =>
+  import("@pages/Overview.page").then(({ Overview }) => ({
+    default: Overview,
+  })),
+);
 
 export const appRouter = createBrowserRouter([
   {
     Component: Layout,
     errorElement: <NotFound />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Overview /> },
       { path: "/comic/:id", element: <Comic /> },
       { path: "/novel/:id", element: <Novel /> },
       { path: "/onthestage", element: <OnTheStage /> },
