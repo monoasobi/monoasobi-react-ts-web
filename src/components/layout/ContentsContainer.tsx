@@ -15,8 +15,8 @@ import {
   Popover,
   Text,
 } from "@radix-ui/themes";
-import { ReactNode, useState } from "react";
-import { Link } from "react-router-dom";
+import { ReactNode } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled(Flex)`
@@ -27,6 +27,12 @@ const Container = styled(Flex)`
   .headerButton {
     position: absolute;
     right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media (max-width: 480px) {
+      right: 12px;
+    }
   }
 `;
 
@@ -37,14 +43,55 @@ const Header = styled(Card)`
   width: 95%;
   background-color: var(--gray-1);
   box-shadow: 0px 6px 8px -2px var(--black-a1);
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 8px 8px;
+  padding: 12px 56px;
   z-index: 5;
 
   visibility: visible;
   &.notVisible {
     visibility: hidden;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 44px;
+  }
+`;
+
+const HeaderInfo = styled(Flex)`
+  width: 100%;
+  min-width: 0;
+`;
+
+const HeaderTitle = styled(Text)`
+  display: block;
+  max-width: 100%;
+`;
+
+const HeaderHeading = styled(Heading)`
+  display: block;
+  max-width: 100%;
+`;
+
+const FloatingToggle = styled(IconButton)`
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background-color: var(--red-9);
+  color: var(--red-contrast);
+  box-shadow: 0 0 24px var(--black-a4);
+
+  &:hover {
+    background-color: var(--red-10);
+  }
+
+  @media (max-width: 480px) {
+    right: 16px;
+    bottom: 16px;
   }
 `;
 
@@ -66,33 +113,28 @@ export const ContentsContainer = ({
   content,
 }: ContentsContainerProps) => {
   const { title, korTitle } = music;
-  const [tab, setTab] = useState<"CONTENT" | "LYRICS">("CONTENT");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const isLyrics = searchParams.get("view") === "lyrics";
 
   const handleTabChange = () => {
-    setTab(tab === "CONTENT" ? "LYRICS" : "CONTENT");
+    setSearchParams(isLyrics ? {} : { view: "lyrics" });
   };
 
   return (
     <Popover.Root>
       <Container direction="column" align="center">
         <Header variant="surface">
-          <Flex direction="column" align="center">
-            <Text size="2" weight="bold" color="red">
+          <HeaderInfo direction="column" align="center">
+            <HeaderTitle size="2" weight="bold" color="red" truncate>
               {korTitle} {korTitle !== title && title}
-            </Text>
-            <Heading size="2">{content?.writer}</Heading>
+            </HeaderTitle>
             {content?.title && (
-              <Heading size="2">&lt;{content.title}&gt;</Heading>
+              <HeaderHeading size="2" truncate>
+                {content?.writer} &lt;{content.title}&gt;
+              </HeaderHeading>
             )}
-          </Flex>
+          </HeaderInfo>
           <Flex gap="2" className="headerButton">
-            <IconButton size="1" variant="soft" onClick={handleTabChange}>
-              {tab === "CONTENT" ? (
-                <MusicalNoteIcon width="16" height="16" />
-              ) : (
-                <BookOpenIcon width="16" height="16" />
-              )}
-            </IconButton>
             <Popover.Trigger>
               <IconButton size="1" variant="soft">
                 <EllipsisHorizontalIcon width="16" height="16" />
@@ -130,7 +172,14 @@ export const ContentsContainer = ({
             </Flex>
           </Popover.Content>
         </Header>
-        {tab === "CONTENT" ? children : <YouTubeLyricsPlayer music={music} />}
+        {isLyrics ? <YouTubeLyricsPlayer music={music} /> : children}
+        <FloatingToggle size="3" variant="solid" onClick={handleTabChange}>
+          {isLyrics ? (
+            <BookOpenIcon width="20" height="20" />
+          ) : (
+            <MusicalNoteIcon width="20" height="20" />
+          )}
+        </FloatingToggle>
       </Container>
       {/* <MusicAside
         isOpen={isSidebarOpen}

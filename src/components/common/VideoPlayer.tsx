@@ -41,6 +41,27 @@ const YOUTUBE_CONFIG = {
   rel: 0 as const,
   controls: 0,
 };
+const VOLUME_LS_KEY = "monoasobi-video-volume";
+
+const getStoredVolume = () => {
+  try {
+    const storedVolume = localStorage.getItem(VOLUME_LS_KEY);
+    if (storedVolume == null) return 1;
+
+    const volume = Number(storedVolume);
+    return Number.isFinite(volume) && volume >= 0 && volume <= 1 ? volume : 1;
+  } catch {
+    return 1;
+  }
+};
+
+const setStoredVolume = (volume: number) => {
+  try {
+    localStorage.setItem(VOLUME_LS_KEY, volume.toString());
+  } catch {
+    // localStorage can be unavailable in private contexts.
+  }
+};
 
 const formatTime = (seconds: number): string => {
   if (!isFinite(seconds) || seconds < 0) return "0:00";
@@ -66,7 +87,7 @@ export const VideoPlayer = forwardRef<VideoPlayerHandle, VideoPlayerProps>(
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
-    const [volume, setVolume] = useState(1);
+    const [volume, setVolume] = useState(getStoredVolume);
     const [isMuted, setIsMuted] = useState(false);
     const [showVolumeTooltip, setShowVolumeTooltip] = useState(false);
     const [showJp, setShowJp] = useState(true);
@@ -127,6 +148,7 @@ export const VideoPlayer = forwardRef<VideoPlayerHandle, VideoPlayerProps>(
     const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
       const value = Number(e.target.value);
       setVolume(value);
+      setStoredVolume(value);
       if (isMuted && value > 0) setIsMuted(false);
     };
 

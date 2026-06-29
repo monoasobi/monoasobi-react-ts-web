@@ -5,21 +5,23 @@ import {
   ChevronUpIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { Button, Card, Flex, Heading } from "@radix-ui/themes";
+import { Button, Card, Flex, Heading, ScrollArea } from "@radix-ui/themes";
 import { useState } from "react";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
-  padding: 96px 16px;
+const Container = styled(ScrollArea)`
   width: clamp(100%, 50dvw, 720px);
   height: calc(100dvh - 56px);
   background-color: var(--gray-1);
-  overflow: auto;
   animation: slide 0.2s ease-in-out;
   box-shadow: -4px 8px 6px -2px var(--black-a1);
   position: fixed;
   right: 0;
   top: 56px;
+
+  .rt-ScrollAreaViewport {
+    padding: 96px 16px;
+  }
 
   .closeButton {
     width: 100%;
@@ -39,6 +41,10 @@ const Container = styled(Flex)`
       transform: translateX(0%);
     }
   }
+`;
+
+const AsideFrame = styled(Flex)`
+  min-height: 100%;
 `;
 
 const VideoContainer = styled.div<{ $isCollapsed: boolean }>`
@@ -74,44 +80,46 @@ export const MusicAside = ({ isOpen, onClose, music }: MusicAsideProps) => {
   };
 
   return (
-    <Container direction="column" gap="3">
-      <Flex justify="end">
-        <Button
-          className="closeButton"
-          size="2"
-          variant="outline"
-          onClick={onClose}
-        >
-          <XMarkIcon width="16" height="16" />
-          닫기
-        </Button>
-      </Flex>
-      <Card>
-        <Flex direction="column" gap="2">
-          <CardHeader
-            justify="between"
-            align="center"
-            onClick={() => setIsCollapsed(!isCollapsed)}
+    <Container scrollbars="vertical">
+      <AsideFrame direction="column" gap="3">
+        <Flex justify="end">
+          <Button
+            className="closeButton"
+            size="2"
+            variant="outline"
+            onClick={onClose}
           >
-            <Heading size="4" color="red">
-              Music Video
-            </Heading>
-            {isCollapsed ? (
-              <ChevronDownIcon width="20" height="20" />
-            ) : (
-              <ChevronUpIcon width="20" height="20" />
-            )}
-          </CardHeader>
-          <VideoContainer $isCollapsed={isCollapsed}>
-            <Flex direction="column" gap="2">
-              <YouTubeEmbed videoId={music.youtubeId} />
-              <Button size="2" variant="soft" onClick={handleOpenNewWindow}>
-                새창으로 보기
-              </Button>
-            </Flex>
-          </VideoContainer>
+            <XMarkIcon width="16" height="16" />
+            닫기
+          </Button>
         </Flex>
-      </Card>
+        <Card>
+          <Flex direction="column" gap="2">
+            <CardHeader
+              justify="between"
+              align="center"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            >
+              <Heading size="4" color="red">
+                Music Video
+              </Heading>
+              {isCollapsed ? (
+                <ChevronDownIcon width="20" height="20" />
+              ) : (
+                <ChevronUpIcon width="20" height="20" />
+              )}
+            </CardHeader>
+            <VideoContainer $isCollapsed={isCollapsed}>
+              <Flex direction="column" gap="2">
+                <YouTubeEmbed videoId={music.youtubeId} />
+                <Button size="2" variant="soft" onClick={handleOpenNewWindow}>
+                  새창으로 보기
+                </Button>
+              </Flex>
+            </VideoContainer>
+          </Flex>
+        </Card>
+      </AsideFrame>
     </Container>
   );
 };

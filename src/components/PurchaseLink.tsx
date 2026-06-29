@@ -4,16 +4,26 @@ import book2 from "@assets/book_2.jpg";
 import { books } from "@lib/book";
 import { musics } from "@lib/music";
 import { novels } from "@lib/novel";
-import { Button, Card, Flex, Heading, Separator, Text } from "@radix-ui/themes";
+import {
+  Button,
+  Card,
+  Flex,
+  Heading,
+  ScrollArea,
+  Separator,
+  Text,
+} from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   max-width: 1024px;
-  padding: 92px 24px 24px;
   height: calc(100dvh - 72px);
-  overflow: auto;
+
+  .rt-ScrollAreaViewport {
+    padding: 64px 24px 24px;
+  }
 
   .card {
     padding: 24px;
@@ -25,6 +35,17 @@ const Container = styled(Flex)`
     max-width: 280px;
     box-shadow: 2px 2px 12px 2px var(--black-a4);
   }
+
+  @media (max-width: 480px) {
+    .rt-ScrollAreaViewport {
+      padding: 64px 16px 24px;
+    }
+  }
+`;
+
+const PageFrame = styled(Flex)`
+  width: 100%;
+  min-height: 100%;
 `;
 
 interface PurchaseLinkProps {
@@ -37,88 +58,96 @@ export const PurchaseLink = ({ bookId }: PurchaseLinkProps) => {
   const bookImage = [book0, book1, book2];
 
   return (
-    <Container direction="column">
-      <Card className="card">
-        <Heading>소설집 구매 안내</Heading>
-        <Text size="2">
-          해당 작품은 국내에 정식으로 발간되어 제공이 불가합니다.
-        </Text>
-        <Flex direction="column" justify="center" align="center" my="4" gap="3">
+    <Container scrollbars="vertical">
+      <PageFrame direction="column">
+        <Card className="card">
+          <Heading>소설집 구매 안내</Heading>
+          <Text size="2">
+            해당 작품은 국내에 정식으로 발간되어 제공이 불가합니다.
+          </Text>
           <Flex
-            gap="6"
-            width="100%"
+            direction="column"
             justify="center"
-            align={{ md: "end", initial: "center" }}
-            direction={{ initial: "column", md: "row" }}
+            align="center"
+            my="4"
+            gap="3"
           >
-            <img
-              className="bookImg"
-              src={bookImage[bookId]}
-              alt={`${book.name}`}
-            />
-            <Flex direction="column" gap="4">
-              <Heading align={{ md: "left", initial: "center" }}>
-                {book.name}
-              </Heading>
-              <Separator size="4" />
-              <Flex direction="column" gap="2">
-                {book.novelIds.map((id: number) => (
-                  <Flex direction="column" gap="1" key={id}>
-                    <Text align="center" size="1" color="gray">
-                      {`♪ ${musics[novels[id].musicId].korTitle}`}
-                    </Text>
-                    <Text
-                      align="center"
-                      size="2"
-                      color="gray"
-                    >{`${novels[id].writer} <${novels[id].title}>`}</Text>
-                  </Flex>
-                ))}
-                <Text align="center" size="2" color="red" weight="medium">
-                  총 {book.novelIds.length}편 수록
-                </Text>
-              </Flex>
-              <Flex wrap="wrap" gap="2" justify="center">
-                {book.purchaseLinks.kyoboURL && (
-                  <Button asChild>
-                    <Link to={book.purchaseLinks.kyoboURL} target="_blank">
-                      교보문고
-                    </Link>
-                  </Button>
-                )}
-                {book.purchaseLinks.yes24URL && (
-                  <Button asChild>
-                    <Link to={book.purchaseLinks.yes24URL} target="_blank">
-                      yes24
-                    </Link>
-                  </Button>
-                )}
-                {book.purchaseLinks.aladinURL && (
-                  <Button asChild>
-                    <Link to={book.purchaseLinks.aladinURL} target="_blank">
-                      알라딘
-                    </Link>
-                  </Button>
-                )}
-                {book.purchaseLinks.ridiURL && (
-                  <Button asChild>
-                    <Link to={book.purchaseLinks.ridiURL} target="_blank">
-                      리디북스
-                    </Link>
-                  </Button>
-                )}
-                {book.purchaseLinks.naverURL && (
-                  <Button asChild>
-                    <Link to={book.purchaseLinks.naverURL} target="_blank">
-                      네이버 시리즈
-                    </Link>
-                  </Button>
-                )}
+            <Flex
+              gap="6"
+              width="100%"
+              justify="center"
+              align={{ md: "end", initial: "center" }}
+              direction={{ initial: "column", md: "row" }}
+            >
+              <img
+                className="bookImg"
+                src={bookImage[bookId]}
+                alt={`${book.name}`}
+              />
+              <Flex direction="column" gap="4">
+                <Heading align={{ md: "left", initial: "center" }}>
+                  {book.name}
+                </Heading>
+                <Separator size="4" />
+                <Flex direction="column" gap="2">
+                  {book.novelIds.map((id: number) => (
+                    <Flex direction="column" gap="1" key={id}>
+                      <Text align="center" size="1" color="gray">
+                        {`♪ ${musics[novels[id].musicId].korTitle}`}
+                      </Text>
+                      <Text
+                        align="center"
+                        size="2"
+                        color="gray"
+                      >{`${novels[id].writer} <${novels[id].title}>`}</Text>
+                    </Flex>
+                  ))}
+                  <Text align="center" size="2" color="red" weight="medium">
+                    총 {book.novelIds.length}편 수록
+                  </Text>
+                </Flex>
+                <Flex wrap="wrap" gap="2" justify="center">
+                  {book.purchaseLinks.kyoboURL && (
+                    <Button asChild>
+                      <Link to={book.purchaseLinks.kyoboURL} target="_blank">
+                        교보문고
+                      </Link>
+                    </Button>
+                  )}
+                  {book.purchaseLinks.yes24URL && (
+                    <Button asChild>
+                      <Link to={book.purchaseLinks.yes24URL} target="_blank">
+                        yes24
+                      </Link>
+                    </Button>
+                  )}
+                  {book.purchaseLinks.aladinURL && (
+                    <Button asChild>
+                      <Link to={book.purchaseLinks.aladinURL} target="_blank">
+                        알라딘
+                      </Link>
+                    </Button>
+                  )}
+                  {book.purchaseLinks.ridiURL && (
+                    <Button asChild>
+                      <Link to={book.purchaseLinks.ridiURL} target="_blank">
+                        리디북스
+                      </Link>
+                    </Button>
+                  )}
+                  {book.purchaseLinks.naverURL && (
+                    <Button asChild>
+                      <Link to={book.purchaseLinks.naverURL} target="_blank">
+                        네이버 시리즈
+                      </Link>
+                    </Button>
+                  )}
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
-        </Flex>
-      </Card>
+        </Card>
+      </PageFrame>
     </Container>
   );
 };

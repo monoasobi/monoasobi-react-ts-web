@@ -2,18 +2,34 @@ import { LyricTrack } from "@appTypes/lyric";
 import { Music } from "@appTypes/music";
 import { LyricsDisplayV2 } from "@components/common/LyricsDisplayV2";
 import { loadLyricTrack } from "@lib/lyrics";
-import { Button, Card, Flex, Heading, Popover, Text } from "@radix-ui/themes";
+import {
+  Button,
+  Card,
+  Flex,
+  Heading,
+  Popover,
+  ScrollArea,
+  Text,
+} from "@radix-ui/themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { VideoPlayer, type VideoPlayerHandle } from "./VideoPlayer";
 
 const OFFSET_STEPS = [0.01, 0.05, 0.1, 0.5];
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 72px);
-  overflow: auto;
-  padding: 92px 24px 24px;
+
+  .rt-ScrollAreaViewport {
+    padding: 64px 24px 24px;
+  }
+
+  @media (max-width: 480px) {
+    .rt-ScrollAreaViewport {
+      padding: 64px 16px 24px;
+    }
+  }
 `;
 
 const InnerContainer = styled(Flex)`
@@ -98,24 +114,25 @@ export const YouTubeLyricsPlayer = ({ music }: YouTubeLyricsPlayerProps) => {
       : "sync";
 
   return (
-    <Container direction="column" gap="3">
-      <InnerContainer direction="column" gap="3">
-        <Flex direction="column" gap="3">
-          <Flex justify="between" gap="3" wrap="wrap">
-            <Flex direction="row" align="end" gap="1" wrap="wrap">
-              <Heading size="4">{music.title}</Heading>
-              <Text size="2" color="gray">
-                {music.korTitle}
-              </Text>
-            </Flex>
+    <Container scrollbars="vertical">
+      <Flex direction="column" gap="3">
+        <InnerContainer direction="column" gap="3">
+          <Flex direction="column" gap="3">
+            <Flex justify="between" gap="3" wrap="wrap">
+              <Flex direction="row" align="end" gap="1" wrap="wrap">
+                <Heading size="4">{music.title}</Heading>
+                <Text size="2" color="gray">
+                  {music.korTitle}
+                </Text>
+              </Flex>
 
-            {import.meta.env.DEV && (
-              <Popover.Root>
-                <Popover.Trigger>
-                  <Button size="1" variant="soft" color="gray">
-                    {syncLabel}
-                  </Button>
-                </Popover.Trigger>
+              {import.meta.env.DEV && (
+                <Popover.Root>
+                  <Popover.Trigger>
+                    <Button size="1" variant="soft" color="gray">
+                      {syncLabel}
+                    </Button>
+                  </Popover.Trigger>
                   <Popover.Content width="260px">
                     <Flex direction="column" gap="3">
                       <Flex align="center" justify="between">
@@ -167,58 +184,59 @@ export const YouTubeLyricsPlayer = ({ music }: YouTubeLyricsPlayerProps) => {
                     </Flex>
                   </Popover.Content>
                 </Popover.Root>
+              )}
+            </Flex>
+
+            {music.youtubeId ? (
+              <VideoPlayer
+                ref={videoPlayerRef}
+                youtubeId={music.youtubeId}
+                activeLine={activeLine}
+                onTimeUpdate={setCurrentTime}
+              />
+            ) : (
+              <StatusCard>
+                <Text size="2" color="gray">
+                  등록된 YouTube 영상이 없습니다.
+                </Text>
+              </StatusCard>
             )}
           </Flex>
+        </InnerContainer>
 
-          {music.youtubeId ? (
-            <VideoPlayer
-              ref={videoPlayerRef}
-              youtubeId={music.youtubeId}
-              activeLine={activeLine}
-              onTimeUpdate={setCurrentTime}
-            />
-          ) : (
-            <StatusCard>
-              <Text size="2" color="gray">
-                등록된 YouTube 영상이 없습니다.
-              </Text>
-            </StatusCard>
-          )}
-        </Flex>
-      </InnerContainer>
+        {isLoadingTrack && (
+          <StatusCard>
+            <Text size="2" color="gray">
+              가사 파일을 불러오는 중입니다.
+            </Text>
+          </StatusCard>
+        )}
 
-      {isLoadingTrack && (
-        <StatusCard>
-          <Text size="2" color="gray">
-            가사 파일을 불러오는 중입니다.
-          </Text>
-        </StatusCard>
-      )}
+        {loadError && (
+          <StatusCard>
+            <Text size="2" color="red">
+              가사 파일을 불러오지 못했습니다.
+            </Text>
+          </StatusCard>
+        )}
 
-      {loadError && (
-        <StatusCard>
-          <Text size="2" color="red">
-            가사 파일을 불러오지 못했습니다.
-          </Text>
-        </StatusCard>
-      )}
+        {!isLoadingTrack && !loadError && track && (
+          <LyricsDisplayV2
+            lyrics={track.lyric}
+            currentTime={currentTime}
+            offset={lyricsOffset}
+            onSeek={handleSeek}
+          />
+        )}
 
-      {!isLoadingTrack && !loadError && track && (
-        <LyricsDisplayV2
-          lyrics={track.lyric}
-          currentTime={currentTime}
-          offset={lyricsOffset}
-          onSeek={handleSeek}
-        />
-      )}
-
-      {!isLoadingTrack && !loadError && !track && (
-        <StatusCard>
-          <Text size="2" color="gray">
-            이 곡의 가사 파일은 아직 준비되지 않았습니다.
-          </Text>
-        </StatusCard>
-      )}
+        {!isLoadingTrack && !loadError && !track && (
+          <StatusCard>
+            <Text size="2" color="gray">
+              이 곡의 가사 파일은 아직 준비되지 않았습니다.
+            </Text>
+          </StatusCard>
+        )}
+      </Flex>
     </Container>
   );
 };

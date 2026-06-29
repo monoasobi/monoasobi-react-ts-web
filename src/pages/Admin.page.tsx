@@ -1,18 +1,26 @@
 import { adminAtom } from "@atoms/admin.atom";
 import { Loading } from "@components/Loading";
-import { Box, Button, Flex, Text, TextField } from "@radix-ui/themes";
+import {
+  Box,
+  Button,
+  Flex,
+  ScrollArea,
+  Text,
+  TextField,
+} from "@radix-ui/themes";
 import { KeyboardEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
-  position: relative;
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 56px);
-  overflow: auto;
-  line-height: 160%;
-  padding: 24px;
+
+  .rt-ScrollAreaViewport {
+    line-height: 160%;
+    padding: 24px;
+  }
 
   .card {
     padding: 16px;
@@ -42,6 +50,11 @@ const Container = styled(Flex)`
       opacity: 1;
     }
   }
+`;
+
+const PageFrame = styled(Flex)`
+  position: relative;
+  min-height: 100%;
 `;
 
 const LoadingContainer = styled(Box)`
@@ -90,8 +103,8 @@ export const Admin = () => {
     if (e.key === "Enter") return adminHandler();
   };
   return (
-    <Container direction="column">
-      <Flex className="dialog" direction="column" gap="2">
+    <Container scrollbars="vertical">
+      <PageFrame className="dialog" direction="column" gap="2">
         <label>
           <Text as="div" size="1" mb="1" weight="light">
             관리자 비밀번호
@@ -110,7 +123,7 @@ export const Admin = () => {
             <Loading />
           </LoadingContainer>
         )}
-      </Flex>
+      </PageFrame>
     </Container>
   );
 };

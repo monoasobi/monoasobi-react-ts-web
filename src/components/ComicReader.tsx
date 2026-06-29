@@ -1,19 +1,29 @@
 import { Error } from "@components/Error";
 import { Loading } from "@components/Loading";
-import { Flex } from "@radix-ui/themes";
+import { Flex, ScrollArea } from "@radix-ui/themes";
 import { getFileNum } from "@utils/file";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const Container = styled(Flex)`
+const Container = styled(ScrollArea)`
   width: 100%;
   height: calc(100dvh - 72px);
-  overflow: auto;
-  line-height: 160%;
-  padding: 92px 24px 92px;
-  @media screen and (max-width: 480px) {
-    padding: 92px 12px 12px;
+
+  .rt-ScrollAreaViewport {
+    line-height: 160%;
+    padding: 64px 24px 92px;
   }
+
+  @media (max-width: 480px) {
+    .rt-ScrollAreaViewport {
+      padding: 64px 12px 12px;
+    }
+  }
+`;
+
+const ReaderFrame = styled(Flex)`
+  width: 100%;
+  min-height: 100%;
 `;
 
 const ComicContainer = styled(Flex)`
@@ -90,17 +100,19 @@ export const ComicReader = ({ id }: ComicProps) => {
   if (isLoading) return <Loading />;
   if (isError) return <Error />;
   return (
-    <Container ref={comicRef} justify="center" pb="6" onScroll={handleScroll}>
-      <ComicContainer direction="column" gap="3">
-        {imageUrls.map((url, idx) => (
-          <img
-            key={idx}
-            src={url}
-            alt={idx.toString()}
-            loading={idx < 4 ? "eager" : "lazy"}
-          />
-        ))}
-      </ComicContainer>
+    <Container ref={comicRef} onScroll={handleScroll} scrollbars="vertical">
+      <ReaderFrame justify="center">
+        <ComicContainer direction="column" gap="3">
+          {imageUrls.map((url, idx) => (
+            <img
+              key={idx}
+              src={url}
+              alt={idx.toString()}
+              loading={idx < 4 ? "eager" : "lazy"}
+            />
+          ))}
+        </ComicContainer>
+      </ReaderFrame>
     </Container>
   );
 };
