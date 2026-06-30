@@ -1,4 +1,4 @@
-import logowith from "@assets/logowith.png";
+import logowith from "@assets/logowith.svg";
 import yoasobi from "@assets/yoasobi.jpg";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import { Card, Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
@@ -65,9 +65,9 @@ export const Home = () => {
                 운영됩니다.
               </Text>
               <Text size="2">
-                사이트에 게시된 모든 원작 소설과 번역본의 저작권은 각각의
-                작가와 번역자에게 있으며, 모노아소비는 이 자료들을
-                공유함으로써 어떠한 상업적 이익도 추구하지 않습니다.
+                사이트에 게시된 모든 원작 소설과 번역본의 저작권은 각각의 작가와
+                번역자에게 있으며, 모노아소비는 이 자료들을 공유함으로써 어떠한
+                상업적 이익도 추구하지 않습니다.
               </Text>
               <Card>
                 <Heading as="h3" size="3">
